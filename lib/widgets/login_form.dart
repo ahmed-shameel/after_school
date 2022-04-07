@@ -74,7 +74,7 @@ class LoginFormState extends State<LoginForm> {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: loginButton(),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text('Don\'t have an account? '),
                 GestureDetector(
                     onTap: () {
