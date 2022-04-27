@@ -13,14 +13,14 @@ class _HomepageState extends State<HomePage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 24.0,
                 vertical: 24.0,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Studentpubar',
                     style: TextStyle(
                       fontSize: 40.0,
@@ -30,7 +30,7 @@ class _HomepageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.only(top: 130),
                     child: Column(
-                      children: [
+                      children: const [
                         LoginForm(),
                       ],
                     ),
