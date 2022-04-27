@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:after_school/screens/hompage.dart';
+import 'package:after_school/screens/main_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      home: HomePage(),
+      home: main_page(),
     );
   }
 }
