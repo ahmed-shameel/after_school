@@ -81,7 +81,7 @@
 		<repository>
 			<id>internal.repo</id>
 			<name>Internal repo</name>
-			<url>git@github.com:ahmed-shameel/after_school.git</url>
+			<url>git@github.com/ahmed-shameel/after_school.git</url>
 		</repository>
 	</distributionManagement>
 

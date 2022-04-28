@@ -2,9 +2,10 @@ package com.example.AfterSchool;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class AfterSchoolApplication {
+public class AfterSchoolApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AfterSchoolApplication.class, args);
