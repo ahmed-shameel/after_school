@@ -12,9 +12,9 @@ class _MainPageState extends State<main_page> {
 
   int currentIndex = 0;
   final screens = [
-    home_page(),
-    map_page(),
-    list_page(),
+    const HomePage(),
+    const MapPage(),
+    const ListPage(),
   ];
 
   @override
@@ -25,8 +25,6 @@ class _MainPageState extends State<main_page> {
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
         iconSize: 30,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -38,7 +36,7 @@ class _MainPageState extends State<main_page> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'Events',
+            label: 'List',
           ),
         ],
       ),

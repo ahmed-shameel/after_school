@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/login_form.dart';
 
-class home_page extends StatelessWidget {
-  const home_page({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +16,16 @@ class home_page extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Studentpubar',
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                ),
+               const Center(
+                 child: Text(
+                  'After School',
+                   textAlign: TextAlign.center,
+                   style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                  ),
               ),
+               ),
               Padding(
                 padding: EdgeInsets.only(top: 130),
                 child: Column(
