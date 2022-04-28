@@ -3,12 +3,12 @@ import 'package:after_school/screens/map_page.dart';
 import 'package:flutter/material.dart';
 import 'package:after_school/screens/list_page.dart';
 
-class main_page extends StatefulWidget {
+class MainPage extends StatefulWidget {
   @override
-  State<main_page> createState() => _MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<main_page> {
+class _MainPageState extends State<MainPage> {
 
   int currentIndex = 0;
   final screens = [
@@ -22,6 +22,7 @@ class _MainPageState extends State<main_page> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: false,
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
         iconSize: 30,
