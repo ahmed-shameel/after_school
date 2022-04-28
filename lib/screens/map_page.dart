@@ -9,17 +9,15 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  static const minZoom = 9.0;
-  static const maxZoom = 30.0;
+  static const currentZoom = 9.0;
   static const _initialCameraPosition = CameraPosition(
       target: LatLng(59.3293, 18.0686),
-      zoom: minZoom);
+      zoom: currentZoom);
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: GoogleMap(
-        minMaxZoomPreference: MinMaxZoomPreference(minZoom, maxZoom),
         initialCameraPosition: _initialCameraPosition,
         myLocationEnabled: true,
       ),
