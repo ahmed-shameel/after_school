@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../user/user.dart';
 import '../user/user_preferences.dart';
-import '../widgets/profile_page_appbar.dart';
 import '../widgets/profile_picture.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -16,7 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
     final user = UserPreferences.myUser;
     return Scaffold(
       backgroundColor: Color(0xFF56AB91),
-      body: ListView( children: [
+      body: ListView(children: [
         Container(
           child: Stack(children: [
             Positioned(
@@ -40,6 +39,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                   child: Icon(CupertinoIcons.back)),
             ),
+            Positioned(
+                top: 15,
+                left: 230,
+                child: Text(
+                  'Profile',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -53,8 +59,67 @@ class _ProfilePageState extends State<ProfilePage> {
                           //TODO : EDIT PROFILE PICTURE
                         },
                       ),
-                      // const SizedBox(height: 24),
-                      buildName(user),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Text(
+                        user.name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "User Information",
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      Card(
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  ...ListTile.divideTiles(
+                                    color: Colors.grey,
+                                    tiles: [
+                                      ListTile(
+                                        leading: Icon(Icons.my_location),
+                                        title: Text("Location"),
+                                        subtitle: Text(user.location),
+                                      ),
+                                      ListTile(
+                                        leading: Icon(Icons.email),
+                                        title: Text("Email"),
+                                        subtitle: Text(user.email),
+                                      ),
+                                      ListTile(
+                                        leading: Icon(Icons.phone),
+                                        title: Text("Phone"),
+                                        subtitle: Text(user.phone),
+                                      ),
+                                      ListTile(
+                                        leading: Icon(Icons.person),
+                                        title: Text("About Me"),
+                                        subtitle: Text(user.aboutMe),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
