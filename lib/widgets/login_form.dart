@@ -1,5 +1,11 @@
+import 'package:after_school/screens/forgot_password_page.dart';
+import 'package:after_school/screens/profile_page.dart';
+import 'package:after_school/screens/signup_page.dart';
+import 'package:after_school/widgets/or_divider.dart';
+import 'package:after_school/widgets/social_icon.dart';
 import 'package:flutter/material.dart';
-import 'login_button.dart';
+import 'custom_button.dart';
+
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -11,6 +17,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class LoginFormState extends State<LoginForm> {
+  FocusNode myFocusNode = new FocusNode();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -24,24 +31,24 @@ class LoginFormState extends State<LoginForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 15),
-            child: Text(
-              'Login',
-              style: TextStyle(
-                fontSize: 30.0,
-              ),
-            ),
-          ),
           TextFormField(
             controller: emailController,
             decoration: InputDecoration(
-              labelText: 'Email',
-              border: OutlineInputBorder(),
+              labelText: 'Email or username',labelStyle: TextStyle(
+                color: myFocusNode.hasFocus ? Colors.blue : Colors.black
+            ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide:  BorderSide(color: Colors.black),
+              ),
+              fillColor: Color(0xFF94D2BD),
+              filled: true,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Invalid mail';
+                return 'Invalid mail or username';
               }
               return null;
             },
@@ -54,11 +61,22 @@ class LoginFormState extends State<LoginForm> {
             child: TextField(
               obscureText: isObscure,
               decoration: InputDecoration(
+                fillColor: Color(0xFF94D2BD),
+                filled: true,
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                labelStyle: TextStyle(
+                      color: myFocusNode.hasFocus ? Colors.blue : Colors.black
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide:  BorderSide(color: Colors.black),
+                ),
                 suffixIcon: IconButton(
                     icon: Icon(
                       isObscure ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.white,
                     ),
                     onPressed: () {
                       setState(() {
@@ -71,28 +89,68 @@ class LoginFormState extends State<LoginForm> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(
+                    bottom: 8.0,
+                ),
                 child: loginButton(),
               ),
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text('Don\'t have an account? '),
-                GestureDetector(
-                    onTap: () {
-                      //TODO: registration page
-                    },
-
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 8.0, left: 250.0),
                     child: Text(
-                      'Sign Up. ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
+                      'Forgot your password?',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )),
+              OrDivider(text: 'OR',),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SocialIcon(
+                    iconSrc: "assets/icons/google.svg",
+                    press: () {
+                      //TODO:GOOGLE API
+                    },
+                  ),
+                  SocialIcon(
+                    iconSrc: "assets/icons/facebook.svg",
+                    press: () {
+                      //TODO: FACEBOOK API
+                    },
+                  ),
+                  SocialIcon(
+                    iconSrc: "assets/icons/sso.svg",
+                    press: () {
+                      //TODO: SSO API
+                    },
+                  ),
+                ],
+              ),
+              OrDivider(text: 'Don\'t have an account? ' ,),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 GestureDetector(
                     onTap: () {
-                      //TODO: forgot your password page
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => /*SignUpPage()*/ ProfilePage()),);
                     },
-                    child: Text('Forgot your password?',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),)),
+                    child: Text(
+                      'Sign Up ',
+                      style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+                    )),
+                Text('or ', style: TextStyle(color: Colors.white),),
+                GestureDetector(
+                    onTap: () {
+                      //TODO: GO TO MAP PAGE AS A GUEST
+                    },
+                    child: Text(
+                      'Continue as a guest. ',
+                      style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+                    )),
               ]),
             ],
           ),
@@ -101,9 +159,11 @@ class LoginFormState extends State<LoginForm> {
     );
   }
 
-  Widget loginButton() => LoginButton(
-        text: 'LOGIN',
+  Widget loginButton() => CustomButton(
+        text: 'Login',
         onClicked: () {
+          //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
+          //some validating code try
           final form = formKey.currentState!;
 
           if (form.validate()) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onClicked;
 
-  const LoginButton({
+  const CustomButton({
     Key? key,
     required this.text,
     required this.onClicked,
@@ -15,7 +15,7 @@ class LoginButton extends StatelessWidget {
     style: ElevatedButton.styleFrom(
       minimumSize: Size.fromHeight(50),
       shape: StadiumBorder(),
-      primary: Colors.black,
+      primary: Color(0xFF94D2BD),
     ),
     child: FittedBox(
       child: Text(
