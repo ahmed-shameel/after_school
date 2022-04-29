@@ -7,29 +7,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomepageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
+      backgroundColor: Color(0xFF56AB91),
+      body: SingleChildScrollView(
         child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: 24.0,
-              ),
-              child: Column(
+            child: Stack(children: [
+              Positioned(
+                  top: -20.0,
+                  left: -50.0,
+                  child: Image(
+                    image: AssetImage('assets/images/ellipse1.png'),
+                  )),
+              Positioned(
+                  top: -90.0,
+                  left: 10,
+                  child: Image(
+                    image: AssetImage('assets/images/ellipse1.png'),
+                  )),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Studentpubar',
-                    style: TextStyle(
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 90.0),
+                    child: Container(
+                        alignment: Alignment.center,
+                        height: 150,
+                        child:
+                            Image(image: AssetImage('assets/images/logo.png'))),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 130),
+                    padding: EdgeInsets.all(50.0),
                     child: Column(
                       children: [
                         LoginForm(),
@@ -38,24 +47,26 @@ class _HomepageState extends State<HomePage> {
                   ),
                 ],
               ),
-            ),
+            ]),
+          ),
+
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: 'Map',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Events',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.person),
+      //       label: 'Profile',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.map),
+      //       label: 'Map',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.list),
+      //       label: 'Events',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
