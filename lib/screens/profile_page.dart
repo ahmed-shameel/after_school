@@ -1,3 +1,4 @@
+import 'package:after_school/screens/map_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../user/user.dart';
@@ -10,6 +11,19 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  int _currentIndex = 0;
+
+  void _onItemTap(int index){
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+  List<Widget> pages = [
+    ProfilePage(),
+    //apPage(),
+    //Pubslistpage,
+    //Eventspage,
+  ];
   @override
   Widget build(BuildContext context) {
     final user = UserPreferences.myUser;
@@ -53,6 +67,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: EdgeInsets.all(50.0),
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: 24,
+                      ),
                       ProfileWidget(
                         imagePath: user.imagePath,
                         onClicked: () {
@@ -60,22 +77,16 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                       SizedBox(
-                        height: 24,
+                        height: 50,
                       ),
-                      Text(
-                        user.name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),
-                      ),
-                      const SizedBox(height: 20),
                       Container(
                         padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
                         alignment: Alignment.topLeft,
                         child: Text(
                           "User Information",
                           style: TextStyle(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
                           textAlign: TextAlign.left,
@@ -92,6 +103,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ...ListTile.divideTiles(
                                     color: Colors.grey,
                                     tiles: [
+                                      ListTile(
+                                        leading: Icon(Icons.person),
+                                        title: Text("Name"),
+                                        subtitle: Text(user.name),
+                                      ),
                                       ListTile(
                                         leading: Icon(Icons.my_location),
                                         title: Text("Location"),
@@ -129,7 +145,12 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ]),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: const Color(0xFF56AB91),
+        iconSize: 30,
+
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
@@ -147,21 +168,9 @@ class _ProfilePageState extends State<ProfilePage> {
             label: 'Events',
           ),
         ],
+        currentIndex: _currentIndex,
+        onTap: _onItemTap,
       ),
     );
   }
-
-  Widget buildName(User user) => Column(
-        children: [
-          Text(
-            user.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            user.email,
-            style: TextStyle(color: Colors.grey),
-          )
-        ],
-      );
 }

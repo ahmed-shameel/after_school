@@ -136,7 +136,7 @@ class LoginFormState extends State<LoginForm> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => /*SignUpPage()*/ ProfilePage()),);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()),);
                     },
                     child: Text(
                       'Sign Up ',
