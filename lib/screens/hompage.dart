@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:after_school/widgets/login_form.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<HomePage> createState() => _HomepageState();
 }
@@ -10,17 +12,17 @@ class _HomepageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF56AB91),
+      backgroundColor: const Color(0xFF56AB91),
       body: SingleChildScrollView(
         child: Container(
             child: Stack(children: [
-              Positioned(
+              const Positioned(
                   top: -20.0,
                   left: -50.0,
                   child: Image(
                     image: AssetImage('assets/images/ellipse1.png'),
                   )),
-              Positioned(
+              const Positioned(
                   top: -90.0,
                   left: 10,
                   child: Image(
@@ -40,7 +42,7 @@ class _HomepageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.all(50.0),
                     child: Column(
-                      children: [
+                      children: const [
                         LoginForm(),
                       ],
                     ),

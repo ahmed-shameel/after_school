@@ -1,5 +1,4 @@
 import 'package:after_school/screens/forgot_password_page.dart';
-import 'package:after_school/screens/profile_page.dart';
 import 'package:after_school/screens/signup_page.dart';
 import 'package:after_school/widgets/or_divider.dart';
 import 'package:after_school/widgets/social_icon.dart';
@@ -17,7 +16,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class LoginFormState extends State<LoginForm> {
-  FocusNode myFocusNode = new FocusNode();
+  FocusNode myFocusNode = FocusNode();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -37,13 +36,13 @@ class LoginFormState extends State<LoginForm> {
               labelText: 'Email or username',labelStyle: TextStyle(
                 color: myFocusNode.hasFocus ? Colors.blue : Colors.black
             ),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide:  BorderSide(color: Colors.black),
               ),
-              fillColor: Color(0xFF94D2BD),
+              fillColor: const Color(0xFF94D2BD),
               filled: true,
             ),
             validator: (value) {
@@ -61,16 +60,16 @@ class LoginFormState extends State<LoginForm> {
             child: TextField(
               obscureText: isObscure,
               decoration: InputDecoration(
-                fillColor: Color(0xFF94D2BD),
+                fillColor: const Color(0xFF94D2BD),
                 filled: true,
                 labelText: 'Password',
                 labelStyle: TextStyle(
                       color: myFocusNode.hasFocus ? Colors.blue : Colors.black
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide:  BorderSide(color: Colors.black),
                 ),
                 suffixIcon: IconButton(
@@ -98,7 +97,7 @@ class LoginFormState extends State<LoginForm> {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                   },
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.only(top: 8.0, left: 250.0),
                     child: Text(
                       'Forgot your password?',
@@ -108,7 +107,7 @@ class LoginFormState extends State<LoginForm> {
                       ),
                     ),
                   )),
-              OrDivider(text: 'OR',),
+              const OrDivider(text: 'OR',),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -132,22 +131,22 @@ class LoginFormState extends State<LoginForm> {
                   ),
                 ],
               ),
-              OrDivider(text: 'Don\'t have an account? ' ,),
+              const OrDivider(text: 'Don\'t have an account? ' ,),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()),);
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign Up ',
                       style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
                     )),
-                Text('or ', style: TextStyle(color: Colors.white),),
+                const Text('or ', style: TextStyle(color: Colors.white),),
                 GestureDetector(
                     onTap: () {
                       //TODO: GO TO MAP PAGE AS A GUEST
                     },
-                    child: Text(
+                    child: const Text(
                       'Continue as a guest. ',
                       style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
                     )),
