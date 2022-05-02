@@ -1,8 +1,11 @@
 import 'package:after_school/screens/forgot_password_page.dart';
+import 'package:after_school/screens/map_page.dart';
+import 'package:after_school/screens/profile_page.dart';
 import 'package:after_school/screens/signup_page.dart';
 import 'package:after_school/widgets/or_divider.dart';
 import 'package:after_school/widgets/social_icon.dart';
 import 'package:flutter/material.dart';
+import '../screens/main_page.dart';
 import 'custom_button.dart';
 
 
@@ -144,8 +147,12 @@ class LoginFormState extends State<LoginForm> {
                 const Text('or ', style: TextStyle(color: Colors.white),),
                 GestureDetector(
                     onTap: () {
-                      //TODO: GO TO MAP PAGE AS A GUEST
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MainPage()),
+                      );
                     },
+
                     child: const Text(
                       'Continue as a guest. ',
                       style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
