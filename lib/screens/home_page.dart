@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               ),
                ),
               Padding(
-                padding: EdgeInsets.only(top: 130),
+                padding: const EdgeInsets.only(top: 130),
                 child: Column(
                   children: const [
                     LoginForm(),

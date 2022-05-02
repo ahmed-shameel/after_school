@@ -5,6 +5,8 @@ import 'package:after_school/screens/home_page.dart';
  import 'package:after_school/screens/list_page.dart';
 
  class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
    @override
    State<MainPage> createState() => _MainPageState();
  }
