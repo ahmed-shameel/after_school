@@ -123,12 +123,6 @@ class LoginFormState extends State<LoginForm> {
                       //TODO: FACEBOOK API
                     },
                   ),
-                  SocialIcon(
-                    iconSrc: "assets/icons/sso.svg",
-                    press: () {
-                      //TODO: SSO API
-                    },
-                  ),
                 ],
               ),
               const OrDivider(text: 'Don\'t have an account? ' ,),
