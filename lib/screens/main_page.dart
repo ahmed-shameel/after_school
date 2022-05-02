@@ -1,4 +1,5 @@
- import 'package:after_school/screens/home_page.dart';
+ import 'package:after_school/screens/EventPage.dart';
+import 'package:after_school/screens/home_page.dart';
  import 'package:after_school/screens/map_page.dart';
  import 'package:flutter/material.dart';
  import 'package:after_school/screens/list_page.dart';
@@ -15,6 +16,7 @@
      const HomePage(),
      const MapPage(),
      const ListPage(),
+     const EventPage(),
    ];
 
    @override
@@ -22,7 +24,8 @@
      return Scaffold(
        body: screens[currentIndex],
        bottomNavigationBar: BottomNavigationBar(
-         showUnselectedLabels: false,
+         unselectedItemColor: Colors.grey,
+         selectedItemColor: Colors.black,
          currentIndex: currentIndex,
          onTap: (index) => setState(() => currentIndex = index),
          iconSize: 30,
@@ -39,6 +42,10 @@
              icon: Icon(Icons.list),
              label: 'List',
            ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.calendar_month),
+             label: "Events"
+           )
            ],
        ),
      );

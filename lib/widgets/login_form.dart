@@ -1,6 +1,4 @@
 import 'package:after_school/screens/forgot_password_page.dart';
-import 'package:after_school/screens/map_page.dart';
-import 'package:after_school/screens/profile_page.dart';
 import 'package:after_school/screens/signup_page.dart';
 import 'package:after_school/widgets/or_divider.dart';
 import 'package:after_school/widgets/social_icon.dart';
@@ -101,7 +99,7 @@ class LoginFormState extends State<LoginForm> {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                   },
                   child: const Padding(
-                    padding: EdgeInsets.only(top: 8.0, left: 250.0),
+                    padding: EdgeInsets.all(20),
                     child: Text(
                       'Forgot your password?',
                       style: TextStyle(
@@ -143,7 +141,7 @@ class LoginFormState extends State<LoginForm> {
                     onTap: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ())
+                          MaterialPageRoute(builder: (context) => MainPage()),
                       );
                       //TODO: GO TO MAP PAGE AS A GUEST
                     },
