@@ -138,6 +138,10 @@ class LoginFormState extends State<LoginForm> {
                 const Text('or ', style: TextStyle(color: Colors.white),),
                 GestureDetector(
                     onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ())
+                      );
                       //TODO: GO TO MAP PAGE AS A GUEST
                     },
                     child: const Text(

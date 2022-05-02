@@ -14,43 +14,41 @@ class _HomepageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xFF56AB91),
       body: SingleChildScrollView(
-        child: Container(
-            child: Stack(children: [
-              const Positioned(
-                  top: -20.0,
-                  left: -50.0,
-                  child: Image(
-                    image: AssetImage('assets/images/ellipse1.png'),
-                  )),
-              const Positioned(
-                  top: -90.0,
-                  left: 10,
-                  child: Image(
-                    image: AssetImage('assets/images/ellipse1.png'),
-                  )),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 90.0),
-                    child: Container(
-                        alignment: Alignment.center,
-                        height: 150,
-                        child:
-                            Image(image: AssetImage('assets/images/logo.png'))),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(50.0),
-                    child: Column(
-                      children: const [
-                        LoginForm(),
-                      ],
-                    ),
-                  ),
-                ],
+        child: Stack(children: [
+          const Positioned(
+              top: -20.0,
+              left: -50.0,
+              child: Image(
+                image: AssetImage('assets/images/ellipse1.png'),
+              )),
+          const Positioned(
+              top: -90.0,
+              left: 10,
+              child: Image(
+                image: AssetImage('assets/images/ellipse1.png'),
+              )),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 90.0),
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 150,
+                    child:
+                        Image(image: AssetImage('assets/images/logo.png'))),
               ),
-            ]),
+              Padding(
+                padding: EdgeInsets.all(50.0),
+                child: Column(
+                  children: const [
+                    LoginForm(),
+                  ],
+                ),
+              ),
+            ],
           ),
+        ]),
 
       ),
       // bottomNavigationBar: BottomNavigationBar(
