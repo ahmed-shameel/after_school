@@ -1,5 +1,5 @@
+import 'package:after_school/screens/homepages/homepage_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:after_school/screens/hompage.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'AfterSchool',
       theme: ThemeData(),
-      home: HomePage(),
+      home: HomePageScreen(),
     );
   }
 }

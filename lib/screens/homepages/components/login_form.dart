@@ -1,0 +1,137 @@
+import 'package:after_school/components/email_field.dart';
+import 'package:after_school/components/password_field.dart';
+import 'package:after_school/screens/forgot_password/forgot_password_screen.dart';
+import 'package:after_school/screens/signup/signup_screen.dart';
+import 'package:flutter/material.dart';
+import '../../../components/custom_button.dart';
+import '../../../components/or_divider.dart';
+import '../../../components/social_icon.dart';
+import '../../../components/main_nav.dart';
+
+class LoginForm extends StatefulWidget {
+  const LoginForm({Key? key}) : super(key: key);
+
+  @override
+  LoginFormState createState() {
+    return LoginFormState();
+  }
+}
+
+class LoginFormState extends State<LoginForm> {
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    // Build a Form widget using the _formKey created above.
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(50.0, 150.0, 50.0, 0.0),
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            EmailField(),
+            SizedBox(
+              height: 8,
+            ),
+            PasswordField(
+              text: 'Password',
+            ),
+            Column(
+              children: [
+                loginButton(),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 16.0, left: 250.0),
+                      child: Text(
+                        'Forgot your password?',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )),
+                OrDivider(
+                  text: 'OR',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SocialIcon(
+                      iconSrc: "assets/icons/google.svg",
+                      press: () {
+                        //TODO:GOOGLE API
+                      },
+                    ),
+                    SocialIcon(
+                      iconSrc: "assets/icons/facebook.svg",
+                      press: () {
+                        //TODO: FACEBOOK API
+                      },
+                    ),
+                    SocialIcon(
+                      iconSrc: "assets/icons/sso.svg",
+                      press: () {
+                        //TODO: SSO API
+                      },
+                    ),
+                  ],
+                ),
+                OrDivider(
+                  text: 'Don\'t have an account? ',
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder:
+                                  (context) => SignupScreen()),
+                        );
+                      },
+                      child: Text(
+                        'Sign Up ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      )),
+                  Text(
+                    'or ',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        //TODO: GO TO MAP PAGE AS A GUEST
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MainNavigation()),
+                        );
+                      },
+                      child: Text(
+                        'Continue as a guest. ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      )),
+                ]),
+              ],
+            ),
+          ],
+        ),
+      ),
+
+    );
+  }
+
+  Widget loginButton() => CustomButton(
+    text: 'Login',
+    onClicked: () {
+      //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
+    },
+  );
+}
