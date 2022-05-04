@@ -1,4 +1,4 @@
-import 'package:after_school/contants.dart';
+import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatefulWidget {
