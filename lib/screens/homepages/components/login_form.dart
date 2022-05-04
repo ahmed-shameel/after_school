@@ -4,7 +4,7 @@ import 'package:after_school/screens/forgot_password/forgot_password_screen.dart
 import 'package:after_school/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
-import '../../../components/or_divider.dart';
+import '../../../components/custom_divider.dart';
 import '../../../components/social_icon.dart';
 import '../../../components/main_nav.dart';
 
@@ -57,7 +57,7 @@ class LoginFormState extends State<LoginForm> {
                         ),
                       ),
                     )),
-                OrDivider(
+                CustomDivider(
                   text: 'OR',
                 ),
                 Row(
@@ -78,7 +78,7 @@ class LoginFormState extends State<LoginForm> {
 
                   ],
                 ),
-                OrDivider(
+                CustomDivider(
                   text: 'Don\'t have an account? ',
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [

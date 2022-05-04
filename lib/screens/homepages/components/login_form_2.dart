@@ -4,7 +4,7 @@ import 'package:after_school/screens/forgot_password/forgot_password_screen.dart
 import 'package:after_school/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
-import '../../../components/or_divider.dart';
+import '../../../components/custom_divider.dart';
 import '../../../components/social_icon.dart';
 
 class LoginForm2 extends StatefulWidget {
@@ -47,7 +47,7 @@ class LoginForm2State extends State<LoginForm2> {
                       );
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 150.0),
+                      padding: EdgeInsets.only(top: 16.0, left: 250.0),
                       child: Text(
                         'Forgot your password?',
                         style: TextStyle(
@@ -56,7 +56,7 @@ class LoginForm2State extends State<LoginForm2> {
                         ),
                       ),
                     )),
-                OrDivider(
+                CustomDivider(
                   text: 'OR',
                 ),
                 Row(

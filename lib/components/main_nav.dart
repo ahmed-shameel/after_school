@@ -1,8 +1,9 @@
-import 'package:after_school/screens/event/event_screen.dart';
 import 'package:after_school/screens/homepages/homepage_screen_2.dart';
+import 'package:after_school/screens/profile/profile_screen.dart';
 import 'package:after_school/screens/pubs/pubs_screen.dart';
 import 'package:after_school/screens/map/map_screen.dart';
 import 'package:flutter/material.dart';
+import '../screens/events/events_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({Key? key}) : super(key: key);
@@ -17,7 +18,8 @@ class _MainNavigationState extends State<MainNavigation> {
     HomePageScreen2(),
     MapScreen(),
     PubsScreen(),
-    EventScreen(),
+    // ProfileScreen(),
+    EventsScreen(),
   ];
 
   @override

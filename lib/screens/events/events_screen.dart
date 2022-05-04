@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../profile/components/body.dart';
+import '../events/components/body.dart';
 
-class ProfileScreen extends StatelessWidget {
+class EventsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
