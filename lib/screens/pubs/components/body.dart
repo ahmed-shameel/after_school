@@ -13,16 +13,16 @@ class Body extends StatelessWidget {
             height: 100,
           ),
           Pub(
-              uniIcon: Icon(Icons.account_balance_outlined),
+              uniIcon: Image(image: AssetImage("assets/icons/suicon.png")),
               pubName: 'Foo Bar',
               pubInfo: 'Borgarfjordsgatan 6C Kårexpiditionen, 164 40 Kista'),
           Pub(
-              uniIcon: Icon(Icons.account_balance_outlined),
+              uniIcon: Image(image: AssetImage("assets/icons/shicon.png")),
               pubName: 'SöderS Pub',
               pubInfo:
                   '9 Alfred Nobels allé, Huddinge, Stockholms län, 141 52'),
           Pub(
-              uniIcon: Icon(Icons.account_balance_outlined),
+              uniIcon: Image(image: AssetImage("assets/icons/suicon.png")),
               pubName: 'Bojan Crew',
               pubInfo: 'Café Bojan, Frescativägen 14B'),
           Pub(
