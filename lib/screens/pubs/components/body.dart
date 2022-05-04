@@ -59,9 +59,6 @@ class Body extends StatelessWidget {
               uniIcon: Icon(Icons.account_balance_outlined),
               pubName: 'Pub Name',
               pubInfo: 'Pub Information'),
-
-
-
         ],
       ),
     );

@@ -21,7 +21,7 @@ class EmailField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
         ),
-        fillColor: Color(0xFF94D2BD),
+        fillColor: Color(0xFFB2E2D3),
         filled: true,
       ),
       validator: (value) {

@@ -17,9 +17,9 @@ class _MainNavigationState extends State<MainNavigation> {
   final screens = [
     HomePageScreen2(),
     MapScreen(),
+    EventsScreen(),
     PubsScreen(),
     // ProfileScreen(),
-    EventsScreen(),
   ];
 
   @override
@@ -42,11 +42,11 @@ class _MainNavigationState extends State<MainNavigation> {
             label: 'Map',
           ),
           BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month), label: "Events"),
+          BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Pubs',
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month), label: "Events")
         ],
       ),
     );

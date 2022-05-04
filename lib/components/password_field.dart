@@ -1,3 +1,4 @@
+import 'package:after_school/contants.dart';
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatefulWidget {
@@ -20,7 +21,7 @@ class PasswordFieldState extends State<PasswordField> {
     return TextField(
       obscureText: isObscure,
       decoration: InputDecoration(
-        fillColor: Color(0xFF94D2BD),
+        fillColor: primaryColor,
         filled: true,
         labelText: widget.text,
         labelStyle: TextStyle(

@@ -1,3 +1,4 @@
+import 'package:after_school/contants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         minimumSize: Size.fromHeight(50),
         shape: StadiumBorder(),
-        primary: Color(0xFF94D2BD),
+        primary: primaryColor,
       ),
       child: FittedBox(
         child: Text(

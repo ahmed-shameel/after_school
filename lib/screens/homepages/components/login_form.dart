@@ -64,13 +64,13 @@ class LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SocialIcon(
-                      iconSrc: "assets/icons/google.svg",
+                      iconSrc: "assets/icons/google_colored.svg",
                       press: () {
                         //TODO:GOOGLE API
                       },
                     ),
                     SocialIcon(
-                      iconSrc: "assets/icons/facebook.svg",
+                      iconSrc: "assets/icons/facebook_colored.svg",
                       press: () {
                         //TODO: FACEBOOK API
                       },

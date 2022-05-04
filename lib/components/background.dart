@@ -20,13 +20,13 @@ class Background extends StatelessWidget {
               top: -20.0,
               left: -50.0,
               child: Image(
-                image: AssetImage('assets/images/ellipse1.png'),
+                image: AssetImage('assets/images/ellipse2.png'),
               )),
           Positioned(
               top: -90.0,
               left: 10,
               child: Image(
-                image: AssetImage('assets/images/ellipse1.png'),
+                image: AssetImage('assets/images/ellipse2.png'),
               )),
           Positioned(
               top: 60,

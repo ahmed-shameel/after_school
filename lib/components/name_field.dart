@@ -1,3 +1,4 @@
+import 'package:after_school/contants.dart';
 import 'package:flutter/material.dart';
 
 class NameField extends StatelessWidget {
@@ -23,7 +24,7 @@ class NameField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
         ),
-        fillColor: Color(0xFF94D2BD),
+        fillColor: primaryColor,
         filled: true,
       ),
       validator: (value) {
