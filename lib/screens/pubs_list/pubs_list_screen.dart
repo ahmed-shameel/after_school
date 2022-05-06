@@ -1,6 +1,6 @@
 import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
-import '../pubs/components/body.dart';
+import '../pubs_list/components/body.dart';
 
 class PubsScreen extends StatelessWidget {
   @override

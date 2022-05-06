@@ -1,6 +1,7 @@
 import 'package:after_school/screens/homepages/homepage_screen_2.dart';
+import 'package:after_school/screens/map_page.dart';
 import 'package:after_school/screens/profile/profile_screen.dart';
-import 'package:after_school/screens/pubs/pubs_screen.dart';
+import 'package:after_school/screens/pubs_list/pubs_list_screen.dart';
 import 'package:after_school/screens/map/map_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/events/events_screen.dart';
@@ -16,7 +17,8 @@ class _MainNavigationState extends State<MainNavigation> {
   int currentIndex = 1;
   final screens = [
     HomePageScreen2(),
-    MapScreen(),
+    //MapScreen(),
+    MapPage(),
     EventsScreen(),
     PubsScreen(),
     // ProfileScreen(),

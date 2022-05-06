@@ -1,4 +1,4 @@
-import 'package:after_school/screens/pubs/components/pub.dart';
+import 'package:after_school/screens/pubs_list/components/pub.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 
