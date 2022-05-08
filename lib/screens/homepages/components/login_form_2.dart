@@ -47,7 +47,7 @@ class LoginForm2State extends State<LoginForm2> {
                       );
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 250.0),
+                      padding: EdgeInsets.only(top: 16.0, left: 150.0),
                       child: Text(
                         'Forgot your password?',
                         style: TextStyle(
