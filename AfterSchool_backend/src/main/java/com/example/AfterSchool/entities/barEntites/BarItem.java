@@ -1,4 +1,4 @@
-package com.example.AfterSchool.Bar;
+package com.example.AfterSchool.entities.barEntites;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
