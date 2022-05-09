@@ -2,10 +2,20 @@ import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
   final String text;
+  final Color textColor;
+  final Color dividerColor;
+  double fontSize;
+  double dividerThickness;
+  Widget? icon;
 
-  const CustomDivider({
+  CustomDivider({
     Key? key,
     required this.text,
+    required this.textColor,
+    required this.dividerColor,
+    this.fontSize = 14,
+    this.dividerThickness = 0.5,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -22,11 +32,13 @@ class CustomDivider extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                color: Colors.white,
+                color: textColor,
                 fontWeight: FontWeight.w600,
+                fontSize: fontSize,
               ),
             ),
           ),
+          addIcon(),
           buildDivider(),
         ],
       ),
@@ -36,9 +48,17 @@ class CustomDivider extends StatelessWidget {
   Expanded buildDivider() {
     return Expanded(
       child: Divider(
-        color: Colors.white,
+        color: dividerColor,
         height: 1.5,
+        thickness: dividerThickness,
       ),
     );
+  }
+
+  Padding addIcon(){
+    if(icon != null){
+      return Padding(padding: EdgeInsets.only(right: 10), child: Container(height: 30,child: icon),);
+    }
+    return Padding(padding: EdgeInsets.all(0));
   }
 }

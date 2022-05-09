@@ -58,6 +58,8 @@ class LoginForm2State extends State<LoginForm2> {
                     )),
                 CustomDivider(
                   text: 'OR',
+                  textColor: Colors.white,
+                  dividerColor: Colors.white,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
