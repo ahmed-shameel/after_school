@@ -1,10 +1,10 @@
-import 'package:after_school/screens/pub/components/pub.dart';
 import 'package:flutter/material.dart';
+import '../../pub/components/pub_tile.dart';
 
 class University {
   final Widget uniIcon;
   final String uniName;
-  final List<Pub> pubs = <Pub>[];
+  final List<PubTile> pubs = <PubTile>[];
 
   University({
     required this.uniIcon,

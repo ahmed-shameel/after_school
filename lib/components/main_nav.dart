@@ -19,7 +19,7 @@ class _MainNavigationState extends State<MainNavigation> {
     MapScreen(),
     EventsScreen(),
     PubsScreen(),
-    // ProfileScreen(),
+    //ProfileScreen(),
   ];
 
   @override

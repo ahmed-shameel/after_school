@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 import '../../pub/components/pub.dart';
+import '../../pub/components/pub_tile.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -19,8 +20,14 @@ class Body extends StatelessWidget {
 
     Pub bojanCrew = Pub(pubName: 'Bojan Crew');
     Pub fooBar = Pub(pubName: 'Foo Bar');
-    su.pubs.add(bojanCrew);
-    su.pubs.add(fooBar);
+    PubTile pubTileBJ = PubTile(pub: bojanCrew);
+    PubTile pubTileFB = PubTile(pub: fooBar);
+    su.pubs.add(pubTileBJ);
+    su.pubs.add(pubTileFB);
+    bojanCrew.images.add('assets/images/logo.png');
+    bojanCrew.images.add('assets/images/logo.png');
+    fooBar.images.add('assets/images/logo.png');
+    fooBar.setHours('Onsdagar 15:45 - Sent och sista fredagen i månaden kl. 15:45 - Sent');
 
     return Background(
       titleText: 'Pubs',
