@@ -1,7 +1,8 @@
 package com.example.AfterSchool.entities;
+import com.example.AfterSchool.entities.barEntites.Review;
 import com.sun.istack.NotNull;
-
 import javax.persistence.*;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -22,7 +23,7 @@ public class User {
     )
     @GeneratedValue(
             strategy = SEQUENCE,
-            generator = "student_sequence"
+            generator = "user_sequence"
     )
     @Column(updatable = false)
     private Long id;
@@ -35,45 +36,112 @@ public class User {
 
     @Column(
             nullable = false,
-            columnDefinition = "TEXT"
+            columnDefinition = "TEXT",
+            unique = true
     )
-    private String name;
+    private String userName;
+
+    private String firstName;
+    private String lastName;
 
     @NotNull
     private String password;
 
+    @OneToMany
+    private List<Review> reviews;
+
+    @ManyToMany
+    private List<User> friends;
+
+    //Constructors
     public User() {
 
     }
+    public User(Long id, String email, String userName, String firstName, String lastName, String password) {
+        this.id = id;
+        this.email = email;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
 
+    //Getters
     public String getEmail() {
         return email;
     }
 
-    public User(Long id, String email, String name, String password) {
-        this.id = id;
-        this.email = email;
-        this.name = name;
-        this.password = password;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public List<User> getFriends(){
+        return friends;
+    }
+
+    //Setters
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    //OtherMethods
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
+
+    public void deleteReview(Review review){
+        reviews.remove(review);
+    }
+
+    public void addFriend(User user){
+        for(User friend: friends){
+            if(user.equals(friend))
+                return;
+            friends.add(user);
+            user.addFriend(this);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", userName='" + userName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", reviews=" + reviews +
+                '}';
     }
 }

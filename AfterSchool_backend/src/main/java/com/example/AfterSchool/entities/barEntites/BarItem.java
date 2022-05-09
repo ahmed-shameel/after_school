@@ -1,5 +1,4 @@
 package com.example.AfterSchool.entities.barEntites;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
