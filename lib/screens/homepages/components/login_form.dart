@@ -59,6 +59,8 @@ class LoginFormState extends State<LoginForm> {
                     )),
                 CustomDivider(
                   text: 'OR',
+                  textColor: Colors.white,
+                  dividerColor: Colors.white,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -80,6 +82,8 @@ class LoginFormState extends State<LoginForm> {
                 ),
                 CustomDivider(
                   text: 'Don\'t have an account? ',
+                  textColor: Colors.white,
+                  dividerColor: Colors.white,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   GestureDetector(
