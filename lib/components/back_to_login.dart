@@ -8,17 +8,16 @@ class BackToLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
-          child: Text(
-            'Back to login ',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white),
-          ),
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 15.0),
+        child: Text(
+          'Back to login ',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
+      ),
     );
   }
 }

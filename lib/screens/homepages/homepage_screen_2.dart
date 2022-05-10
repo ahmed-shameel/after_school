@@ -11,4 +11,3 @@ class HomePageScreen2 extends StatelessWidget {
     );
   }
 }
-

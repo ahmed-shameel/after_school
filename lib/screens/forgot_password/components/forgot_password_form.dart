@@ -23,7 +23,9 @@ class ForgotPasswordFormState extends State<ForgotPasswordForm> {
         key: formKey,
         child: Column(
           children: [
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             EmailField(),
             requestButton(),
           ],

@@ -8,9 +8,8 @@ class MapScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: primaryColor,
-        body: Body(),
+      backgroundColor: primaryColor,
+      body: Body(),
     );
   }
 }
-

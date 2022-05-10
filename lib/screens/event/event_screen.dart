@@ -4,7 +4,7 @@ import '../event/components/body.dart';
 import 'components/event.dart';
 
 class EventScreen extends StatelessWidget {
- Event event;
+  Event event;
 
   EventScreen({
     Key? key,
@@ -29,6 +29,8 @@ class EventScreen extends StatelessWidget {
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
-        body: Body(event: event,));
+        body: Body(
+          event: event,
+        ));
   }
 }

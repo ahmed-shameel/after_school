@@ -16,4 +16,3 @@ class Body2 extends StatelessWidget {
     );
   }
 }
-

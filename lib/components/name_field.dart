@@ -14,10 +14,8 @@ class NameField extends StatelessWidget {
       controller: nameController,
       decoration: InputDecoration(
         labelText: 'Name',
-        labelStyle: TextStyle(
-            color: myFocusNode.hasFocus
-                ? Colors.blue
-                : Colors.black),
+        labelStyle:
+            TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),

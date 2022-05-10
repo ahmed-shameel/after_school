@@ -1,7 +1,6 @@
 import 'package:after_school/screens/event/components/event.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-
 import '../../event/event_screen.dart';
 
 class Calendar extends StatefulWidget {

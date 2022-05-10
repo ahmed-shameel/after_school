@@ -29,9 +29,13 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
                 top: 30,
                 bottom: 10.0,
               ),
-              child: PasswordField(text: 'New Password',),
+              child: PasswordField(
+                text: 'New Password',
+              ),
             ),
-            PasswordField(text: 'Confirm new password',),
+            PasswordField(
+              text: 'Confirm new password',
+            ),
             resetPasswordButton(),
           ],
         ),
@@ -40,9 +44,9 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
   }
 
   Widget resetPasswordButton() => CustomButton(
-    text: 'Request password reset',
-    onClicked: () {
-      //TODO:REQUEST PASSWORD RESET
-    },
-  );
+        text: 'Request password reset',
+        onClicked: () {
+          //TODO:REQUEST PASSWORD RESET
+        },
+      );
 }

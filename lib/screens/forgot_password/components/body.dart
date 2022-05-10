@@ -17,7 +17,9 @@ class Body extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
             ),
-            Text('Please enter the email you used to sign in.',),
+            Text(
+              'Please enter the email you used to sign in.',
+            ),
             ForgotPasswordForm(),
             BackToLogin()
           ],

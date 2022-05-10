@@ -52,29 +52,3 @@ class CustomRatingBarState extends State<CustomRatingBar> {
     );
   }
 }
-
-// RatingBar(
-//   ratingWidget: RatingWidget(
-//       full: const Icon(Icons.star, color: Colors.orange),
-//       half: const Icon(
-//         Icons.star_half,
-//         color: Colors.orange,
-//       ),
-//       empty: const Icon(
-//         Icons.star_outline,
-//         color: Colors.orange,
-//       )),
-// ),
-//const SizedBox(height: 25),
-// Display the rate in number
-// Container(
-//   width: 200,
-//   height: 200,
-//   decoration: const BoxDecoration(
-//       color: Colors.red, shape: BoxShape.circle),
-//   alignment: Alignment.center,
-//   child: Text(
-//     _ratingValue != null ? _ratingValue.toString() : 'Rate it!',
-//     style: const TextStyle(color: Colors.white, fontSize: 30),
-//   ),
-// )

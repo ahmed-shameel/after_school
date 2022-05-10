@@ -1,3 +1,5 @@
+import 'package:after_school/screens/event/components/event.dart';
+
 class Pub {
   final String pubName;
   String openingHours;
@@ -7,8 +9,9 @@ class Pub {
   String prices;
   String entry;
   List<String> images = <String>[];
+  List<Event> events = <Event>[];
 
-  Pub( {
+  Pub({
     required this.pubName,
     this.openingHours = 'Opening hours unknown.',
     this.address = 'No address given.',
@@ -18,7 +21,7 @@ class Pub {
     this.entry = 'No entry information given.',
   });
 
-  void setHours(String hours){
+  void setHours(String hours) {
     openingHours = hours;
   }
 }

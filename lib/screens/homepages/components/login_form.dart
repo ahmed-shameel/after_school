@@ -77,7 +77,6 @@ class LoginFormState extends State<LoginForm> {
                         //TODO: FACEBOOK API
                       },
                     ),
-
                   ],
                 ),
                 CustomDivider(
@@ -91,8 +90,7 @@ class LoginFormState extends State<LoginForm> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder:
-                                  (context) => SignupScreen()),
+                              builder: (context) => SignupScreen()),
                         );
                       },
                       child: Text(
@@ -109,7 +107,8 @@ class LoginFormState extends State<LoginForm> {
                         //TODO: GO TO MAP PAGE AS A GUEST
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MainNavigation()),
+                          MaterialPageRoute(
+                              builder: (context) => MainNavigation()),
                         );
                       },
                       child: Text(
@@ -123,14 +122,13 @@ class LoginFormState extends State<LoginForm> {
           ],
         ),
       ),
-
     );
   }
 
   Widget loginButton() => CustomButton(
-    text: 'Login',
-    onClicked: () {
-      //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
-    },
-  );
+        text: 'Login',
+        onClicked: () {
+          //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
+        },
+      );
 }

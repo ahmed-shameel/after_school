@@ -1,5 +1,4 @@
 import 'package:after_school/components/background_without_logo.dart';
-import 'package:after_school/screens/profile/components/user/user.dart';
 import 'package:after_school/screens/write_a_review/write_a_review_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_rating_bar.dart';
@@ -7,19 +6,17 @@ import '../../pub/components/pub.dart';
 
 class Body extends StatefulWidget {
   final Pub pub;
-  User? user;
 
-  Body({Key? key, required this.pub, this.user}) : super(key: key);
+  Body({Key? key, required this.pub}) : super(key: key);
 
   @override
-  _BodyState createState() => _BodyState(pub: pub, user: user);
+  _BodyState createState() => _BodyState(pub: pub);
 }
 
 class _BodyState extends State<Body> {
   Pub pub;
-  User? user;
 
-  _BodyState({required this.pub, this.user});
+  _BodyState({required this.pub});
 
   //example data
   List filedata = [
@@ -111,7 +108,6 @@ class _BodyState extends State<Body> {
                   Text(data[i]['message']),
             ),
         ]),
-
       ],
     );
   }
@@ -119,12 +115,8 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Background(
-      //titleText: '',
       child: SingleChildScrollView(
         child: Column(children: [
-          // SizedBox(
-          //   height: 100,
-          // ),
           CustomRatingBar(),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Padding(
@@ -134,7 +126,6 @@ class _BodyState extends State<Body> {
                 style: TextStyle(fontSize: 20),
               ),
             ),
-            // SizedBox(width: 50,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
@@ -142,7 +133,8 @@ class _BodyState extends State<Body> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => WriteReviewScreen(pub: pub)));
+                            builder: (context) => WriteReviewScreen(pub: pub),
+                            settings: RouteSettings(name: 'writeReview')));
                   },
                   child: Text(
                     'Write a review.',
@@ -154,7 +146,6 @@ class _BodyState extends State<Body> {
             )
           ]),
           commentField(filedata),
-
         ]),
       ),
     );

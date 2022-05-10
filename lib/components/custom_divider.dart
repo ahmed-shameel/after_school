@@ -55,9 +55,12 @@ class CustomDivider extends StatelessWidget {
     );
   }
 
-  Padding addIcon(){
-    if(icon != null){
-      return Padding(padding: EdgeInsets.only(right: 10), child: Container(height: 30,child: icon),);
+  Padding addIcon() {
+    if (icon != null) {
+      return Padding(
+        padding: EdgeInsets.only(right: 10),
+        child: Container(height: 30, child: icon),
+      );
     }
     return Padding(padding: EdgeInsets.all(0));
   }

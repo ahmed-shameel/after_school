@@ -16,9 +16,6 @@ class Body extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // SizedBox(
-            //   height: 90,
-            // ),
             Card(
               color: Colors.transparent,
               shadowColor: Colors.transparent,
@@ -61,7 +58,9 @@ class Body extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(color: Colors.white,),
+                  Divider(
+                    color: Colors.white,
+                  ),
                 ],
               ),
             ),
@@ -70,7 +69,11 @@ class Body extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ReviewScreen(pub: pub,)),
+                    MaterialPageRoute(
+                        builder: (context) => ReviewScreen(
+                              pub: pub,
+                            ),
+                        settings: RouteSettings(name: 'reviews')),
                   );
                 },
                 child: Text(
@@ -80,7 +83,6 @@ class Body extends StatelessWidget {
                       decoration: TextDecoration.underline),
                 )),
             ImageGallery(images: pub.images),
-
           ],
         ),
       ),

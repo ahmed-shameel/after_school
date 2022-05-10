@@ -14,7 +14,11 @@ class Body extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 200),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [Text('The map :)'), Text('You are a guest!'), BackToLogin()]),
+                  children: const [
+                    Text('The map :)'),
+                    Text('You are a guest!'),
+                    BackToLogin()
+                  ]),
             ),
           ],
         ),

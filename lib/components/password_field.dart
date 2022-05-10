@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class PasswordField extends StatefulWidget {
   final String text;
-  const PasswordField({Key? key, required this.text,}) : super(key: key);
+  const PasswordField({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
 
   @override
   PasswordFieldState createState() {
@@ -24,8 +27,8 @@ class PasswordFieldState extends State<PasswordField> {
         fillColor: primaryColor,
         filled: true,
         labelText: widget.text,
-        labelStyle: TextStyle(
-            color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
+        labelStyle:
+            TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),

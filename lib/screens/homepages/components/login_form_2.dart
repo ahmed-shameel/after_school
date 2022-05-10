@@ -88,8 +88,7 @@ class LoginForm2State extends State<LoginForm2> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder:
-                                  (context) => SignupScreen()),
+                              builder: (context) => SignupScreen()),
                         );
                       },
                       child: Text(
@@ -103,14 +102,13 @@ class LoginForm2State extends State<LoginForm2> {
           ],
         ),
       ),
-
     );
   }
 
   Widget loginButton() => CustomButton(
-    text: 'Login',
-    onClicked: () {
-      //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
-    },
-  );
+        text: 'Login',
+        onClicked: () {
+          //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
+        },
+      );
 }

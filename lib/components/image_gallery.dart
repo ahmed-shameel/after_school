@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ImageGallery extends StatelessWidget {
-
   List<String> images;
 
-  ImageGallery(
-      {Key? key,
-        required this.images})
-      : super(key: key);
+  ImageGallery({Key? key, required this.images}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
