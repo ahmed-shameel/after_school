@@ -6,7 +6,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Background(
-      titleText: 'Map',
+      //titleText: 'Map',
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[

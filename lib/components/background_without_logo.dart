@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
-  final String titleText;
+  //final String titleText;
   const Background({
     Key? key,
     required this.child,
-    required this.titleText,
+    //required this.titleText,
   }) : super(key: key);
 
   @override
@@ -30,12 +30,12 @@ class Background extends StatelessWidget {
               child: Image(
                 image: AssetImage('assets/images/ellipse2.png'),
               )),
-          Positioned(
-              top: 10,
-              child: Text(
-                titleText,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              )),
+          // Positioned(
+          //     top: 10,
+          //     child: Text(
+          //       titleText,
+          //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          //     )),
           child,
         ],
       ),

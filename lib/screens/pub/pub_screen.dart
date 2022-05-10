@@ -15,6 +15,12 @@ class PubScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
+      appBar:  AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: GestureDetector(child: Icon(Icons.keyboard_backspace_sharp), onTap: (){Navigator.pop(context);},),
+        title: Text(pub.pubName, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+      ),
       body: Body(
         pub: pub,
       ),

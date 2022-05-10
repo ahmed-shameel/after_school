@@ -30,13 +30,13 @@ class Body extends StatelessWidget {
     fooBar.setHours('Onsdagar 15:45 - Sent och sista fredagen i månaden kl. 15:45 - Sent');
 
     return Background(
-      titleText: 'Pubs',
+      //titleText: 'Pubs',
       child: ListView(children: <Widget>[
-        SizedBox(
-          height: 90,
-        ),
+        // SizedBox(
+        //   height: 40,
+        // ),
         Padding(
-          padding: EdgeInsets.only(left: 63, right: 63, bottom: 20),
+          padding: EdgeInsets.fromLTRB(63, 20, 63, 20),
           child: SearchField(),
         ),
         UniCard(university: su),

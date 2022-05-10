@@ -8,6 +8,12 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
+      appBar:  AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Text('Profile', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+      ),
       body: Body(),
     );
   }

@@ -13,13 +13,12 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Background(
-      titleText: pub.pubName,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 90,
-            ),
+            // SizedBox(
+            //   height: 90,
+            // ),
             Card(
               color: Colors.transparent,
               shadowColor: Colors.transparent,
@@ -62,6 +61,7 @@ class Body extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Divider(color: Colors.white,),
                 ],
               ),
             ),
@@ -70,7 +70,7 @@ class Body extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ReviewScreen()),
+                    MaterialPageRoute(builder: (context) => ReviewScreen(pub: pub,)),
                   );
                 },
                 child: Text(
@@ -81,19 +81,6 @@ class Body extends StatelessWidget {
                 )),
             ImageGallery(images: pub.images),
 
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.keyboard_backspace_sharp,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ),
-            ),
           ],
         ),
       ),
