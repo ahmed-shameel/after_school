@@ -13,7 +13,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Background(
-      child: Center(child: Container(child: Text('Write a review'),),),
+      child: SingleChildScrollView(child: Center(child: Container(child: Text('Write a review'),),)),
     );
   }
 }
