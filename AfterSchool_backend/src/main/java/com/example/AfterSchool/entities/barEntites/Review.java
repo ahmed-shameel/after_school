@@ -1,9 +1,8 @@
 package com.example.AfterSchool.entities.barEntites;
 
-import com.example.AfterSchool.entities.User;
+import com.example.AfterSchool.entities.userEntities.User;
 
 import javax.persistence.*;
-import java.awt.*;
 
 @Entity
 public class Review {

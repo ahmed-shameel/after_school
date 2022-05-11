@@ -1,27 +1,43 @@
 package com.example.AfterSchool.services;
-import com.example.AfterSchool.entities.User;
+import com.example.AfterSchool.entities.userEntities.ConfimationToken;
+import com.example.AfterSchool.entities.userEntities.User;
 import com.example.AfterSchool.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.text.MessageFormat;
+import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+    private ConfirmationTokenService confirmationTokenService;
 
-    public List<User> getAllUsers(){
-
-        return userRepository.findAll();
+    public void signUpUser(User user){
+        final String encryptedPassword = BCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+        final User createdUSer = userRepository.save(user);
+        final ConfimationToken confimationToken = new ConfimationToken(user);
+        confirmationTokenService.saveConfirmationToken(confimationToken);
+    }
+    public void updateUser(User user){
+        if(userRepository.existsById(user.getId()))
+            userRepository.save(user);
     }
 
-    public String addUser(User user){
-        if(!userRepository.existsByEmail(user.getEmail())) {
-            userRepository.save(user);
-            return "Ditt konto är skapat";
-        }else
-            return "Du har redan ett konto, var vänlig logga in";
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        final Optional<User> optionalUser = Optional.ofNullable(userRepository.findByUsername(username));
+        if(optionalUser.isPresent()){
+            return optionalUser.get();
+        } else {
+            throw new UsernameNotFoundException(MessageFormat.format("Användare med användarnamnet {0} hittades inte.", username));
+        }
     }
 }
