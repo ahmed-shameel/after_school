@@ -22,9 +22,11 @@ public class UserController {
     public String addUser(@RequestBody User user){
         return userService.addUser(user);
     }
-
+/*
     @RequestMapping(value = "updateuser", method = RequestMethod.PUT)
     public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }
+    */
+
 }
