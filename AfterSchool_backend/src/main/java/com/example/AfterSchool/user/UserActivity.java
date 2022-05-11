@@ -1,4 +1,4 @@
-package com.example.AfterSchool.entities.userEntities;
+package com.example.AfterSchool.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

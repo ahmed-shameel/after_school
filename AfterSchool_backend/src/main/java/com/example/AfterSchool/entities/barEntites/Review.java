@@ -1,6 +1,6 @@
 package com.example.AfterSchool.entities.barEntites;
 
-import com.example.AfterSchool.entities.userEntities.User;
+import com.example.AfterSchool.user.User;
 
 import javax.persistence.*;
 
