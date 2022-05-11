@@ -1,8 +1,10 @@
 package com.example.AfterSchool.repositories;
+import com.example.AfterSchool.entities.userEntities.ConfirmationToken;
+import org.springframework.data.repository.CrudRepository;
 
-import com.example.AfterSchool.entities.userEntities.ConfimationToken;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-public interface ConfirmationTokenRepository extends JpaRepository<ConfimationToken, Long> {
+public interface ConfirmationTokenRepository extends CrudRepository<ConfirmationToken, Long> {
 
+    public Optional<ConfirmationToken> findConfirmationTokenByToken(String token);
 }

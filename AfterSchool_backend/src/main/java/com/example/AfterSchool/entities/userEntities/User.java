@@ -1,9 +1,11 @@
 package com.example.AfterSchool.entities.userEntities;
+import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity(name = "User")
 @Table(
@@ -32,7 +34,11 @@ public class User implements UserDetails {
     @OneToOne
     private UserActivity activity;
 
+    @Builder.Default
     private Boolean enabled = false;
+
+    @Builder.Default
+    private Boolean locked = false;
 
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -82,6 +88,11 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -98,10 +109,6 @@ public class User implements UserDetails {
         return activity;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -110,7 +117,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !locked;
     }
 
     @Override
@@ -131,5 +138,9 @@ public class User implements UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public void setEnabled(boolean b) {
+        enabled = b;
     }
 }

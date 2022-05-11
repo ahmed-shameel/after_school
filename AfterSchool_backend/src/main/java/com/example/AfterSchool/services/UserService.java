@@ -1,8 +1,9 @@
 package com.example.AfterSchool.services;
-import com.example.AfterSchool.entities.userEntities.ConfimationToken;
+import com.example.AfterSchool.entities.userEntities.ConfirmationToken;
 import com.example.AfterSchool.entities.userEntities.User;
 import com.example.AfterSchool.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,41 +15,67 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserService implements UserDetailsService {
 
-    @Autowired
-    UserRepository userRepository;
-    public ConfirmationTokenService confirmationTokenService;
+    private final UserRepository userRepository;
+    private final ConfirmationTokenService confirmationTokenService;
+    private final EmailSenderService emailSenderService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void signUpUser(User user){
-        final String encryptedPassword = BCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encryptedPassword);
-        final User createdUSer = userRepository.save(user);
-        final ConfimationToken confimationToken = new ConfimationToken(user);
-        confirmationTokenService.saveConfirmationToken(confimationToken);
-    }
-    public void updateUser(User user){
-        if(userRepository.existsById(user.getId()))
-            userRepository.save(user);
-    }
-
-
-    public String addUser(User user){
-        if(!userRepository.existsByUsername(user.getUsername())){
-            userRepository.save(user);
-            return "added successfully";
-        } else {
-            return "user already added";
-        }
-    }
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<User> optionalUser = Optional.ofNullable(userRepository.findByUsername(username));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        final Optional<User> optionalUser = Optional.ofNullable(userRepository.findByUsername(email));
+
         if(optionalUser.isPresent()){
             return optionalUser.get();
         } else {
-            throw new UsernameNotFoundException(MessageFormat.format("Användare med användarnamnet {0} hittades inte.", username));
+            throw new UsernameNotFoundException(MessageFormat.format("Användare med epost {0} hittades inte.", email));
         }
+    }
+
+    public void signUpUser(User user){
+
+        final String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+
+        user.setPassword(encryptedPassword);
+
+        final User createdUSer = userRepository.save(user);
+
+        final ConfirmationToken confirmationToken = new ConfirmationToken(user);
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+    }
+
+    public void confirmUser(ConfirmationToken confirmationToken) {
+
+        final User user = confirmationToken.getUser();
+
+        user.setEnabled(true);
+
+        userRepository.save(user);
+
+        confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
+
+    }
+
+    public void sendConfirmationMail(String userMail, String token) {
+
+        final SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(userMail);
+        mailMessage.setSubject("Mail Confirmation Link!");
+        mailMessage.setFrom("<MAIL>");
+        mailMessage.setText(
+                "Thank you for registering. Please click on the below link to activate your account." + "http://localhost:8080/sign-up/confirm?token="
+                        + token);
+
+        emailSenderService.sendEmail(mailMessage);
+    }
+
+    public void updateUser(User user){
+        if(userRepository.existsById(user.getId()))
+            userRepository.save(user);
     }
 
     public List<User> getAllUsers() {
