@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,7 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
-    private ConfirmationTokenService confirmationTokenService;
+    public ConfirmationTokenService confirmationTokenService;
 
     public void signUpUser(User user){
         final String encryptedPassword = BCryptPasswordEncoder.encode(user.getPassword());
@@ -31,6 +32,15 @@ public class UserService implements UserDetailsService {
             userRepository.save(user);
     }
 
+
+    public String addUser(User user){
+        if(!userRepository.existsByUsername(user.getUsername())){
+            userRepository.save(user);
+            return "added successfully";
+        } else {
+            return "user already added";
+        }
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final Optional<User> optionalUser = Optional.ofNullable(userRepository.findByUsername(username));
@@ -39,5 +49,9 @@ public class UserService implements UserDetailsService {
         } else {
             throw new UsernameNotFoundException(MessageFormat.format("Användare med användarnamnet {0} hittades inte.", username));
         }
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
