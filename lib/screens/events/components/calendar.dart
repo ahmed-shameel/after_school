@@ -99,16 +99,8 @@ class _CalendarState extends State<Calendar> {
                   ),
                 ),
                 headerStyle: HeaderStyle(
-                  formatButtonVisible: true,
+                  formatButtonVisible: false,
                   titleCentered: true,
-                  formatButtonShowsNext: false,
-                  formatButtonDecoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  formatButtonTextStyle: TextStyle(
-                    color: Colors.white,
-                  ),
                 ),
               ),
             ),

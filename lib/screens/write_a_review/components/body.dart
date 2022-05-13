@@ -1,7 +1,7 @@
 import 'package:after_school/components/background_without_logo.dart';
+import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:after_school/screens/thank_you/thank_you_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -11,7 +11,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  double? _ratingValue;
   @override
   Widget build(BuildContext context) {
     return Background(
@@ -21,27 +20,9 @@ class _BodyState extends State<Body> {
         Text('Write a review', style: TextStyle(fontSize: 20)),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: RatingBar(
-              initialRating: 0,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              itemSize: 30,
-              ratingWidget: RatingWidget(
-                  full: const Icon(Icons.star, color: Colors.white),
-                  half: const Icon(
-                    Icons.star_half,
-                    color: Colors.white,
-                  ),
-                  empty: const Icon(
-                    Icons.star_outline,
-                    color: Colors.white,
-                  )),
-              onRatingUpdate: (value) {
-                setState(() {
-                  _ratingValue = value;
-                });
-              }),
+          child: CustomRatingBar(
+            starSize: 30,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),

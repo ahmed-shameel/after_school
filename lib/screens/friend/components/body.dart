@@ -4,16 +4,10 @@ import 'package:after_school/screens/profile/components/user/user.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
   User user;
-  Body({required this.user});
-  @override
-  BodyState createState() {
-    return BodyState();
-  }
-}
 
-class BodyState extends State<Body> {
+  Body({required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +21,7 @@ class BodyState extends State<Body> {
               child: Column(
                 children: [
                   ProfilePic(
-                    profilePhoto: widget.user.profilePhoto,
+                    profilePhoto: user.profilePhoto,
                   ),
                   SizedBox(
                     height: 40,
@@ -42,12 +36,12 @@ class BodyState extends State<Body> {
                             tiles: [
                               ListTile(
                                 title: Text("Name"),
-                                subtitle: Text(
-                                    widget.user.firstName + " " + widget.user.lastName),
+                                subtitle:
+                                    Text(user.firstName + " " + user.lastName),
                               ),
                               ListTile(
                                 title: Text("About Me"),
-                                subtitle: Text(widget.user.aboutMe),
+                                subtitle: Text(user.aboutMe),
                               ),
                               CustomExpandedPanel(),
                             ],
@@ -62,7 +56,7 @@ class BodyState extends State<Body> {
                   GestureDetector(
                     child: Container(
                       height: 40,
-                      width: 90,
+                      width: 100,
                       decoration: BoxDecoration(
                         color: Color(0xFF519580),
                         border: Border.all(color: Colors.black),
@@ -70,12 +64,12 @@ class BodyState extends State<Body> {
                       ),
                       child: Center(
                           child: Text(
-                            'Logout',
-                            textAlign: TextAlign.center,
-                          )),
+                        'Remove friend',
+                        textAlign: TextAlign.center,
+                      )),
                     ),
                     onTap: () {
-                      //TODO:LOGOUT;
+                      //TODO: REMOVE FRIEND;
                     },
                   ),
                 ],
@@ -86,6 +80,4 @@ class BodyState extends State<Body> {
       ),
     );
   }
-
 }
-

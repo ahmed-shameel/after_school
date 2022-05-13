@@ -16,10 +16,10 @@ class PubScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: appBarColor,
         elevation: 0,
         leading: GestureDetector(
-          child: Icon(Icons.keyboard_backspace_sharp),
+          child: Icon(Icons.keyboard_backspace_sharp, color: iconColor,),
           onTap: () {
             Navigator.pop(context);
           },

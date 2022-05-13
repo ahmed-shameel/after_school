@@ -8,7 +8,7 @@ class EventsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: appBarColor,
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Text(

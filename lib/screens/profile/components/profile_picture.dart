@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
 
-class ProfileWidget extends StatelessWidget {
-  final String imagePath;
-  final VoidCallback onClicked;
+class ProfilePic extends StatelessWidget {
+  final Image? profilePhoto;
 
-  const ProfileWidget({
+  const ProfilePic({
     Key? key,
-    required this.imagePath,
-    required this.onClicked,
+    this.profilePhoto,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Stack(
-        children: [
-          buildImage(),
-          Positioned(
-            bottom: 0,
-            right: 4,
-            child: buildEditIcon(Color(0xFF2E403A)),
-          ),
-        ],
-      ),
+      child: buildImage(),
     );
   }
 
   Widget buildImage() {
-    final image = NetworkImage(imagePath);
+    final image = Image(
+      image: profilePhoto!.image,
+    ).image;
 
     return ClipOval(
       child: Material(
@@ -37,36 +28,8 @@ class ProfileWidget extends StatelessWidget {
           fit: BoxFit.cover,
           width: 128,
           height: 128,
-          child: InkWell(onTap: onClicked),
         ),
       ),
     );
   }
-
-  Widget buildEditIcon(Color color) => buildCircle(
-        color: Colors.white,
-        all: 3,
-        child: buildCircle(
-          color: Color(0xFF2E403A),
-          all: 8,
-          child: Icon(
-            Icons.edit,
-            color: Colors.white,
-            size: 20,
-          ),
-        ),
-      );
-
-  Widget buildCircle({
-    required Widget child,
-    required double all,
-    required Color color,
-  }) =>
-      ClipOval(
-        child: Container(
-          padding: EdgeInsets.all(all),
-          color: color,
-          child: child,
-        ),
-      );
 }
