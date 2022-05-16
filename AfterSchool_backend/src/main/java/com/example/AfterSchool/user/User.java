@@ -1,8 +1,9 @@
 package com.example.AfterSchool.user;
+
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,23 +13,16 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Entity(name = "User")
-@Table(
-        name = "users",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "user_email_unique", columnNames = "email")
-        }
-)
 @Getter
 @Setter
-@EqualsAndHashCode
 public class User implements UserDetails {
 
-    @Id
     @SequenceGenerator(
             name = "user_sequence",
             sequenceName = "user_sequence",
             allocationSize = 1
     )
+    @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
@@ -43,13 +37,13 @@ public class User implements UserDetails {
             unique = true
     )
     private String email;
+
     private String password;
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
-    @OneToOne
-    private Profile profile;
-    @OneToOne
-    private UserActivity activity;
+
+    private String profile;
+
+ //   @ManyToMany()
+//    private Graph<> friends;
 
     @Builder.Default
     private Boolean enabled = false;
@@ -58,17 +52,13 @@ public class User implements UserDetails {
     private Boolean locked = false;
 
 
-    public User(String firstName, String lastName, String username, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
+    public User(String firstName, String lastName, String username, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.userRole = userRole;
-        this.locked = locked;
-        this.enabled = enabled;
-        profile = new Profile(this);
-        activity = new UserActivity();
+        //friends = new Graph<>();
     }
 
     public User() {
@@ -82,7 +72,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("user");
         return Collections.singletonList(authority);
     }
 
