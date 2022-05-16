@@ -1,9 +1,7 @@
 package com.example.AfterSchool.user;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,24 +29,12 @@ public class User implements UserDetails {
     private String username;
     private String firstName;
     private String lastName;
-    @Column(
-            nullable = false,
-            columnDefinition = "TEXT",
-            unique = true
-    )
     private String email;
-
     private String password;
-
     private String profile;
-
  //   @ManyToMany()
 //    private Graph<> friends;
-
-    @Builder.Default
     private Boolean enabled = false;
-
-    @Builder.Default
     private Boolean locked = false;
 
 
@@ -79,7 +65,6 @@ public class User implements UserDetails {
     public String getPassword() {
         return password;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {

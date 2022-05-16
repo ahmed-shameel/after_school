@@ -50,8 +50,4 @@ public class ConfirmationToken {
         this.user = user;
     }
 
-    public Long getId() {
-        return id;
-    }
-
 }

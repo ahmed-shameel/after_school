@@ -17,10 +17,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
-    private final static String USER_NOT_FOUND_MSG = "Användare med email %s not found";
+    private final static String USER_NOT_FOUND_MSG = "Användare med e-post %s hittades inte";
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
@@ -31,14 +32,21 @@ public class UserService implements UserDetailsService {
     public String signUpUser(User user){
         boolean userExist = userRepository.findByEmail(user.getEmail()).isPresent();
         if(userExist){
+            User foundUser = userRepository.findByEmail(user.getEmail()).get();
+            if(foundUser.getUsername().equals(user.getUsername()) && !user.isEnabled()){
+
+            }
+            // TODO check of attributes are the same and
+            // TODO if email not confirmed send confirmation email.
             throw new IllegalStateException("Email already taken");
         }
 
         boolean usernameExist = userRepository.findByUsername(user.getUsername()).isPresent();
         if(usernameExist){
+            // TODO check of attributes are the same and
+            // TODO if email not confirmed send confirmation email.
             throw new IllegalStateException("Username already taken");
         }
-
 
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -57,9 +65,11 @@ public class UserService implements UserDetailsService {
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        //TODO: Send email
-
         return token;
+    }
+
+    public int enableUser(String email){
+        return userRepository.enableUser(email);
     }
 
 }
