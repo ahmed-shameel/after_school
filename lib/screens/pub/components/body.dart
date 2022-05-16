@@ -64,14 +64,17 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
-            CustomRatingBar(),
+            CustomRatingBar(
+              text: 'Rating: ',
+              starSize: 30,
+            ),
             TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => ReviewScreen(
-                              pub: pub,
+                              reviews: pub.reviews,
                             ),
                         settings: RouteSettings(name: 'reviews')),
                   );
@@ -80,7 +83,8 @@ class Body extends StatelessWidget {
                   'See and write reviews',
                   style: TextStyle(
                       color: Colors.black,
-                      decoration: TextDecoration.underline),
+                      decoration: TextDecoration.underline,
+                      fontSize: 15),
                 )),
             ImageGallery(images: pub.images),
           ],

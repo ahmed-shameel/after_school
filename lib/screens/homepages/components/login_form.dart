@@ -1,3 +1,4 @@
+import 'package:after_school/components/custom_nav_bar.dart';
 import 'package:after_school/components/email_field.dart';
 import 'package:after_school/components/password_field.dart';
 import 'package:after_school/screens/forgot_password/forgot_password_screen.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_divider.dart';
 import '../../../components/social_icon.dart';
-import '../../../components/main_nav.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -108,7 +108,7 @@ class LoginFormState extends State<LoginForm> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MainNavigation()),
+                              builder: (context) => CustomNavBar()),
                         );
                       },
                       child: Text(

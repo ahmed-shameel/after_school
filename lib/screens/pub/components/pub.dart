@@ -1,8 +1,12 @@
+import 'dart:core';
 import 'package:after_school/screens/event/components/event.dart';
+import '../../review/components/review.dart';
 
 class Pub {
   final String pubName;
   String openingHours;
+  bool? open;
+  double? rating;
   String address;
   String requirements;
   String description;
@@ -10,6 +14,7 @@ class Pub {
   String entry;
   List<String> images = <String>[];
   List<Event> events = <Event>[];
+  List<Review> reviews = <Review>[];
 
   Pub({
     required this.pubName,

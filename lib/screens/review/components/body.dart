@@ -1,32 +1,32 @@
 import 'package:after_school/components/background_without_logo.dart';
+import 'package:after_school/screens/review/components/review.dart';
 import 'package:after_school/screens/write_a_review/write_a_review_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_rating_bar.dart';
-import '../../pub/components/pub.dart';
+import '../../profile/profile_screen.dart';
 
 class Body extends StatefulWidget {
-  final Pub pub;
+  final List<Review> reviews;
 
-  Body({Key? key, required this.pub}) : super(key: key);
+  Body({
+    Key? key,
+    required this.reviews,
+  }) : super(key: key);
 
   @override
-  _BodyState createState() => _BodyState(pub: pub);
+  _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  Pub pub;
-
-  _BodyState({required this.pub});
-
   //example data
   List filedata = [
     {
-      'name': 'Adeleye Ayodeji',
+      'name': 'Adeleye',
       'pic': 'https://picsum.photos/300/30',
       'message': 'I love to code'
     },
     {
-      'name': 'Biggi Man',
+      'name': 'Biggi',
       'pic': 'https://picsum.photos/300/30',
       'message': 'Very cool'
     },
@@ -72,40 +72,51 @@ class _BodyState extends State<Body> {
     },
   ];
 
-  Widget commentField(data) {
+  Widget reviewField(data) {
     return Column(
       children: [
         Divider(
           color: Colors.white,
         ),
         ...ListTile.divideTiles(color: Colors.white, tiles: [
-          for (var i = 0; i < data.length; i++)
+          //for (Review review in reviews)
+          for (int i = 0; i < data.length; i++)
             ListTile(
               contentPadding: EdgeInsets.fromLTRB(5, 8, 5, 0),
               leading: GestureDetector(
                 onTap: () {
-                  // TODO: GO TO USER PROFILE
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(user: review.user,)));
                 },
-                child: Container(
-                  height: 50.0,
-                  width: 50.0,
-                  decoration: new BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: new BorderRadius.all(Radius.circular(50))),
-                  child: CircleAvatar(
-                      radius: 50,
-                      // TODO: user profile picture
-                      backgroundImage: NetworkImage(data[i]['pic'] + "$i")),
-                ),
+                child: Column(children: [
+                  Container(
+                    height: 30.0,
+                    width: 30.0,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    child: CircleAvatar(
+                        // TODO: user profile picture
+                        // backgroundImage: review.user.profilePhoto.image,
+                        // backgroundColor: Colors.white,
+                        ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    //review.user.firstName + " " + review.user.lastName,
+                    data[i]['name'],
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
+                ]),
               ),
               isThreeLine: true,
-              title: Text(
-                // TODO: a comment has a message sender
-                data[i]['name'],
-                style: TextStyle(fontWeight: FontWeight.bold),
+              title: CustomRatingBar(
+                starSize: 20,
               ),
-              subtitle: // TODO: a comment has a message body
-                  Text(data[i]['message']),
+              subtitle: Text(
+                  //review.comment,
+                  data[i]['message']),
             ),
         ]),
       ],
@@ -117,7 +128,10 @@ class _BodyState extends State<Body> {
     return Background(
       child: SingleChildScrollView(
         child: Column(children: [
-          CustomRatingBar(),
+          CustomRatingBar(
+            text: 'Rating: ',
+            starSize: 30,
+          ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -133,7 +147,7 @@ class _BodyState extends State<Body> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => WriteReviewScreen(pub: pub),
+                            builder: (context) => WriteReviewScreen(),
                             settings: RouteSettings(name: 'writeReview')));
                   },
                   child: Text(
@@ -145,7 +159,7 @@ class _BodyState extends State<Body> {
                   )),
             )
           ]),
-          commentField(filedata),
+          reviewField(filedata), //reviewField(reviews),
         ]),
       ),
     );
