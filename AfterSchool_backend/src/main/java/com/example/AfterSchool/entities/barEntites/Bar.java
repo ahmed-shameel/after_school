@@ -6,6 +6,7 @@ import java.util.List;
 
 @Entity
 public class Bar {
+    //implement egen id
     @Id
     @Column(name = "name", nullable = false)
     private String name;
