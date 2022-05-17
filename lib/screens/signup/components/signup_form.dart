@@ -4,6 +4,8 @@ import 'package:after_school/components/password_field.dart';
 import 'package:flutter/material.dart';
 import '../../../components/back_to_login.dart';
 import '../../../components/custom_button.dart';
+import '../../../components/last_name_field.dart';
+import '../../../components/username_field.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -32,13 +34,21 @@ class SignUpFormState extends State<SignUpForm> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
+              child: LastNameField(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
               child: EmailField(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: UsernameField(),
             ),
             Padding(
               padding: const EdgeInsets.only(
                 bottom: 10.0,
               ),
-              child: PasswordField(
+              child: const PasswordField(
                 text: 'Password',
               ),
             ),

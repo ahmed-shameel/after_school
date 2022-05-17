@@ -1,31 +1,35 @@
+import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
 
-class EmailField extends StatelessWidget {
+class LastNameField extends StatelessWidget {
   final FocusNode myFocusNode = new FocusNode();
-  final emailController = TextEditingController();
-  EmailField({
+  final nameController = TextEditingController();
+  LastNameField({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: emailController,
+      controller: nameController,
       decoration: InputDecoration(
-        labelText: 'Email',
+        labelText: 'Last name',
         labelStyle:
-            TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
+        TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
         ),
-        fillColor: Color(0xFFB2E2D3),
+        fillColor: primaryColor,
         filled: true,
       ),
       validator: (value) {
-        //TODO:VALIDATE EMAIL/USERNAME
+        if (value == null || value.isEmpty) {
+          return 'Invalid name';
+        }
+        return null;
       },
     );
   }

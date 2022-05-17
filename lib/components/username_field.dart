@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class EmailField extends StatelessWidget {
+class UsernameField extends StatelessWidget {
   final FocusNode myFocusNode = new FocusNode();
   final emailController = TextEditingController();
-  EmailField({
+  UsernameField({
     Key? key,
   }) : super(key: key);
 
@@ -12,9 +12,9 @@ class EmailField extends StatelessWidget {
     return TextFormField(
       controller: emailController,
       decoration: InputDecoration(
-        labelText: 'Email',
+        labelText: 'Username',
         labelStyle:
-            TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
+        TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),

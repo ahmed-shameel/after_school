@@ -13,7 +13,7 @@ class NameField extends StatelessWidget {
     return TextFormField(
       controller: nameController,
       decoration: InputDecoration(
-        labelText: 'Name',
+        labelText: 'First name',
         labelStyle:
             TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
         enabledBorder: OutlineInputBorder(
