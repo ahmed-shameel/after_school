@@ -21,7 +21,10 @@ class SignUpFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
   late String firstname;
   final firstnameController = TextEditingController();
-
+  final lastnameController = TextEditingController();
+  final emailController = TextEditingController();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,25 +48,53 @@ class SignUpFormState extends State<SignUpForm> {
 //              padding: const EdgeInsets.only(bottom: 10),
 //              child: LastNameField(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: EmailField(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: UsernameField(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 10.0,
+              TextField(
+                  controller: lastnameController,
+                  decoration: InputDecoration(
+                    labelText: 'Last name',
+              )
               ),
-              child: const PasswordField(
-                text: 'Password',
-              ),
+//            Padding(
+//              padding: const EdgeInsets.only(bottom: 10),
+//              child: EmailField(),
+//            ),
+            TextField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                )
             ),
-            PasswordField(
-              text: 'Confirm Password',
+
+//            Padding(
+//              padding: const EdgeInsets.only(bottom: 10),
+//              child: UsernameField(),
+//            ),
+            TextField(
+                controller: usernameController,
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                )
             ),
+
+            TextField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                )
+            ),
+
+
+//            Padding(
+//              padding: const EdgeInsets.only(
+//                bottom: 10.0,
+//              ),
+//              child: const PasswordField(
+//                text: 'Password',
+//              ),
+//            ),
+//            PasswordField(
+//              text: 'Confirm Password',
+//            ),
             signupButton(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,7 +124,7 @@ class SignUpFormState extends State<SignUpForm> {
           return AlertDialog(
             // Retrieve the text the that user has entered by using the
             // TextEditingController.
-            content: Text(firstnameController.text),
+            content: Text(firstnameController.text+lastnameController.text+emailController.text+usernameController.text+passwordController.text),
           );
         },
       );
