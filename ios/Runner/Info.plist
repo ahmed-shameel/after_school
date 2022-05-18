@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Example: NSLocationWhenInUseUsageDescription </string>
+    <string></string>
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>Example: NSLocationAlwaysUsageDescrption</string>
+    <string></string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Example: NSLocationAlwaysAndWhenInUseUsageDescription</string>
+    <string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
