@@ -19,6 +19,9 @@ class SignUpForm extends StatefulWidget {
 
 class SignUpFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
+  late String firstname;
+  final firstnameController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +34,16 @@ class SignUpFormState extends State<SignUpForm> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 10),
-              child: NameField(),
+              child: TextField(
+                controller: firstnameController,
+                decoration: InputDecoration(
+                  labelText: 'First name',
+
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: LastNameField(),
+//            Padding(
+//              padding: const EdgeInsets.only(bottom: 10),
+//              child: LastNameField(),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
@@ -78,12 +86,17 @@ class SignUpFormState extends State<SignUpForm> {
 
   Widget signupButton() => CustomButton(
         text: 'Create account',
-        onClicked: () {
-              Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => HomePageScreen2()),
-            );
-          },
+    onClicked: () {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            // Retrieve the text the that user has entered by using the
+            // TextEditingController.
+            content: Text(firstnameController.text),
+          );
+        },
+      );
+    },
       );
 }
