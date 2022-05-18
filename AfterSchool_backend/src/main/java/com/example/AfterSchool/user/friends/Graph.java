@@ -1,16 +1,14 @@
 package com.example.AfterSchool.user.friends;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Graph <T>{
 
-    private ArrayList<T> friends;
+    private Map<T, ArrayList<T>> friends;
 
     public Graph() {
-        this.friends = new ArrayList<>();
-    }
-
-    public int getNumberOfFriends(){
-        return friends.size();
+        this.friends = new HashMap<>();
     }
 
 

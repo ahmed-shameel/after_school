@@ -32,8 +32,9 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String profile;
- //   @ManyToMany()
-//    private Graph<> friends;
+    //TODO implement friends relationship
+    //@ManyToMany(fetch = FetchType.EAGER)
+    //private Graph<User> friends;
     private Boolean enabled = false;
     private Boolean locked = false;
 

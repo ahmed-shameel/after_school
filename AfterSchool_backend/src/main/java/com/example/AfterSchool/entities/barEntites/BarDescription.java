@@ -24,6 +24,11 @@ public class BarDescription {
     private String adress;
     private String openingTime;
     private String description;
+    private String coordinates;
+    private String university;
+    private String campus;
+    private String requirements;
+    private String facebookLink;
 
     public BarDescription(Bar bar, String adress, String openingTime) {
         this.adress = adress;

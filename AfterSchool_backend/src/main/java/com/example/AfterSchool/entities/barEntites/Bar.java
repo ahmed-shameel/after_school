@@ -1,5 +1,6 @@
 package com.example.AfterSchool.entities.barEntites;
-import com.example.AfterSchool.entities.Event;
+import jdk.jfr.Event;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,7 @@
 package com.example.AfterSchool.entities;
 import com.example.AfterSchool.entities.barEntites.Bar;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,7 +9,7 @@ public class Event {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    @OneToOne
+    @ManyToOne
     private Bar bar;
     private Date date;
 

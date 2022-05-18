@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 public class Review {
     @Id
-    @Column(name = "id", updatable = false)
     @GeneratedValue
     private Long id;
 
