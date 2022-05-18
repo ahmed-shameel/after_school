@@ -28,13 +28,16 @@ class LoginForm2State extends State<LoginForm2> {
 
 
       SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(50.0, 150.0, 50.0, 0.0),
+      padding: EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
 
       child: Form(
         key: formKey,
         child: Column(
           children: [
-            Text('Confirm your email and log in!'),
+           const Text('Confirm your email and log in!',
+             style: TextStyle(
+                 fontWeight: FontWeight.bold, color: Colors.white),
+            ),
 
           EmailField(),
           SizedBox(
