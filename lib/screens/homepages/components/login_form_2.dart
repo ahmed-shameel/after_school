@@ -19,7 +19,8 @@ class LoginForm2 extends StatefulWidget {
 
 class LoginForm2State extends State<LoginForm2> {
   final formKey = GlobalKey<FormState>();
-
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
 
@@ -39,13 +40,22 @@ class LoginForm2State extends State<LoginForm2> {
                  fontWeight: FontWeight.bold, color: Colors.white),
             ),
 
-          EmailField(),
-          SizedBox(
-            height: 8,
-          ),
-          PasswordField(
-            text: 'Password',
-          ),
+        //  EmailField(),
+           TextField(
+          controller: emailController,
+          decoration: InputDecoration(
+          labelText: 'Email',)),
+//          SizedBox(
+//            height: 8,
+//          ),
+//          PasswordField(
+//            text: 'Password',
+//          ),
+            TextField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  labelText: 'Password',)
+            ),
           Column(
             children: [
               loginButton(),
