@@ -15,11 +15,11 @@ class User{
 
   User({
     this.profilePhoto = const Image(image:AssetImage('assets/images/unknown_profile_pic.png'),),
-    this.username = 'No username',
-    this.firstName = 'No firstname',
-    this.lastName = 'No lastname',
-    this.email = 'No email',
-    this.password = 'No password',
+    required this.username,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.password,
     this.aboutMe = 'No description',
   });
 }

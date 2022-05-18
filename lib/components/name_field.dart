@@ -16,10 +16,10 @@ class NameField extends StatelessWidget {
         labelText: 'First name',
         labelStyle:
             TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
         ),
         fillColor: primaryColor,
@@ -29,7 +29,7 @@ class NameField extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return 'Invalid name';
         }
-        return null;
+        return nameController.text;
       },
     );
   }

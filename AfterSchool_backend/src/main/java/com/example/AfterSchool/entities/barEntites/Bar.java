@@ -1,9 +1,7 @@
 package com.example.AfterSchool.entities.barEntites;
-import jdk.jfr.Event;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class Bar {
@@ -16,15 +14,11 @@ public class Bar {
     @JoinColumn(name = "description_ID")
     private BarDescription description;
 
-    @OneToMany
-    private List<Event> events;
-
     private boolean open;
     private double rating;
 
     public Bar(String name) {
         this.name = name;
-        this.events = new ArrayList<>();
     }
 
     public Bar() {
@@ -68,14 +62,5 @@ public class Bar {
     public void setName(String name) {
         this.name = name;
     }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void addEvent(Event event) {
-        events.add(event);
-    }
-
 
 }

@@ -12,7 +12,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    User newuser = User(username: 'username');
+//    User newuser = User(username: 'username');
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Body(user: newuser,),
+ //     body: Body(user: newuser,),
     );
   }
 }

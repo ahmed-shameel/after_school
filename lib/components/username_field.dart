@@ -15,10 +15,10 @@ class UsernameField extends StatelessWidget {
         labelText: 'Username',
         labelStyle:
         TextStyle(color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
         ),
         fillColor: Color(0xFFB2E2D3),

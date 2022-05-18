@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:after_school/components/email_field.dart';
 import 'package:after_school/components/name_field.dart';
 import 'package:after_school/components/password_field.dart';
@@ -7,6 +9,9 @@ import '../../../components/back_to_login.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/last_name_field.dart';
 import '../../../components/username_field.dart';
+import "package:http/http.dart" as http;
+
+import '../../profile/components/user/user.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -25,6 +30,16 @@ class SignUpFormState extends State<SignUpForm> {
   final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final httpUri = Uri.http('localhost:8080', 'api/v1/registration', {'limit': '10'});
+
+
+  Future save(User user) async{
+    var res = await http.post(httpUri,
+        headers: {"Content-Type":"application/json"},
+        body: json.encode({"firstName": user.firstName,"lastName": user.lastName,"username": user.username,"email": user.email,"password": user.password}));
+    print(res.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +113,9 @@ class SignUpFormState extends State<SignUpForm> {
             signupButton(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
+                  padding: EdgeInsets.only(top: 15.0),
                   child: Text(
                     'Already have an account? ',
                     style: TextStyle(color: Colors.white),
@@ -118,16 +133,20 @@ class SignUpFormState extends State<SignUpForm> {
   Widget signupButton() => CustomButton(
         text: 'Create account',
     onClicked: () {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            // Retrieve the text the that user has entered by using the
-            // TextEditingController.
-            content: Text(firstnameController.text+lastnameController.text+emailController.text+usernameController.text+passwordController.text),
+          User user = User(
+            username: usernameController.text,
+            firstName: firstnameController.text,
+            lastName: lastnameController.text,
+            email: emailController.text,
+            password: passwordController.text
+          );
+          save(user);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HomePageScreen2()
+            )
           );
         },
-      );
-    },
       );
 }
