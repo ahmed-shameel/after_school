@@ -1,6 +1,7 @@
 import 'package:after_school/components/email_field.dart';
 import 'package:after_school/components/name_field.dart';
 import 'package:after_school/components/password_field.dart';
+import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:flutter/material.dart';
 import '../../../components/back_to_login.dart';
 import '../../../components/custom_button.dart';
@@ -78,7 +79,11 @@ class SignUpFormState extends State<SignUpForm> {
   Widget signupButton() => CustomButton(
         text: 'Create account',
         onClicked: () {
-          //TODO:CREATE ACCOUNT
-        },
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomePageScreen2()),
+            );
+          },
       );
 }
