@@ -19,7 +19,8 @@ class LoginForm extends StatefulWidget {
 
 class LoginFormState extends State<LoginForm> {
   final formKey = GlobalKey<FormState>();
-
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
@@ -29,12 +30,21 @@ class LoginFormState extends State<LoginForm> {
         key: formKey,
         child: Column(
           children: [
-            EmailField(),
-            SizedBox(
-              height: 8,
-            ),
-            PasswordField(
-              text: 'Password',
+            TextField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  labelText: 'Email',)),
+//          SizedBox(
+//            height: 8,
+//          ),
+//          PasswordField(
+//            text: 'Password',
+//          ),
+            TextField(
+                obscureText: true,
+                controller: passwordController,
+                decoration: InputDecoration(
+                  labelText: 'Password',)
             ),
             Column(
               children: [
