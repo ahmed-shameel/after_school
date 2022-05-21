@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:after_school/components/email_field.dart';
 import 'package:after_school/components/password_field.dart';
 import 'package:after_school/screens/forgot_password/forgot_password_screen.dart';
@@ -7,6 +9,9 @@ import '../../../components/custom_button.dart';
 import '../../../components/custom_divider.dart';
 import '../../../components/custom_nav_bar.dart';
 import '../../../components/social_icon.dart';
+import 'package:http/http.dart' as http;
+
+import '../../profile/components/user/user.dart';
 
 class LoginForm2 extends StatefulWidget {
   const LoginForm2({Key? key}) : super(key: key);
@@ -21,13 +26,23 @@ class LoginForm2State extends State<LoginForm2> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final httpUri = Uri.http('localhost:8080', '/login', {'limit': '10'});
+
+  User user = User(username: "", firstName: "", lastName: "", email: "", password: "");
+
+  Future login() async{
+    var res = await http.post(httpUri,
+        headers: {"Content-Type":"application/json"},
+        body: json.encode({'email': user.email,'password': user.password}));
+    print(res.body);
+  }
+
   @override
   Widget build(BuildContext context) {
 
     // Build a Form widget using the _formKey created above.
     return
-
-
       SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
 
@@ -41,21 +56,35 @@ class LoginForm2State extends State<LoginForm2> {
             ),
 
         //  EmailField(),
-           TextField(
-          controller: emailController,
-          decoration: InputDecoration(
-          labelText: 'Email',)),
+          TextFormField(
+            controller: TextEditingController(text: user.email),
+            onChanged: (val){
+              user.email = val;
+            },
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Email is Empty';
+              }
+              return '';
+            }),
 //          SizedBox(
 //            height: 8,
 //          ),
 //          PasswordField(
 //            text: 'Password',
 //          ),
-            TextField(
-                controller: passwordController,
-                decoration: InputDecoration(
-                  labelText: 'Password',)
-            ),
+            TextFormField(
+                controller: TextEditingController(text: user.password),
+                onChanged: (val){
+                  user.password = val;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'password is Empty';
+                  }
+                  return '';
+                },)
+            ,
           Column(
             children: [
               loginButton(),
@@ -149,6 +178,7 @@ class LoginForm2State extends State<LoginForm2> {
     text: 'Login',
     onClicked: () {
       //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
+      login();
     },
   );
 }

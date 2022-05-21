@@ -1,5 +1,6 @@
 package com.example.AfterSchool.user;
 
+import com.example.AfterSchool.user.friends.Graph;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity(name = "User")
 @Getter
@@ -32,9 +34,9 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String profile;
-    //TODO implement friends relationship
-    //@ManyToMany(fetch = FetchType.EAGER)
-    //private Graph<User> friends;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<User> friends;
     private Boolean enabled = false;
     private Boolean locked = false;
 

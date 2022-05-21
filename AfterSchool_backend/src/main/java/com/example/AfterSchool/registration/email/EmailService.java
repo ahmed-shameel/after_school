@@ -1,4 +1,4 @@
-package com.example.AfterSchool.email;
+package com.example.AfterSchool.registration.email;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;

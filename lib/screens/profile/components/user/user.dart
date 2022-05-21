@@ -7,8 +7,8 @@ class User{
   final String username;
   final String firstName;
   final String lastName;
-  final String email;
-  final String password;
+  String email;
+  String password;
   final String aboutMe;
   List<User> friends = <User>[];
   List<Review> reviews = <Review>[];

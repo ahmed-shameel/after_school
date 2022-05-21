@@ -1,4 +1,4 @@
-package com.example.AfterSchool.entities.barEntites;
+package com.example.AfterSchool.bar;
 
 import javax.persistence.*;
 
@@ -9,10 +9,10 @@ public class Bar {
     @Id
     @Column(name = "name", nullable = false)
     private String name;
-
-    @OneToOne
-    @JoinColumn(name = "description_ID")
-    private BarDescription description;
+//
+//    @OneToOne
+//    @JoinColumn(name = "description_ID")
+//    private BarDescription description;
 
     private boolean open;
     private double rating;
@@ -24,14 +24,14 @@ public class Bar {
     public Bar() {
 
     }
-
-    public BarDescription getDescription() {
-        return description;
-    }
-
-    public void setDescription(BarDescription description) {
-        this.description = description;
-    }
+//
+//    public BarDescription getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(BarDescription description) {
+//        this.description = description;
+//    }
 
     public boolean isOpen() {
         return open;
@@ -45,15 +45,15 @@ public class Bar {
         return rating;
     }
 
-    public void setRatings() {
-        int numOfRev = 0;
-        double totalRev = 0;
-        for(Review rev: description.getReviews()){
-            numOfRev += 1;
-            totalRev += rev.getRate();
-        }
-        rating = totalRev/numOfRev;
-    }
+//    public void setRatings() {
+//        int numOfRev = 0;
+//        double totalRev = 0;
+//        for(Review rev: description.getReviews()){
+//            numOfRev += 1;
+//            totalRev += rev.getRate();
+//        }
+//        rating = totalRev/numOfRev;
+//    }
 
     public String getName() {
         return name;

@@ -1,4 +1,4 @@
-package com.example.AfterSchool.entities.barEntites;
+package com.example.AfterSchool.bar;
 
 import com.example.AfterSchool.user.User;
 

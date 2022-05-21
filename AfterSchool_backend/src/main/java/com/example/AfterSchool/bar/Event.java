@@ -1,5 +1,4 @@
-package com.example.AfterSchool.entities;
-import com.example.AfterSchool.entities.barEntites.Bar;
+package com.example.AfterSchool.bar;
 
 import javax.persistence.*;
 import java.util.Date;

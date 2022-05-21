@@ -1,5 +1,5 @@
 package com.example.AfterSchool.registration;
-import com.example.AfterSchool.email.EmailSender;
+import com.example.AfterSchool.registration.email.EmailSender;
 import com.example.AfterSchool.registration.token.ConfirmationToken;
 import com.example.AfterSchool.registration.token.ConfirmationTokenService;
 import com.example.AfterSchool.user.User;

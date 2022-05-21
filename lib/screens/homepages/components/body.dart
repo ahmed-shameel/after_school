@@ -9,7 +9,7 @@ class Body extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            LoginForm(),
+            LoginForm2(),
           ],
         ),
       ),

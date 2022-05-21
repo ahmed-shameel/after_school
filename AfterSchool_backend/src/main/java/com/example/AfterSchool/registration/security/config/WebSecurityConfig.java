@@ -1,4 +1,4 @@
-package com.example.AfterSchool.security.config;
+package com.example.AfterSchool.registration.security.config;
 import com.example.AfterSchool.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/v*/registration/**")
                 .permitAll()
+                .antMatchers("/bars/**").permitAll()
+                .antMatchers("/login/**").permitAll()
                 .anyRequest()
                 .authenticated().and()
                 .formLogin();
