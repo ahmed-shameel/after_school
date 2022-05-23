@@ -74,7 +74,7 @@ class Body extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ReviewScreen(
-                              reviews: pub.reviews,
+                              pub: pub,
                             ),
                         settings: RouteSettings(name: 'reviews')),
                   );

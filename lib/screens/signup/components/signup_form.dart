@@ -11,7 +11,7 @@ import '../../../components/last_name_field.dart';
 import '../../../components/username_field.dart';
 import "package:http/http.dart" as http;
 
-import '../../profile/components/user/user.dart';
+import '../../user/components/user.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);

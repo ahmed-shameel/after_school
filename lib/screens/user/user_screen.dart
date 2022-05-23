@@ -1,11 +1,13 @@
 import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
-import '../write_a_review/components/body.dart';
+import '../user/components/body.dart';
+import '../user/components/user.dart';
 
-class WriteReviewScreen extends StatelessWidget {
-  WriteReviewScreen({
-    Key? key,
-  }) : super(key: key);
+class UserScreen extends StatelessWidget {
+  User user;
+
+  UserScreen({required this.user});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +15,7 @@ class WriteReviewScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: appBarColor,
         elevation: 0,
+        automaticallyImplyLeading: false,
         leading: GestureDetector(
           child: Icon(
             Icons.keyboard_backspace_sharp,
@@ -23,7 +26,9 @@ class WriteReviewScreen extends StatelessWidget {
           },
         ),
       ),
-      body: Body(),
+      body: Body(
+        user: user,
+      ),
     );
   }
 }

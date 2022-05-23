@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../review/components/review.dart';
+import '../../review/components/review.dart';
 
 class User{
   final Image profilePhoto;
@@ -12,6 +12,8 @@ class User{
   final String aboutMe;
   List<User> friends = <User>[];
   List<Review> reviews = <Review>[];
+
+
 
   User({
     this.profilePhoto = const Image(image:AssetImage('assets/images/unknown_profile_pic.png'),),

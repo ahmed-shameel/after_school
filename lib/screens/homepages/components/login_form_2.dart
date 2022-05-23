@@ -10,8 +10,7 @@ import '../../../components/custom_divider.dart';
 import '../../../components/custom_nav_bar.dart';
 import '../../../components/social_icon.dart';
 import 'package:http/http.dart' as http;
-
-import '../../profile/components/user/user.dart';
+import '../../user/components/user.dart';
 
 class LoginForm2 extends StatefulWidget {
   const LoginForm2({Key? key}) : super(key: key);

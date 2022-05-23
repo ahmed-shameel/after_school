@@ -1,6 +1,7 @@
 import 'package:after_school/components/background_without_logo.dart';
 import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:after_school/screens/thank_you/thank_you_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -53,60 +54,52 @@ class _BodyState extends State<Body> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              GestureDetector(
-                child: Container(
-                  height: 50,
-                  width: 70,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF519580),
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Cancel',
-                    textAlign: TextAlign.center,
-                  )),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(20, 50),
+                  shape: StadiumBorder(),
+                  primary: Color(0xFF519580),
                 ),
-                onTap: () {
+                child: FittedBox(
+                  child: Text(
+                    'Cancel ',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+                onPressed: () {
                   Navigator.pop(context);
                 },
               ),
-              GestureDetector(
-                child: Container(
-                  height: 50,
-                  width: 70,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF519580),
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Center(
-                      child: Icon(
-                    Icons.camera,
-                    size: 40,
-                  )),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(30, 50),
+                  shape: StadiumBorder(),
+                  primary: Color(0xFF519580),
                 ),
-                onTap: () {
+                child: FittedBox(
+                  child: Icon(
+                    CupertinoIcons.camera,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                ),
+                onPressed: () {
                   //TODO : OPEN CAMERA ROLL OR TAKE A PIC
                 },
               ),
-              GestureDetector(
-                child: Container(
-                  height: 50,
-                  width: 70,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF519580),
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Submit',
-                    textAlign: TextAlign.center,
-                  )),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(20, 50),
+                  shape: StadiumBorder(),
+                  primary: Color(0xFF519580),
                 ),
-                onTap: () {
+                child: FittedBox(
+                  child: Text(
+                    'Submit ',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+                onPressed: () {
                   //TODO: SUBMIT REVIEW
                   //if successful:
                   Navigator.push(
@@ -115,7 +108,7 @@ class _BodyState extends State<Body> {
                           builder: (context) => ThankYouScreen(),
                           settings: RouteSettings(name: 'thankYou')));
                 },
-              )
+              ),
             ],
           ),
         )

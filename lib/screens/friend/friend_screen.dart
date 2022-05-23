@@ -1,7 +1,7 @@
 import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
 import '../friend/components/body.dart';
-import '../profile/components/user/user.dart';
+import '../user/components/user.dart';
 
 class FriendScreen extends StatelessWidget {
 

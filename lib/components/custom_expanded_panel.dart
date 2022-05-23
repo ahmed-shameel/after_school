@@ -2,11 +2,13 @@ import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:after_school/screens/pub/components/pub.dart';
 import 'package:flutter/material.dart';
 import '../screens/friend/friend_screen.dart';
-import '../screens/profile/components/user/user.dart';
+import '../screens/user/components/user.dart';
 import '../screens/review/components/review.dart';
+import '../screens/user/user_screen.dart';
 
 class CustomExpandedPanel extends StatefulWidget {
-  const CustomExpandedPanel({Key? key}) : super(key: key);
+  User user;
+  CustomExpandedPanel({Key? key, required this.user}) : super(key: key);
 
   @override
   _CustomExpandedPanelState createState() {
@@ -20,9 +22,25 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
     false,
     false,
   ];
+
+  //when logged in, if the main user is friends with another user it should take them to friends page, otherwise to normal
+  //user page.
+  MaterialPageRoute setRoute(User person){
+    if(widget.user.friends.contains(person)){
+      return MaterialPageRoute(
+          builder: (context) => FriendScreen(
+            user: person,
+          ));
+    }else{
+      return MaterialPageRoute(
+          builder: (context) => UserScreen(
+            user: person,
+          ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-
     //example data
     User user = User(
         username: 'username',
@@ -42,15 +60,20 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
         lastName: 'lastName2',
         email: 'email2',
         password: 'password2');
-    Pub pub = Pub(pubName: 'Bojan crew');
-    Pub pub2 = Pub(pubName: 'Foobar');
-    Review review = Review(user: user, rate: 5, comment: 'awesome pub', pub: pub);
+    Pub pub = Pub(pubName: 'Bojan Crew');
+    Pub pub2 = Pub(pubName: 'Foo Bar');
+    Pub pub3 = Pub(pubName: 'SöderS Pub');
+    Review review =
+        Review(user: user, rate: 5, comment: 'awesome pub', pub: pub);
+    Review review3 =
+        Review(user: user, rate: 1, comment: 'very bad', pub: pub3);
     Review review2 = Review(user: user, rate: 3, comment: 'okay', pub: pub2);
 
     user.friends.add(friend1);
     user.friends.add(friend2);
     user.reviews.add(review);
     user.reviews.add(review2);
+    user.reviews.add(review3);
 
     return Container(
       color: Colors.transparent,
@@ -71,7 +94,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                 ...ListTile.divideTiles(
                   color: Colors.grey,
                   tiles: [
-                    ...user.friends.map(
+                    ...widget.user.friends.map(
                       (User friendOfUser) => ListTile(
                           leading: Container(
                             height: 30.0,
@@ -132,12 +155,28 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                 ...ListTile.divideTiles(
                   color: Colors.grey,
                   tiles: [
-                    ...user.reviews.map(
+                    ...widget.user.reviews.map(
                       (Review reviewOfUser) => ListTile(
-                        leading: Text(reviewOfUser.pub.pubName),
+                        leading: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    right: BorderSide(color: Colors.grey))),
+                            width: 40,
+                            height: 40,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 3),
+                              child: Center(
+                                child: Text(
+                                  reviewOfUser.pub.pubName,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                              ),
+                            )),
                         title: Text(reviewOfUser.comment),
                         subtitle: CustomRatingBar(
-                          starSize: 20, ratingValue: reviewOfUser.rate, starColor: Colors.amber, //TODO:RATING UPDATE
+                          starSize: 20, ratingValue: reviewOfUser.rate,
+                          starColor: Colors.amber, //TODO:RATING UPDATE
                         ),
                       ),
                     )

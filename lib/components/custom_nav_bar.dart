@@ -3,6 +3,7 @@ import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:after_school/screens/map/map_screen.dart';
 import 'package:after_school/screens/profile/profile_screen.dart';
 import 'package:after_school/screens/pubs_list/pubs_list_screen.dart';
+import 'package:after_school/screens/user/user_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../screens/events/events_screen.dart';
@@ -55,6 +56,8 @@ class CustomNavBar extends StatelessWidget {
       MapScreen(),
       PubsScreen(),
       ProfileScreen(),
+      //UserScreen(),
+
     ];
   }
 
