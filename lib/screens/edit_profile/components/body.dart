@@ -18,10 +18,10 @@ class Body extends StatefulWidget {
 class BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-
     //example data
     Pub bojanCrew = Pub(pubName: 'Bojan Crew');
-    Review review1 = Review(user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
+    Review review1 = Review(
+        user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
     widget.user.reviews.add(review1);
     bojanCrew.reviews.add(review1);
 
@@ -39,12 +39,17 @@ class BodyState extends State<Body> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
-                    child: TextButton(onPressed: (){
-                      //TODO: CHANGE PROFILE PIC
-                    }, child: Text('Change profile picture', style: TextStyle(
-                        color: Colors.black,
-                        decoration: TextDecoration.underline,
-                        fontSize: 15),)),
+                    child: TextButton(
+                        onPressed: () {
+                          //TODO: CHANGE PROFILE PIC
+                        },
+                        child: Text(
+                          'Change profile picture',
+                          style: TextStyle(
+                              color: Colors.black,
+                              decoration: TextDecoration.underline,
+                              fontSize: 15),
+                        )),
                   ),
                   SizedBox(
                     height: 30,
@@ -105,10 +110,10 @@ class BodyState extends State<Body> {
                           ),
                           child: FittedBox(
                             child: Text(
-                                'Save',
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
+                              'Save',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
                           ),
                           onPressed: () {
                             //TODO: SAVE PROFILE CHANGES

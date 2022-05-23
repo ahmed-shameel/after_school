@@ -22,7 +22,6 @@ class CustomRatingBar extends StatefulWidget {
 }
 
 class CustomRatingBarState extends State<CustomRatingBar> {
-
   @override
   Widget build(BuildContext context) {
     if (widget.text != null) {
@@ -42,7 +41,8 @@ class CustomRatingBarState extends State<CustomRatingBar> {
                 itemCount: 5,
                 itemSize: widget.starSize,
                 ratingWidget: RatingWidget(
-                    full: Icon(Icons.star, color:widget.starColor ?? Colors.white),
+                    full: Icon(Icons.star,
+                        color: widget.starColor ?? Colors.white),
                     half: Icon(
                       Icons.star_half,
                       color: widget.starColor ?? Colors.white,

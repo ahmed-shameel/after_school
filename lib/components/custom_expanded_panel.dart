@@ -25,17 +25,17 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
 
   //when logged in, if the main user is friends with another user it should take them to friends page, otherwise to normal
   //user page.
-  MaterialPageRoute setRoute(User person){
-    if(widget.user.friends.contains(person)){
+  MaterialPageRoute setRoute(User person) {
+    if (widget.user.friends.contains(person)) {
       return MaterialPageRoute(
           builder: (context) => FriendScreen(
-            user: person,
-          ));
-    }else{
+                user: person,
+              ));
+    } else {
       return MaterialPageRoute(
           builder: (context) => UserScreen(
-            user: person,
-          ));
+                user: person,
+              ));
     }
   }
 
@@ -164,7 +164,8 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                             width: 40,
                             height: 40,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 3),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 3),
                               child: Center(
                                 child: Text(
                                   reviewOfUser.pub.pubName,

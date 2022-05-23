@@ -5,15 +5,18 @@ import '../profile/components/body.dart';
 import '../user/components/user.dart';
 
 class ProfileScreen extends StatelessWidget {
-
   User? user;
 
   ProfileScreen({this.user});
 
   @override
   Widget build(BuildContext context) {
-
-   User newuser = User(username: 'username', password: 'pass', lastName: 'lst', email: 'mail', firstName: 'first');
+    User newuser = User(
+        username: 'username',
+        password: 'pass',
+        lastName: 'lst',
+        email: 'mail',
+        firstName: 'first');
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -25,7 +28,8 @@ class ProfileScreen extends StatelessWidget {
               color: iconColor,
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => EditProfileScreen()));
             },
           )
         ],
@@ -37,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-     body: Body(user: newuser),
+      body: Body(user: newuser),
     );
   }
 }

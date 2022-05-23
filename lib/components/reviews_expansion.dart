@@ -1,9 +1,7 @@
 import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
-import '../screens/friend/friend_screen.dart';
 import '../screens/user/components/user.dart';
 import '../screens/review/components/review.dart';
-import '../screens/user/user_screen.dart';
 
 class ReviewsExpansionPanel extends StatefulWidget {
   User user;
@@ -70,10 +68,15 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                           starColor: Colors.amber, //TODO:RATING UPDATE
                         ),
                         trailing: IconButton(
-                          icon: Icon(Icons.highlight_remove_outlined, color: Colors.black,),
+                          icon: Icon(
+                            Icons.highlight_remove_outlined,
+                            color: Colors.black,
+                          ),
                           onPressed: () {
                             setState(() {
-                              widget.user.reviews.removeWhere((Review currentReview) => reviewOfUser == currentReview);
+                              widget.user.reviews.removeWhere(
+                                  (Review currentReview) =>
+                                      reviewOfUser == currentReview);
                             });
                           },
                         ),

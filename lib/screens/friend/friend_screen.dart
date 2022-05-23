@@ -4,7 +4,6 @@ import '../friend/components/body.dart';
 import '../user/components/user.dart';
 
 class FriendScreen extends StatelessWidget {
-
   User user;
 
   FriendScreen({required this.user});
@@ -18,13 +17,18 @@ class FriendScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: GestureDetector(
-          child: Icon(Icons.keyboard_backspace_sharp, color: iconColor,),
+          child: Icon(
+            Icons.keyboard_backspace_sharp,
+            color: iconColor,
+          ),
           onTap: () {
             Navigator.pop(context);
           },
         ),
       ),
-      body: Body(user: user,),
+      body: Body(
+        user: user,
+      ),
     );
   }
 }
