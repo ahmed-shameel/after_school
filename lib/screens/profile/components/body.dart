@@ -6,7 +6,7 @@ import '../../../components/background_without_logo.dart';
 
 class Body extends StatefulWidget {
   User user;
-  Body({Key? key, required this.user}) : super(key: key);
+  Body({required this.user});
   @override
   BodyState createState() {
     return BodyState();
@@ -14,7 +14,6 @@ class Body extends StatefulWidget {
 }
 
 class BodyState extends State<Body> {
-
   @override
   Widget build(BuildContext context) {
     return Background(
@@ -29,7 +28,7 @@ class BodyState extends State<Body> {
                   ProfilePic(
                     profilePhoto: widget.user.profilePhoto,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 40,
                   ),
                   Card(
@@ -41,40 +40,44 @@ class BodyState extends State<Body> {
                             color: Colors.black,
                             tiles: [
                               ListTile(
-                                title: const Text("Username"),
-                                subtitle: Text(
-                                    widget.user.username),
+                                title: Text("Username"),
+                                subtitle: Text(widget.user.username),
                               ),
                               ListTile(
-                                title: const Text("About Me"),
+                                title: Text("About Me"),
                                 subtitle: Text(widget.user.aboutMe),
                               ),
-                              CustomExpandedPanel(user: widget.user,),
+                              CustomExpandedPanel(
+                                user: widget.user,
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(20,50),
+                      minimumSize: Size(20, 50),
                       shape: StadiumBorder(),
                       primary: Color(0xFF519580),
                     ),
                     child: FittedBox(
-                      child: Row(
-                          children: const [Text(
-                            'Logout ',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),Icon(Icons.logout, color: Colors.white,),
-                          ]
-                      ),
+                      child: Row(children: [
+                        Text(
+                          'Logout ',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.logout,
+                          color: Colors.white,
+                        ),
+                      ]),
                     ),
-                    onPressed: (){
+                    onPressed: () {
                       //TODO: logout;
                     },
                   ),
@@ -86,6 +89,4 @@ class BodyState extends State<Body> {
       ),
     );
   }
-
 }
-

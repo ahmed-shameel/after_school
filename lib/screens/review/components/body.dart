@@ -80,22 +80,30 @@ class _BodyState extends State<Body> {
         username: 'johndoe',
         firstName: 'John',
         lastName: 'Doe',
-        aboutMe: 'Hello, my name is John.', password: 'pass', email: 'email');
+        aboutMe: 'Hello, my name is John.',
+        password: 'pass',
+        email: 'email');
     User karen = User(
         username: 'ksmith',
         firstName: 'Karen',
         lastName: 'Smith',
-        aboutMe: 'Hello, my name is Karen.', password: 'pass', email: 'email');
+        aboutMe: 'Hello, my name is Karen.',
+        password: 'pass',
+        email: 'email');
     User amy = User(
         username: 'ksmith',
         firstName: 'Amy',
         lastName: 'Williams',
-        aboutMe: 'Hello, my name is Amy.', password: 'pass', email: 'mail');
+        aboutMe: 'Hello, my name is Amy.',
+        password: 'pass',
+        email: 'mail');
     User jasmine = User(
         username: 'jasmine',
         firstName: 'Jasmine',
         lastName: 'Rivera',
-        aboutMe: 'Hello, my name is Jasmine', password: 'pass', email: 'mail');
+        aboutMe: 'Hello, my name is Jasmine',
+        password: 'pass',
+        email: 'mail');
 
     Pub bojanCrew = Pub(pubName: 'Bojan Crew');
     Pub fooBar = Pub(pubName: 'Foo Bar');
@@ -214,7 +222,6 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    Pub bojanCrew = Pub(pubName: 'Bojan Crew');
     return Background(
       child: SingleChildScrollView(
         child: Column(children: [

@@ -43,7 +43,9 @@ class Body extends StatelessWidget {
                                 title: Text("About Me"),
                                 subtitle: Text(user.aboutMe),
                               ),
-                              CustomExpandedPanel(user: user,),
+                              CustomExpandedPanel(
+                                user: user,
+                              ),
                             ],
                           ),
                         ],
@@ -55,20 +57,23 @@ class Body extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(20,50),
+                      minimumSize: Size(20, 50),
                       shape: StadiumBorder(),
                       primary: Color(0xFF519580),
                     ),
                     child: FittedBox(
-                      child: Row(
-                          children: [Icon(Icons.remove_circle_outline, color: Colors.white,), Text(
-                            ' Remove friend',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                          ]
-                      ),
+                      child: Row(children: [
+                        Icon(
+                          Icons.remove_circle_outline,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          ' Remove friend',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ]),
                     ),
-                    onPressed: (){
+                    onPressed: () {
                       //TODO: remove friend;
                     },
                   ),

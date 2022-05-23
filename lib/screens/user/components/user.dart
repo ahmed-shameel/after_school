@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
-
 import '../../review/components/review.dart';
 
-class User{
+class User {
   final Image profilePhoto;
   final String username;
   final String firstName;
@@ -13,10 +12,10 @@ class User{
   List<User> friends = <User>[];
   List<Review> reviews = <Review>[];
 
-
-
   User({
-    this.profilePhoto = const Image(image:AssetImage('assets/images/unknown_profile_pic.png'),),
+    this.profilePhoto = const Image(
+      image: AssetImage('assets/images/unknown_profile_pic.png'),
+    ),
     required this.username,
     required this.firstName,
     required this.lastName,
@@ -38,4 +37,3 @@ class User{
     }
   }
 }
-

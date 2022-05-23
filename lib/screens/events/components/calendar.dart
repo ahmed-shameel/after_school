@@ -106,7 +106,7 @@ class _CalendarState extends State<Calendar> {
             ),
           ),
           Text(
-            'Upcoming',
+            'Events of the day',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Container(

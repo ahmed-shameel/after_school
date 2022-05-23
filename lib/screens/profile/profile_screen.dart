@@ -5,39 +5,43 @@ import '../profile/components/body.dart';
 import '../user/components/user.dart';
 
 class ProfileScreen extends StatelessWidget {
-
   User? user;
 
-  ProfileScreen({Key? key, this.user}) : super(key: key);
+  ProfileScreen({this.user});
 
   @override
   Widget build(BuildContext context) {
-
-   User newUser = User(username: 'username', password: 'pass', lastName: 'lst', email: 'mail', firstName: 'first');
+    User newuser = User(
+        username: 'username',
+        password: 'pass',
+        lastName: 'lst',
+        email: 'mail',
+        firstName: 'first');
 
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.edit_outlined,
               color: iconColor,
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => EditProfileScreen()));
             },
           )
         ],
         backgroundColor: appBarColor,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           'Profile',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-     body: Body(user: newUser),
+      body: Body(user: newuser),
     );
   }
 }

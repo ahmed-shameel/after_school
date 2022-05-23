@@ -1,4 +1,4 @@
-import 'package:after_school/components/back_to_login.dart';
+import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:after_school/screens/reset_password/components/reset_password_form.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background.dart';
@@ -19,7 +19,20 @@ class Body extends StatelessWidget {
             ),
             Text('Please enter your new password.'),
             ResetPasswordForm(),
-            BackToLogin(),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePageScreen2()));
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15.0),
+                child: Text(
+                  'Back to login ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),

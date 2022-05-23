@@ -2,7 +2,6 @@ import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
 import '../pub/components/pub.dart';
 import '../review/components/body.dart';
-import 'components/review.dart';
 
 class ReviewScreen extends StatelessWidget {
   Pub pub;

@@ -19,7 +19,10 @@ class EventScreen extends StatelessWidget {
           backgroundColor: appBarColor,
           elevation: 0,
           leading: GestureDetector(
-            child: Icon(Icons.keyboard_backspace_sharp, color: iconColor,),
+            child: Icon(
+              Icons.keyboard_backspace_sharp,
+              color: iconColor,
+            ),
             onTap: () {
               Navigator.pop(context);
             },

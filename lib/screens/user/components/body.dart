@@ -43,7 +43,9 @@ class Body extends StatelessWidget {
                                 title: Text("About Me"),
                                 subtitle: Text(user.aboutMe),
                               ),
-                              CustomExpandedPanel(user: user,),
+                              CustomExpandedPanel(
+                                user: user,
+                              ),
                             ],
                           ),
                         ],
