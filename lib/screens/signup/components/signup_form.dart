@@ -93,9 +93,11 @@ class SignUpFormState extends State<SignUpForm> {
 
             TextField(
                 controller: passwordController,
+                obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Password',
                 )
+
             ),
 
 
