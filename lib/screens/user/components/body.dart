@@ -4,16 +4,10 @@ import 'package:after_school/screens/user/components/user.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
   User user;
-  Body({required this.user});
-  @override
-  BodyState createState() {
-    return BodyState();
-  }
-}
 
-class BodyState extends State<Body> {
+  Body({required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +21,7 @@ class BodyState extends State<Body> {
               child: Column(
                 children: [
                   ProfilePic(
-                    profilePhoto: widget.user.profilePhoto,
+                    profilePhoto: user.profilePhoto,
                   ),
                   SizedBox(
                     height: 40,
@@ -41,15 +35,15 @@ class BodyState extends State<Body> {
                             color: Colors.black,
                             tiles: [
                               ListTile(
-                                title: Text("Username"),
-                                subtitle: Text(
-                                    widget.user.username),
+                                title: Text("Name"),
+                                subtitle:
+                                    Text(user.firstName + " " + user.lastName),
                               ),
                               ListTile(
                                 title: Text("About Me"),
-                                subtitle: Text(widget.user.aboutMe),
+                                subtitle: Text(user.aboutMe),
                               ),
-                              CustomExpandedPanel(user: widget.user,),
+                              CustomExpandedPanel(user: user,),
                             ],
                           ),
                         ],
@@ -61,21 +55,24 @@ class BodyState extends State<Body> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(20,50),
+                      minimumSize: Size(20, 50),
                       shape: StadiumBorder(),
                       primary: Color(0xFF519580),
                     ),
                     child: FittedBox(
-                      child: Row(
-                          children: [Text(
-                            'Logout ',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),Icon(Icons.logout, color: Colors.white,),
-                          ]
-                      ),
+                      child: Row(children: [
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          ' Add user',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ]),
                     ),
-                    onPressed: (){
-                      //TODO: logout;
+                    onPressed: () {
+                      //TODO: send friend request;
                     },
                   ),
                 ],
@@ -86,6 +83,4 @@ class BodyState extends State<Body> {
       ),
     );
   }
-
 }
-

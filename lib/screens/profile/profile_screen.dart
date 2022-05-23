@@ -1,7 +1,8 @@
 import 'package:after_school/constants.dart';
+import 'package:after_school/screens/edit_profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../profile/components/body.dart';
-import 'components/user/user.dart';
+import '../user/components/user.dart';
 
 class ProfileScreen extends StatelessWidget {
 
@@ -12,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-//    User newuser = User(username: 'username');
+   User newuser = User(username: 'username', password: 'pass', lastName: 'lst', email: 'mail', firstName: 'first');
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -24,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
               color: iconColor,
             ),
             onPressed: () {
-              // TODO EDIT PROFILE
+              Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
             },
           )
         ],
@@ -36,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
- //     body: Body(user: newuser,),
+     body: Body(user: newuser),
     );
   }
 }

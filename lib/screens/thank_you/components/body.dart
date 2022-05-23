@@ -34,22 +34,19 @@ class _BodyState extends State<Body> {
         SizedBox(
           height: 40,
         ),
-        GestureDetector(
-          child: Container(
-            height: 40,
-            width: 90,
-            decoration: BoxDecoration(
-              color: Color(0xFF519580),
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-            child: Center(
-                child: Text(
-              'Back',
-              textAlign: TextAlign.center,
-            )),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: Size(30, 50),
+            shape: StadiumBorder(),
+            primary: Color(0xFF519580),
           ),
-          onTap: () {
+          child: FittedBox(
+            child: Text(
+              'Back ',
+              style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
+          ),
+          onPressed: () {
             Navigator.popUntil(context, ModalRoute.withName("reviews"));
           },
         ),

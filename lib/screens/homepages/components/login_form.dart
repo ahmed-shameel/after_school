@@ -11,7 +11,7 @@ import '../../../components/custom_nav_bar.dart';
 import '../../../components/social_icon.dart';
 import 'package:http/http.dart' as http;
 
-import '../../profile/components/user/user.dart';
+import '../../user/components/user.dart';
 
 class LoginForm2 extends StatefulWidget {
   const LoginForm2({Key? key}) : super(key: key);
@@ -50,10 +50,7 @@ class LoginForm2State extends State<LoginForm2> {
           key: formKey,
           child: Column(
             children: [
-              const Text('Confirm your email and log in!',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white),
-              ),
+
 
               //  EmailField(),
               TextFormField(
@@ -61,6 +58,10 @@ class LoginForm2State extends State<LoginForm2> {
                   onChanged: (val){
                     user.email = val;
                   },
+                  decoration: InputDecoration(
+//                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Email is Empty';
@@ -74,10 +75,16 @@ class LoginForm2State extends State<LoginForm2> {
 //            text: 'Password',
 //          ),
               TextFormField(
+                obscureText: true,
                 controller: TextEditingController(text: user.password),
                 onChanged: (val){
                   user.password = val;
                 },
+
+                decoration: InputDecoration(
+ //                 border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'password is Empty';

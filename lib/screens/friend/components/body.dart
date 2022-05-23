@@ -1,6 +1,6 @@
 import 'package:after_school/components/custom_expanded_panel.dart';
-import 'package:after_school/screens/profile/components/profile_picture.dart';
-import 'package:after_school/screens/profile/components/user/user.dart';
+import 'package:after_school/components/profile_picture.dart';
+import 'package:after_school/screens/user/components/user.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 
@@ -43,7 +43,7 @@ class Body extends StatelessWidget {
                                 title: Text("About Me"),
                                 subtitle: Text(user.aboutMe),
                               ),
-                              CustomExpandedPanel(),
+                              CustomExpandedPanel(user: user,),
                             ],
                           ),
                         ],
@@ -53,23 +53,23 @@ class Body extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  GestureDetector(
-                    child: Container(
-                      height: 40,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF519580),
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: Center(
-                          child: Text(
-                        'Remove friend',
-                        textAlign: TextAlign.center,
-                      )),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(20,50),
+                      shape: StadiumBorder(),
+                      primary: Color(0xFF519580),
                     ),
-                    onTap: () {
-                      //TODO: REMOVE FRIEND;
+                    child: FittedBox(
+                      child: Row(
+                          children: [Icon(Icons.remove_circle_outline, color: Colors.white,), Text(
+                            ' Remove friend',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                          ]
+                      ),
+                    ),
+                    onPressed: (){
+                      //TODO: remove friend;
                     },
                   ),
                 ],

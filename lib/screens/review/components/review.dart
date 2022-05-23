@@ -1,4 +1,4 @@
-import '../../profile/components/user/user.dart';
+import '../../user/components/user.dart';
 import '../../pub/components/pub.dart';
 
 class Review {
