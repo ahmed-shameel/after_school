@@ -8,19 +8,19 @@ class ProfileScreen extends StatelessWidget {
 
   User? user;
 
-  ProfileScreen({this.user});
+  ProfileScreen({Key? key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-   User newuser = User(username: 'username', password: 'pass', lastName: 'lst', email: 'mail', firstName: 'first');
+   User newUser = User(username: 'username', password: 'pass', lastName: 'lst', email: 'mail', firstName: 'first');
 
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.edit_outlined,
               color: iconColor,
             ),
@@ -32,12 +32,12 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: appBarColor,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-     body: Body(user: newuser),
+     body: Body(user: newUser),
     );
   }
 }

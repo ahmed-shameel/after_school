@@ -24,5 +24,18 @@ class User{
     required this.password,
     this.aboutMe = 'No description',
   });
+
+  void addFriend(User user){
+    final httpUri = Uri.http('localhost:8080', '/addfriend', {'limit': '10'});
+
+    User user = User(username: "", firstName: "", lastName: "", email: "", password: "");
+
+    Future login() async{
+      var res = await http.post(httpUri,
+          headers: {"Content-Type":"application/json"},
+          body: json.encode({'email': user.email,'password': user.password}));
+      print(res.body);
+    }
+  }
 }
 

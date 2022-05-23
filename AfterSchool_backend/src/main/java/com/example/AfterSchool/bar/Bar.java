@@ -1,5 +1,6 @@
 package com.example.AfterSchool.bar;
 
+import com.example.AfterSchool.bar.review.Review;
 import lombok.Getter;
 import lombok.Setter;
 

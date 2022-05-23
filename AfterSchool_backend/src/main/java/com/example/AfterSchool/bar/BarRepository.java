@@ -3,6 +3,9 @@ package com.example.AfterSchool.bar;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface BarRepo extends JpaRepository<Bar, String> {
+public interface BarRepository extends JpaRepository<Bar, String> {
+
 }

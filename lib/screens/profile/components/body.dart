@@ -6,7 +6,7 @@ import '../../../components/background_without_logo.dart';
 
 class Body extends StatefulWidget {
   User user;
-  Body({required this.user});
+  Body({Key? key, required this.user}) : super(key: key);
   @override
   BodyState createState() {
     return BodyState();
@@ -29,7 +29,7 @@ class BodyState extends State<Body> {
                   ProfilePic(
                     profilePhoto: widget.user.profilePhoto,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Card(
@@ -41,12 +41,12 @@ class BodyState extends State<Body> {
                             color: Colors.black,
                             tiles: [
                               ListTile(
-                                title: Text("Username"),
+                                title: const Text("Username"),
                                 subtitle: Text(
                                     widget.user.username),
                               ),
                               ListTile(
-                                title: Text("About Me"),
+                                title: const Text("About Me"),
                                 subtitle: Text(widget.user.aboutMe),
                               ),
                               CustomExpandedPanel(user: widget.user,),
@@ -56,7 +56,7 @@ class BodyState extends State<Body> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
@@ -67,7 +67,7 @@ class BodyState extends State<Body> {
                     ),
                     child: FittedBox(
                       child: Row(
-                          children: [Text(
+                          children: const [Text(
                             'Logout ',
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),Icon(Icons.logout, color: Colors.white,),

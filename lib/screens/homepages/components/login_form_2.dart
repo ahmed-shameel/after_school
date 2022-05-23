@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:after_school/components/email_field.dart';
-import 'package:after_school/components/password_field.dart';
 import 'package:after_school/screens/forgot_password/forgot_password_screen.dart';
 import 'package:after_school/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +57,7 @@ class LoginForm2State extends State<LoginForm2> {
             onChanged: (val){
               user.email = val;
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
 //                border: OutlineInputBorder(),
                 labelText: 'Email',
             ),
@@ -82,7 +79,7 @@ class LoginForm2State extends State<LoginForm2> {
                 onChanged: (val){
                   user.password = val;
                 },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
 //                border: OutlineInputBorder(),
                 labelText: 'Password',
               ),
@@ -104,8 +101,8 @@ class LoginForm2State extends State<LoginForm2> {
                           builder: (context) => ForgotPasswordScreen()),
                     );
                   },
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 16.0, left: 110.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(20),
                     child: Text(
                       'Forgot your password?',
                       style: TextStyle(
@@ -150,12 +147,12 @@ class LoginForm2State extends State<LoginForm2> {
                             builder: (context) => SignupScreen()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign Up ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),
                     )),
-                Text(
+                const Text(
                   'or ',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -168,7 +165,7 @@ class LoginForm2State extends State<LoginForm2> {
                             builder: (context) => CustomNavBar()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       'Continue as a guest. ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),

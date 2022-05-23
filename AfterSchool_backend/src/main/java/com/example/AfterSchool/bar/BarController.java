@@ -8,14 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BarController {
 
-
     @Autowired
-    private BarRepo barRepo;
+    private BarService barService;
 
     @GetMapping(path="/bars")
     public @ResponseBody
     Iterable<Bar> getAllBars() {
         // This returns a JSON or XML with the users
-        return barRepo.findAll();
+        return barService.getAllBars();
+    }
+
+    @GetMapping(path = "/allcoordinates")
+    public @ResponseBody
+    Iterable<String> getCoordinates(){
+
+        return barService.getAllCoordinates();
     }
 }

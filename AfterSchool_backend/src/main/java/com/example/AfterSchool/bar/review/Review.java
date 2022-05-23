@@ -1,5 +1,6 @@
-package com.example.AfterSchool.bar;
+package com.example.AfterSchool.bar.review;
 
+import com.example.AfterSchool.bar.Bar;
 import com.example.AfterSchool.user.User;
 
 import javax.persistence.*;
@@ -11,8 +12,10 @@ public class Review {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "username")
     private User user;
+
+    @ManyToOne
+    private Bar bar;
 
     private double rate;
     private String comment;

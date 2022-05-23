@@ -12,14 +12,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping("/signup")
+    public User signUp(@RequestBody RegistrationRequest request){
+        return userService.signUpUser(request);
+    }
+
     @PostMapping("/login")
     public User login(@RequestBody User user){
         return userService.login(user.getEmail(), user.getPassword());
     }
 
-    @GetMapping("getuser")
+    @GetMapping("/getuser")
     public User getByUsername(@RequestBody String username){
         return userService.getUserByUsername(username);
+    }
+
+    @PostMapping("addfriend")
+    public String addFriend(@RequestBody String username){
+        return userService.addFriend(username);
     }
 
 }
