@@ -1,21 +1,29 @@
 package com.example.AfterSchool.bar;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.List;
 
-
+@Getter
+@Setter
 @Entity
 public class Bar {
-    //implement egen id
     @Id
     @Column(name = "name", nullable = false)
     private String name;
-//
-//    @OneToOne
-//    @JoinColumn(name = "description_ID")
-//    private BarDescription description;
 
     private boolean open;
+    private String openingTime;
+    private String description;
+    private String coordinates;
     private double rating;
+    private String adress;
+    private String university;
+    @OneToMany
+    @JoinColumn()
+    private List<Review> reviews;
 
     public Bar(String name) {
         this.name = name;
@@ -24,43 +32,16 @@ public class Bar {
     public Bar() {
 
     }
-//
-//    public BarDescription getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(BarDescription description) {
-//        this.description = description;
-//    }
 
-    public boolean isOpen() {
-        return open;
+    public void addReview(Review review){
+        addReview(review);
+        //sets the new rating
+        int totalRate = 0;
+        int numOfRates = 0;
+        for(Review rev: reviews){
+            totalRate += rev.getRate();
+            numOfRates ++;
+        }
+        rating = (double) Math.round((double)totalRate/numOfRates);
     }
-
-    public void setOpen(boolean open) {
-        this.open = open;
-    }
-
-    public double getRatings() {
-        return rating;
-    }
-
-//    public void setRatings() {
-//        int numOfRev = 0;
-//        double totalRev = 0;
-//        for(Review rev: description.getReviews()){
-//            numOfRev += 1;
-//            totalRev += rev.getRate();
-//        }
-//        rating = totalRev/numOfRev;
-//    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 }

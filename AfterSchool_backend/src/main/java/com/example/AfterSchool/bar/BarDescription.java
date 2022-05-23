@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.LinkedList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,11 +14,6 @@ public class BarDescription {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
-    private Bar bar;
-
-    @OneToMany
-    private List<Review> reviews;
     private String adress;
     private String openingTime;
     private String description;
@@ -32,8 +25,6 @@ public class BarDescription {
 
     public BarDescription(Bar bar, String adress, String openingTime) {
         this.adress = adress;
-        this.reviews = new LinkedList<>();
-        this.bar = bar;
         this.openingTime = openingTime;
     }
 
@@ -41,13 +32,5 @@ public class BarDescription {
 
     }
 
-    //Other methods
-    public void addReview(Review review) {
-        for(Review rev: reviews){
-         if(rev.equals(review))
-             return;
-         reviews.add(review);
-        }
-    }
 
 }

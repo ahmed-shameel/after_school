@@ -16,19 +16,3 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
     show-sql: true
-
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: afterschool.noreply@gmail.com
-    password: Afterschoolpassword
-
-    properties:
-      mail:
-        smtp:
-          ssl:
-            trust: "*"
-          auth: true
-          starttls:
-            enable: true
-

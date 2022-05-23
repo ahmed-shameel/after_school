@@ -1,21 +1,16 @@
 package com.example.AfterSchool.user;
 
-import com.example.AfterSchool.user.friends.Graph;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "User")
 @Getter
 @Setter
-public class User implements UserDetails {
+public class User {
 
     @SequenceGenerator(
             name = "user_sequence",
@@ -37,8 +32,6 @@ public class User implements UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> friends;
-    private Boolean enabled = false;
-    private Boolean locked = false;
 
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -47,46 +40,15 @@ public class User implements UserDetails {
         this.username = username;
         this.email = email;
         this.password = password;
-        //friends = new Graph<>();
+        friends = new ArrayList<>();
     }
 
     public User() {
 
     }
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("user");
-        return Collections.singletonList(authority);
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
+    public void addFriend(User friend){
+        friends.add(friend);
     }
 
     @Override

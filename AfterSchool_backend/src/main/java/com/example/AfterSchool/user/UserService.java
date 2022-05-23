@@ -1,72 +1,41 @@
 package com.example.AfterSchool.user;
-import com.example.AfterSchool.registration.token.ConfirmationToken;
-import com.example.AfterSchool.registration.token.ConfirmationTokenRepository;
-import com.example.AfterSchool.registration.token.ConfirmationTokenService;
+
+import com.example.AfterSchool.user.User;
+import com.example.AfterSchool.user.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
 
-    private final static String USER_NOT_FOUND_MSG = "Användare med e-post %s hittades inte";
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final ConfirmationTokenService confirmationTokenService;
-    private final ConfirmationTokenRepository confirmationTokenRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        return userRepository.findByEmail(email).orElseThrow(() ->
-                        new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
-    }
-
-    public String signUpUser(User user){
-        boolean userExist = userRepository.findByEmail(user.getEmail()).isPresent();
-        if(userExist){
-            User foundUser = userRepository.findByEmail(user.getEmail()).get();
-            if(!user.isEnabled()){
-                confirmationTokenRepository.deleteByUserId(foundUser.getId());
-                userRepository.delete(foundUser);
-            } else
-                throw new IllegalStateException("Email already taken");
+    public User getUserByUsername(String username){
+        Optional<User> foundUser = userRepository.findByUsername(username);
+        if(foundUser.isPresent()){
+            return foundUser.get();
+        } else {
+            throw new IllegalStateException("user not found");
         }
+    }
 
-        boolean usernameExist = userRepository.findByUsername(user.getUsername()).isPresent();
-        if(usernameExist){
-            throw new IllegalStateException("Username already taken");
+    public User getByEmail(String email){
+        Optional<User> foundUser = userRepository.findByEmail(email);
+        if(foundUser.isPresent()){
+            return foundUser.get();
+        } else {
+            throw new IllegalStateException("user not found");
         }
-
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-
-        userRepository.save(user);
-
-        String token = UUID.randomUUID().toString();
-
-        ConfirmationToken confirmationToken = new ConfirmationToken(
-                token,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(15),
-                user
-
-        );
-
-        confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        return token;
     }
 
-    public void enableUser(String email){
-        userRepository.enableUser(email);
+    public User login(String email, String password){
+        Optional<User> foundUser = userRepository.findByEmailAndPassword(email, password);
+        if(foundUser.isPresent())
+            return foundUser.get();
+        else
+            throw new IllegalStateException("wrong email or password");
     }
-
 }

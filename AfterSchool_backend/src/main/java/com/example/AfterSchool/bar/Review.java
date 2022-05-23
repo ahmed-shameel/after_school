@@ -11,6 +11,7 @@ public class Review {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "username")
     private User user;
 
     private double rate;
