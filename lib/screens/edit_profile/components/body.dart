@@ -4,6 +4,7 @@ import 'package:after_school/components/reviews_expansion.dart';
 import 'package:after_school/screens/user/components/user.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
+import '../../check-in/components/check-in.dart';
 import '../../pub/components/pub.dart';
 import '../../review/components/review.dart';
 import 'package:image_picker/image_picker.dart';
@@ -29,10 +30,18 @@ class BodyState extends State<Body> {
         user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
     Review review2 =
         Review(user: widget.user, rate: 5, comment: 'Awesome', pub: fooBar);
+
+    CheckIn checkIn = CheckIn(dateTime: DateTime(2022, 1, 3, 15, 45), pub: bojanCrew);
+    CheckIn checkIn2 = CheckIn(dateTime: DateTime(2022, 3, 2, 10, 00), pub: fooBar);
+    CheckIn checkIn3 = CheckIn(dateTime: DateTime(2022, 5, 24, 12, 35), pub: bojanCrew);
+
     widget.user.reviews.add(review1);
     widget.user.reviews.add(review2);
     bojanCrew.reviews.add(review1);
     fooBar.reviews.add(review2);
+    widget.user.checkins.add(checkIn);
+    widget.user.checkins.add(checkIn2);
+    widget.user.checkins.add(checkIn3);
 
     return Background(
       child: SingleChildScrollView(
@@ -154,6 +163,8 @@ class BodyState extends State<Body> {
       ),
     );
   }
+
+
 
   Widget bottomSheet() {
     return Container(

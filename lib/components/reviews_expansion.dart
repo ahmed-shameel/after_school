@@ -45,29 +45,29 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                   tiles: [
                     ...widget.user.reviews.map(
                       (Review reviewOfUser) => ListTile(
-                        leading: Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    right: BorderSide(color: Colors.grey))),
-                            width: 40,
-                            height: 40,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 3),
-                              child: Center(
-                                child: Text(
-                                  reviewOfUser.pub.pubName,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 10),
+                          leading: Container(
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      right: BorderSide(color: Colors.grey))),
+                              width: 40,
+                              height: 40,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 3),
+                                child: Center(
+                                  child: Text(
+                                    reviewOfUser.pub.pubName,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 10),
+                                  ),
                                 ),
-                              ),
-                            )),
-                        title: Text(reviewOfUser.comment),
-                        subtitle: CustomRatingBar(
-                          starSize: 20, ratingValue: reviewOfUser.rate,
-                          starColor: Colors.amber, //TODO:RATING UPDATE
-                        ),
-                        trailing: IconButton(
+                              )),
+                          title: Text(reviewOfUser.comment),
+                          subtitle: CustomRatingBar(
+                            starSize: 20, ratingValue: reviewOfUser.rate,
+                            starColor: Colors.amber, //TODO:RATING UPDATE
+                          ),
+                          trailing: IconButton(
                             icon: Icon(
                               Icons.highlight_remove_outlined,
                               color: Colors.black,
@@ -78,8 +78,8 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                                     (Review currentReview) =>
                                         reviewOfUser == currentReview);
                               });
-                            }),
-                      ),
+                            },
+                          )),
                     )
                   ],
                 ),

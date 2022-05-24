@@ -5,6 +5,7 @@ import 'package:after_school/screens/user/components/user.dart';
 import 'package:after_school/screens/write_a_review/write_a_review_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_rating_bar.dart';
+import '../../check-in/components/check-in.dart';
 import '../../user/user_screen.dart';
 
 class Body extends StatefulWidget {
@@ -124,6 +125,11 @@ class _BodyState extends State<Body> {
     Review review7 =
         Review(user: amy, rate: 4, comment: 'People are nice', pub: sodersPub);
 
+
+    CheckIn checkIn = CheckIn(dateTime: DateTime(2022, 1, 3, 15, 45), pub: bojanCrew);
+    CheckIn checkIn2 = CheckIn(dateTime: DateTime(2022, 3, 2, 10, 00), pub: fooBar);
+    CheckIn checkIn3 = CheckIn(dateTime: DateTime.now(), pub: sodersPub);
+
     john.reviews.add(review1);
     john.reviews.add(review2);
     john.reviews.add(review3);
@@ -131,6 +137,10 @@ class _BodyState extends State<Body> {
     karen.reviews.add(review5);
     amy.reviews.add(review6);
     amy.reviews.add(review7);
+
+    john.checkins.add(checkIn);
+    john.checkins.add(checkIn2);
+    john.checkins.add(checkIn3);
 
     bojanCrew.reviews.add(review1);
     bojanCrew.reviews.add(review4);

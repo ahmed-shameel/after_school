@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import '../../check-in/components/check-in.dart';
 import '../../review/components/review.dart';
 
 class User {
@@ -11,6 +12,7 @@ class User {
   final String aboutMe;
   List<User> friends = <User>[];
   List<Review> reviews = <Review>[];
+  List<CheckIn> checkins = <CheckIn>[];
 
   User({
     this.profilePhoto = const Image(

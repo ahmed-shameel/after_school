@@ -1,6 +1,8 @@
 import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:after_school/screens/pub/components/pub.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../screens/check-in/components/check-in.dart';
 import '../screens/friend/friend_screen.dart';
 import '../screens/user/components/user.dart';
 import '../screens/review/components/review.dart';
@@ -68,12 +70,22 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
     Review review3 =
         Review(user: user, rate: 1, comment: 'very bad', pub: pub3);
     Review review2 = Review(user: user, rate: 3, comment: 'okay', pub: pub2);
+    CheckIn checkIn =
+        CheckIn(dateTime: DateTime(2022, 5, 20, 15, 45), pub: pub);
+    CheckIn checkIn2 =
+        CheckIn(dateTime: DateTime(2022, 10, 2, 10, 00), pub: pub2);
+    CheckIn checkIn3 =
+        CheckIn(dateTime: DateTime(2022, 9, 1, 2, 35), pub: pub3);
 
     user.friends.add(friend1);
     user.friends.add(friend2);
     user.reviews.add(review);
     user.reviews.add(review2);
     user.reviews.add(review3);
+
+    user.checkins.add(checkIn);
+    user.checkins.add(checkIn2);
+    user.checkins.add(checkIn3);
 
     return Container(
       color: Colors.transparent,
@@ -135,8 +147,28 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                 ),
               );
             },
-            body: ListTile(
-              title: Text('Check-ins', style: TextStyle(color: Colors.black)),
+            body: Column(
+              children: [
+                ...ListTile.divideTiles(
+                  color: Colors.grey,
+                  tiles: [
+                    ...widget.user.checkins.map(
+                      (CheckIn checkin) => ListTile(
+                        leading: Container(
+                          height: 30.0,
+                          width: 30.0,
+                          decoration: new BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  new BorderRadius.all(Radius.circular(50))),
+                          child: printIcon(checkin),
+                        ),
+                        title: printCheckIn(checkin),
+                      ),
+                    )
+                  ],
+                ),
+              ],
             ),
             isExpanded: expandedList[1],
             canTapOnHeader: true,
@@ -196,6 +228,37 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
           });
         },
       ),
+    );
+  }
+
+  Text printCheckIn(CheckIn checkIn) {
+    if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
+      return Text(
+          widget.user.firstName + ' is at ' + checkIn.pub.pubName + ' - ');
+    }
+    return Text(widget.user.firstName +
+        ' was at ' +
+        checkIn.pub.pubName +
+        ' - ' +
+        checkIn.dateTime.day.toString() +
+        '/' +
+        checkIn.dateTime.month.toString() +
+        " " +
+        checkIn.dateTime.hour.toString() +
+        ":" +
+        checkIn.dateTime.minute.toString());
+  }
+
+  Icon printIcon(CheckIn checkIn) {
+    if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
+      return Icon(
+        CupertinoIcons.at_circle_fill,
+        color: Colors.green,
+      );
+    }
+    return Icon(
+      CupertinoIcons.map_pin,
+      color: Colors.red,
     );
   }
 }

@@ -12,7 +12,7 @@ class FriendsFeedScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Text(
-          'Friends',
+          'Feed',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
