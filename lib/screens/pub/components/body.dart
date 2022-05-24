@@ -1,6 +1,7 @@
 import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:after_school/components/image_gallery.dart';
 import 'package:after_school/screens/pub/components/pub.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 import '../../review/review_screen.dart';
@@ -26,7 +27,7 @@ class Body extends StatelessWidget {
                     tiles: [
                       ListTile(
                         leading: Icon(
-                          Icons.timer,
+                          CupertinoIcons.clock,
                           color: Colors.white,
                         ),
                         title: Text("Opening hours"),
@@ -34,7 +35,7 @@ class Body extends StatelessWidget {
                       ),
                       ListTile(
                         leading: Icon(
-                          Icons.pin_drop,
+                          CupertinoIcons.placemark,
                           color: Colors.white,
                         ),
                         title: Text("Address"),

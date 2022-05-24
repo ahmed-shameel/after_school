@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:after_school/components/profile_picture.dart';
 import 'package:after_school/components/reviews_expansion.dart';
 import 'package:after_school/screens/user/components/user.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 import '../../pub/components/pub.dart';
 import '../../review/components/review.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Body extends StatefulWidget {
   User user;
@@ -16,14 +18,21 @@ class Body extends StatefulWidget {
 }
 
 class BodyState extends State<Body> {
+  final ImagePicker _picker = ImagePicker();
+  PickedFile? _imageFile;
   @override
   Widget build(BuildContext context) {
     //example data
     Pub bojanCrew = Pub(pubName: 'Bojan Crew');
+    Pub fooBar = Pub(pubName: 'Foo Bar');
     Review review1 = Review(
         user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
+    Review review2 =
+        Review(user: widget.user, rate: 5, comment: 'Awesome', pub: fooBar);
     widget.user.reviews.add(review1);
+    widget.user.reviews.add(review2);
     bojanCrew.reviews.add(review1);
+    fooBar.reviews.add(review2);
 
     return Background(
       child: SingleChildScrollView(
@@ -35,13 +44,18 @@ class BodyState extends State<Body> {
               child: Column(
                 children: [
                   ProfilePic(
-                    profilePhoto: widget.user.profilePhoto,
+                    profilePhoto: _imageFile == null
+                        ? widget.user.profilePhoto
+                        : Image(image: FileImage(File(_imageFile!.path))),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: TextButton(
                         onPressed: () {
-                          //TODO: CHANGE PROFILE PIC
+                          showModalBottomSheet(
+                            context: context,
+                            builder: ((builder) => bottomSheet()),
+                          );
                         },
                         child: Text(
                           'Change profile picture',
@@ -117,6 +131,18 @@ class BodyState extends State<Body> {
                           ),
                           onPressed: () {
                             //TODO: SAVE PROFILE CHANGES
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text("Your changes have been saved!"),
+                                actions: [
+                                  TextButton(
+                                    child: Text("OK"),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              ),
+                            );
                           },
                         ),
                       ]),
@@ -127,5 +153,54 @@ class BodyState extends State<Body> {
         ),
       ),
     );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Choose profile photo",
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            TextButton.icon(
+              icon: Icon(Icons.camera),
+              onPressed: () {
+                takePhoto(ImageSource.camera);
+              },
+              label: Text("Camera"),
+            ),
+            TextButton.icon(
+              icon: Icon(Icons.image),
+              onPressed: () {
+                takePhoto(ImageSource.gallery);
+              },
+              label: Text("Gallery"),
+            ),
+          ])
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.pickImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = PickedFile(pickedFile!.path); //TODO UPDATE IMAGE
+    });
   }
 }

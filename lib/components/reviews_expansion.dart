@@ -68,18 +68,17 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                           starColor: Colors.amber, //TODO:RATING UPDATE
                         ),
                         trailing: IconButton(
-                          icon: Icon(
-                            Icons.highlight_remove_outlined,
-                            color: Colors.black,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              widget.user.reviews.removeWhere(
-                                  (Review currentReview) =>
-                                      reviewOfUser == currentReview);
-                            });
-                          },
-                        ),
+                            icon: Icon(
+                              Icons.highlight_remove_outlined,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                widget.user.reviews.removeWhere(
+                                    (Review currentReview) =>
+                                        reviewOfUser == currentReview);
+                              });
+                            }),
                       ),
                     )
                   ],

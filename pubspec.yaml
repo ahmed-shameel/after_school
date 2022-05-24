@@ -19,6 +19,7 @@ dependencies:
   flutter_svg: ^1.0.3
   persistent_bottom_nav_bar: any
   http: ^0.13.4
+  image_picker: ^0.8.4+9
 
 dev_dependencies:
   flutter_test:

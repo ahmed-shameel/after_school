@@ -16,15 +16,15 @@ class ProfilePic extends StatelessWidget {
   }
 
   Widget buildImage() {
-    final image = Image(
+    final Image image = Image(
       image: profilePhoto!.image,
-    ).image;
+    );
 
     return ClipOval(
       child: Material(
         color: Colors.transparent,
         child: Ink.image(
-          image: image,
+          image: image.image,
           fit: BoxFit.cover,
           width: 128,
           height: 128,
