@@ -17,13 +17,13 @@ class Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(50.0),
+              padding: const EdgeInsets.all(50.0),
               child: Column(
                 children: [
                   ProfilePic(
                     profilePhoto: user.profilePhoto,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Card(
@@ -52,7 +52,7 @@ class Body extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
@@ -62,7 +62,7 @@ class Body extends StatelessWidget {
                       primary: Color(0xFF519580),
                     ),
                     child: FittedBox(
-                      child: Row(children: [
+                      child: Row(children: const [
                         Icon(
                           Icons.add,
                           color: Colors.white,

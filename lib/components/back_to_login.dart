@@ -11,8 +11,8 @@ class BackToLogin extends StatelessWidget {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 15.0),
+      child: const Padding(
+        padding: EdgeInsets.only(top: 15.0),
         child: Text(
           'Back to login ',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),

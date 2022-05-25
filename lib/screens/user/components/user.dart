@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import '../../check-in/components/check-in.dart';
 import '../../review/components/review.dart';
+import 'package:http/http.dart' as http;
 
 class User {
   final Image profilePhoto;

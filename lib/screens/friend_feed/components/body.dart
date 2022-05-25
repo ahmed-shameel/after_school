@@ -9,12 +9,10 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return const Background(
         child: SingleChildScrollView(
       child: Center(
-        child: Container(
-          child: Text('friend feed'),
-        ),
+        child: Text('friend feed'),
       ),
     ));
   }

@@ -22,7 +22,7 @@ class LoginForm2State extends State<LoginForm2> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final FocusNode myFocusNode = new FocusNode();
+  final FocusNode myFocusNode = FocusNode();
   bool isObscure = true;
 
   final httpUri = Uri.http('localhost:8080', '/login', {'limit': '10'});
@@ -46,9 +46,9 @@ class LoginForm2State extends State<LoginForm2> {
         key: formKey,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Text(
                 'Confirm your email and log in!',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
@@ -61,10 +61,10 @@ class LoginForm2State extends State<LoginForm2> {
                   labelText: 'Email',
                   labelStyle: TextStyle(
                       color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                   ),
                   fillColor: fieldFillColor,
@@ -80,7 +80,7 @@ class LoginForm2State extends State<LoginForm2> {
                   }
                   return '';
                 }),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             TextFormField(
@@ -101,10 +101,10 @@ class LoginForm2State extends State<LoginForm2> {
                 labelText: 'Password',
                 labelStyle: TextStyle(
                     color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
                 suffixIcon: IconButton(
@@ -130,8 +130,8 @@ class LoginForm2State extends State<LoginForm2> {
                             builder: (context) => ForgotPasswordScreen()),
                       );
                     },
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 110.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(20),
                       child: Text(
                         'Forgot your password?',
                         style: TextStyle(
@@ -163,7 +163,7 @@ class LoginForm2State extends State<LoginForm2> {
                   ],
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text('Don\'t have an account? '),
+                  const Text('Don\'t have an account? '),
                   GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -172,7 +172,7 @@ class LoginForm2State extends State<LoginForm2> {
                               builder: (context) => SignupScreen()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Sign Up',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),

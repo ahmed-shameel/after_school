@@ -23,7 +23,7 @@ class LoginFormState extends State<LoginForm> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final FocusNode myFocusNode = new FocusNode();
+  final FocusNode myFocusNode = FocusNode();
   bool isObscure = true;
 
   final httpUri = Uri.http('localhost:8080', 'api/v1/login', {'limit': '10'});
@@ -35,6 +35,7 @@ class LoginFormState extends State<LoginForm> {
     var res = await http.post(httpUri,
         headers: {"Content-Type": "application/json"},
         body: json.encode({'email': user.email, 'password': user.password}));
+    //TODO if logged in successfully navigate to map otherwise show error
     print(res.body);
   }
 
@@ -42,14 +43,14 @@ class LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
       child: Form(
         key: formKey,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Text(
                 'Confirm your email and log in!',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
@@ -62,10 +63,10 @@ class LoginFormState extends State<LoginForm> {
                   labelText: 'Email',
                   labelStyle: TextStyle(
                       color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                   ),
                   fillColor: fieldFillColor,
@@ -81,7 +82,7 @@ class LoginFormState extends State<LoginForm> {
                   }
                   return '';
                 }),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             TextFormField(
@@ -102,10 +103,10 @@ class LoginFormState extends State<LoginForm> {
                 labelText: 'Password',
                 labelStyle: TextStyle(
                     color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
                 suffixIcon: IconButton(
@@ -131,8 +132,8 @@ class LoginFormState extends State<LoginForm> {
                             builder: (context) => ForgotPasswordScreen()),
                       );
                     },
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 110.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(20),
                       child: Text(
                         'Forgot your password?',
                         style: TextStyle(
@@ -177,12 +178,12 @@ class LoginFormState extends State<LoginForm> {
                               builder: (context) => SignupScreen()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Sign Up ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),
                       )),
-                  Text(
+                  const Text(
                     'or ',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -195,7 +196,7 @@ class LoginFormState extends State<LoginForm> {
                               builder: (context) => CustomNavBar()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Continue as a guest. ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),

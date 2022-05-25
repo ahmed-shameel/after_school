@@ -6,7 +6,7 @@ import '../user/components/user.dart';
 class FriendScreen extends StatelessWidget {
   User user;
 
-  FriendScreen({required this.user});
+  FriendScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class FriendScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: GestureDetector(
-          child: Icon(
+          child: const Icon(
             Icons.keyboard_backspace_sharp,
             color: iconColor,
           ),

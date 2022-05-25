@@ -81,10 +81,10 @@ class SignUpFormState extends State<SignUpForm> {
                   labelText: 'Lastname',
                   labelStyle: TextStyle(
                       color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                   ),
                   fillColor: fieldFillColor,
@@ -100,10 +100,10 @@ class SignUpFormState extends State<SignUpForm> {
                   labelText: 'Email',
                   labelStyle: TextStyle(
                       color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                   ),
                   fillColor: fieldFillColor,
@@ -119,10 +119,10 @@ class SignUpFormState extends State<SignUpForm> {
                   labelText: 'Username',
                   labelStyle: TextStyle(
                       color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                   ),
                   fillColor: fieldFillColor,
@@ -139,10 +139,10 @@ class SignUpFormState extends State<SignUpForm> {
                 labelText: 'Password',
                 labelStyle: TextStyle(
                     color: myFocusNode.hasFocus ? Colors.blue : Colors.black),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
                 suffixIcon: IconButton(
