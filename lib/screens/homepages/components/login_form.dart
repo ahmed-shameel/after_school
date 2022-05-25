@@ -51,7 +51,7 @@ class LoginFormState extends State<LoginForm> {
             const Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: Text(
-                'Confirm your email and log in!',
+                'Welcome to After School, please login!',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
