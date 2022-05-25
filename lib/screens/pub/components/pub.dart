@@ -1,4 +1,3 @@
-import 'dart:core';
 import 'package:after_school/screens/event/components/event.dart';
 import '../../review/components/review.dart';
 

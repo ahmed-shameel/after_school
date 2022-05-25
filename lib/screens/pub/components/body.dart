@@ -1,8 +1,10 @@
 import 'package:after_school/components/custom_rating_bar.dart';
 import 'package:after_school/components/image_gallery.dart';
 import 'package:after_school/screens/pub/components/pub.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
+import '../../check-in/check-in_screen.dart';
 import '../../review/review_screen.dart';
 
 class Body extends StatelessWidget {
@@ -26,7 +28,7 @@ class Body extends StatelessWidget {
                     tiles: [
                       ListTile(
                         leading: Icon(
-                          Icons.timer,
+                          CupertinoIcons.clock,
                           color: Colors.white,
                         ),
                         title: Text("Opening hours"),
@@ -34,7 +36,7 @@ class Body extends StatelessWidget {
                       ),
                       ListTile(
                         leading: Icon(
-                          Icons.pin_drop,
+                          CupertinoIcons.placemark,
                           color: Colors.white,
                         ),
                         title: Text("Address"),
@@ -87,6 +89,33 @@ class Body extends StatelessWidget {
                       fontSize: 15),
                 )),
             ImageGallery(images: pub.images),
+            SizedBox(height: 10,),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(20, 50),
+                //shape: StadiumBorder(),
+                primary: Color(0xFF519580),
+              ),
+              child: FittedBox(
+                child: Row(children: [
+                  Text(
+                    'Check-in ',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  Icon(
+                    CupertinoIcons.check_mark_circled,
+                    color: Colors.white,
+                  ),
+                ]),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CheckInScreen(pub: pub,)));
+              },
+            ),
+            SizedBox(height: 50,),
           ],
         ),
       ),
