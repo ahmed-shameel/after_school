@@ -11,30 +11,17 @@ class PubsScreen extends StatefulWidget {
 
 
 
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      appBar: AppBar(
-        backgroundColor: appBarColor,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: const Text(
-           'Pubs',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-      ),
-//      body: Body(),
-    );
-  }
 
   @override
   State<StatefulWidget> createState() {
     return PubsScreenState();
-    
+
   }
 }
 class PubsScreenState extends State<PubsScreen> {
-  late Future<newPub> futureNewPub;
+  late Future<List<newPub>> futureNewPub;
+
+   int a = 1;
 
   @override
   void initState() {
@@ -45,12 +32,49 @@ class PubsScreenState extends State<PubsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<newPub>(
-//      header: ,
+    return Scaffold(
+      backgroundColor: primaryColor,
+      appBar: AppBar(
+        backgroundColor: appBarColor,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: const Text(
+          'Pubs',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+      ),
+//      body: Body(),
+
+      body: FutureBuilder<List<newPub>>(
+
       future: futureNewPub,
       builder: (context, snapshot)  {
         if (snapshot.hasData) {
-          return Text(snapshot.data!.pubName);
+          List<newPub>? data = snapshot.data;
+          if (data!=null){
+
+          }
+          return
+              ListView.builder(
+                  itemCount: data?.length,
+                  itemBuilder: (BuildContext context, int index){
+                    return Container(
+                      height: 75,
+                      color: Colors.white,
+                        child: Center(child: Text(data![index].coordinates))
+
+                    );
+                  }
+
+
+              );
+//        return Text('Datahämtning lyckades');
+
+//         return ListView.builder(
+//           itemCount: futureNewPub.length,
+//           itemBuilder: (context, index) {
+
+//           }
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }
@@ -58,17 +82,20 @@ class PubsScreenState extends State<PubsScreen> {
         // By default, show a loading spinner.
         return const CircularProgressIndicator();
       },
-    );
+    ));
   }
-  Future<newPub> fetchPubs() async {
+  Future<List<newPub>> fetchPubs() async {
 
-    final response = await http
-        .get(Uri.parse('http://localhost:8080/bars'));
+    final response = await http.get(Uri.http('localhost:8080', '/bars'));
+    //newPub.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return newPub.fromJson(jsonDecode(response.body));
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((data) => new newPub.fromJson(data)).toList();
+
+//      return [
+//        for (final item in jsonDecode(response.body)) newPub.fromJson(item),
+//      ];
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
