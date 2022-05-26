@@ -84,7 +84,7 @@ class _MapScreenState extends State<MapScreen> {
     final response = await http.get(Uri.http('localhost:8080', '/bars'));
 
     if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
+      List<dynamic> jsonResponse = json.decode(utf8.decode(response.bodyBytes));
       return jsonResponse.map((data) => newPub.fromJson(data)).toList();
 
     } else {
