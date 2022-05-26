@@ -1,5 +1,4 @@
 import 'package:after_school/components/custom_rating_bar.dart';
-import 'package:after_school/components/image_gallery.dart';
 import 'package:after_school/screens/pub/components/pub.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Opening hours"),
-                        subtitle: Text('pub.openingHours'),
+                        subtitle: Text(pub.openingHours),
                       ),
                       ListTile(
                         leading: const Icon(
@@ -40,7 +39,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Address"),
-                        subtitle: Text('pub.address'),
+                        subtitle: Text(pub.address),
                       ),
                       ListTile(
                         leading: const Icon(
@@ -48,15 +47,15 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Entry"),
-                        subtitle: Text('pub.coordinates'),
+                        subtitle: Text(pub.coordinates),
                       ),
                       ListTile(
                         leading: const Icon(
-                          Icons.attach_money,
+                          Icons.sports_bar,
                           color: Colors.white,
                         ),
-                        title: const Text("Prices"),
-                        subtitle: Text('pub.address'),
+                        title: const Text("Description"),
+                        subtitle: Text(pub.description),
                       ),
                     ],
                   ),

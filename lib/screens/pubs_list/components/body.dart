@@ -2,14 +2,12 @@ import 'dart:convert';
 import 'package:after_school/components/search_field.dart';
 import 'package:after_school/screens/pubs_list/components/uni_card.dart';
 import 'package:after_school/screens/pubs_list/components/university.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
-import '../../../constants.dart';
 import '../../pub/components/pub.dart';
-import '../../pub/components/pub_tile.dart';
 import "package:http/http.dart" as http;
 import '../../pub/pub_screen.dart';
+
 
 class Body extends StatefulWidget {
 
@@ -80,6 +78,7 @@ class DataRetriever extends State<Body> {
 
 
 
+  @override
   Widget build(BuildContext context) {
 
 
@@ -87,32 +86,33 @@ class DataRetriever extends State<Body> {
         future: futurePub,
         builder: (context, snapshot)  {
       if (snapshot.hasData) {
-        List<Pub>? data = snapshot.data;
-//        print (data);
+        List<Pub> data = snapshot.data!;
+
 
         return Background(
           child: ListView.builder(
-              itemCount: data?.length,
+              itemCount: data.length,
               itemBuilder: (BuildContext context, int index) {
+                Pub pub = data[index];
                 return Column(
                     children: [
                       Container(
-                        child: Padding(
                           padding: EdgeInsets.fromLTRB(30, 8, 30, 8),
                           child: ListTile(
                             onTap: () {
-                              //           Navigator.push(context,
-                              //           MaterialPageRoute(builder: (context) => PubScreen(pub: pub,)));
+                                         Navigator.push(context,
+                                         MaterialPageRoute(builder: (index) => PubScreen(pub: pub,)));
 
                             },
                             tileColor: Colors.white,
-                            title: Text(data![index].name,
+                            title: Text(data[index].name,
                               textAlign: TextAlign.start,
+                            style: TextStyle(fontSize: 16),
                             ),
-
-                            subtitle: Text(data[index].openingHours + "\n" +
-                                data[index].address,
-                              textAlign: TextAlign.start,),
+                            subtitle: Text(data[index].openingHours + "\n" + data[index].description,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(fontSize: 11),
+                            ),
                             isThreeLine: true,
                             leading:
                             data[index].university == 'Stockholm Universitet' ?
@@ -151,7 +151,7 @@ class DataRetriever extends State<Body> {
 
                             trailing: const Icon(Icons.arrow_forward_ios),
                           ),
-                        ),),
+                        ),
                       // Container(
                       //     child: Padding(
                       //         padding: EdgeInsets.fromLTRB(30, 8, 30, 8),
@@ -175,7 +175,8 @@ class DataRetriever extends State<Body> {
 
   Future<List<Pub>> fetchPubs() async {
 
-    final response = await http.get(Uri.http('localhost:8080', '/bars'));
+    final response = await http.get(Uri.http('localhost:8080', '/bars'),
+    headers:  {"Access-Control-Allow-Origin": "*"});
 
 
     if (response.statusCode == 200) {
@@ -188,5 +189,6 @@ class DataRetriever extends State<Body> {
     } else {
       throw Exception('Failed to load pub');
     }}}
+
 
 
