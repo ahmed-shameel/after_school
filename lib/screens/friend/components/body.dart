@@ -7,7 +7,7 @@ import '../../../components/background_without_logo.dart';
 class Body extends StatelessWidget {
   User user;
 
-  Body({required this.user});
+  Body({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,13 @@ class Body extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(50.0),
+              padding: const EdgeInsets.all(50.0),
               child: Column(
                 children: [
                   ProfilePic(
                     profilePhoto: user.profilePhoto,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Card(
@@ -35,12 +35,12 @@ class Body extends StatelessWidget {
                             color: Colors.black,
                             tiles: [
                               ListTile(
-                                title: Text("Name"),
+                                title: const Text("Name"),
                                 subtitle:
                                     Text(user.firstName + " " + user.lastName),
                               ),
                               ListTile(
-                                title: Text("About Me"),
+                                title: const Text("About Me"),
                                 subtitle: Text(user.aboutMe),
                               ),
                               CustomExpandedPanel(
@@ -52,17 +52,17 @@ class Body extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(20, 50),
-                      shape: StadiumBorder(),
-                      primary: Color(0xFF519580),
+                      minimumSize: const Size(20, 50),
+                      shape: const StadiumBorder(),
+                      primary: const Color(0xFF519580),
                     ),
                     child: FittedBox(
-                      child: Row(children: [
+                      child: Row(children: const [
                         Icon(
                           Icons.remove_circle_outline,
                           color: Colors.white,

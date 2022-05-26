@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:after_school/screens/pub/components/newPub.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -10,64 +14,82 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   static const currentZoom = 10.0;
-  static const _initialCameraPosition =
-      CameraPosition(target: LatLng(59.3293, 18.0686), zoom: currentZoom);
-  final Set<Marker> markers = new Set(); //markers for google map
-  static const LatLng showLocation =
-      LatLng(59.4077207690603, 17.945989974148407); //location to show in map
+
+  static const _initialCameraPosition = CameraPosition(
+      target: LatLng(59.3293, 18.0686), zoom: currentZoom
+  );
+
+  late List markers = []; //markers for google map
+
+  late Future<List<newPub>> bars;
+
+  @override
+  void initState() {
+    super.initState();
+    bars = fetchPubs();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        markers: getMarkers(), //markers to show on map
-        initialCameraPosition: _initialCameraPosition,
-        myLocationEnabled: true,
+      body: FutureBuilder<List<newPub>>(
+        future: bars,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return (const Center(child: CircularProgressIndicator()));
+          } else {
+            markers = getMarkers(snapshot);
+            //markers = getMarkers();
+            return SizedBox(
+              child: GoogleMap(
+                zoomGesturesEnabled: true,
+                // markers:
+                initialCameraPosition: _initialCameraPosition,
+                markers: Set.from(markers),
+                myLocationButtonEnabled: true,
+              ),
+            );
+          }
+        },
       ),
     );
   }
 
-  Set<Marker> getMarkers() {
-    //markers to place on map
-    setState(() {
-      markers.add(Marker(
-        //add first marker
-        markerId: MarkerId(showLocation.toString()),
-        position: showLocation, //position of marker
-        infoWindow: const InfoWindow(
+  List getMarkers(snapshot) {
+
+    markers = snapshot.data.map((element) {
+      var latlong =  element.coordinates.split(",");
+      double latitude = double.parse(latlong[0]);
+      double longitude = double.parse(latlong[1]);
+      return Marker(
+        markerId: MarkerId(element.name),
+        draggable: false,
+        infoWindow: InfoWindow(
           //popup info
-          title: 'DISK KM',
-          snippet:
-              'Onsdagar 15:45 - Sent™ och sista fredagen i månaden kl. 15:45 - Sent™',
+          title: element.name,
+          snippet: element.description + "\n"
+                  + "Opening Hours: " + element.openingTime
+                  + "Rating: ",
         ),
         icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-
-      markers.add(Marker(
-        markerId: MarkerId(showLocation.toString()),
-        position: LatLng(59.36484800359592, 18.054968939491033),
-        infoWindow: const InfoWindow(
-          title: 'Bojan Crew',
-          snippet: 'Torsdagar 17:00-01:00',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-
-      markers.add(Marker(
-        markerId: MarkerId(showLocation.toString()),
-        position:
-            LatLng(59.35798073395385, 18.05561361223785), //position of marker
-        infoWindow: const InfoWindow(
-          //popup info
-          title: 'F.E.ST PrU',
-          snippet: 'Följ på Facebook för event!',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-
-      //add more markers here
-    });
+        position: LatLng(latitude, longitude),
+      );
+    }).toList();
 
     return markers;
   }
+
+  Future<List<newPub>> fetchPubs() async {
+
+    final response = await http.get(Uri.http('localhost:8080', '/bars'));
+
+    if (response.statusCode == 200) {
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((data) => newPub.fromJson(data)).toList();
+
+    } else {
+      throw Exception('Failed to load pub');
+    }
+  }
 }
+

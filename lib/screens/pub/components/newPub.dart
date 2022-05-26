@@ -5,7 +5,7 @@ import '../../review/components/review.dart';
 
 class newPub{
   String name;
-  String? openingHours;
+  String? openingTime;
   bool? open;
   String? description;
   String? coordinates;
@@ -16,7 +16,7 @@ class newPub{
 
   newPub({
     required this.name,
-    this.openingHours,
+    this.openingTime,
     this.open,
     this.description,
     this.coordinates,
@@ -34,7 +34,7 @@ class newPub{
     return newPub(
 
       name: json['name'],
-      openingHours: json['openingHours'],
+      openingTime: json['openingTime'],
       open: json['open'],
       description: json['description'],
       coordinates: json['coordinates'],
@@ -49,6 +49,8 @@ class newPub{
 
     );
   }
+
+  String get pubName => name;
 
 
 }

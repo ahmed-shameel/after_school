@@ -1,5 +1,6 @@
 package com.example.AfterSchool.user;
 
+import com.example.AfterSchool.bar.review.Review;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -32,6 +33,8 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> friends;
+    @OneToMany
+    private List<Review> reviews;
 
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -48,8 +51,15 @@ public class User {
     }
 
     public void addFriend(User friend){
-        friends.add(friend);
+        if(!friends.contains(friend))
+            friends.add(friend);
     }
+
+    public void addReview(Review review){
+        reviews.add(review);
+    }
+
+
 
     @Override
     public String toString() {

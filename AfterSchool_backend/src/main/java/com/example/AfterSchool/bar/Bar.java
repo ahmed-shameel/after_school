@@ -1,6 +1,7 @@
 package com.example.AfterSchool.bar;
 
 import com.example.AfterSchool.bar.review.Review;
+import com.example.AfterSchool.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class Bar {
     private double rating;
     private String adress;
     private String university;
+
     @OneToMany
     @JoinColumn()
     private List<Review> reviews;
@@ -35,7 +37,7 @@ public class Bar {
     }
 
     public void addReview(Review review){
-        addReview(review);
+        reviews.add(review);
         //sets the new rating
         int totalRate = 0;
         int numOfRates = 0;

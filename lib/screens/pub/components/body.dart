@@ -10,7 +10,7 @@ import '../../review/review_screen.dart';
 class Body extends StatelessWidget {
   final Pub pub;
 
-  Body({Key? key, required this.pub}) : super(key: key);
+  const Body({Key? key, required this.pub}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,40 +27,40 @@ class Body extends StatelessWidget {
                     color: Colors.white,
                     tiles: [
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           CupertinoIcons.clock,
                           color: Colors.white,
                         ),
-                        title: Text("Opening hours"),
+                        title: const Text("Opening hours"),
                         subtitle: Text(pub.openingHours),
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           CupertinoIcons.placemark,
                           color: Colors.white,
                         ),
-                        title: Text("Address"),
+                        title: const Text("Address"),
                         subtitle: Text(pub.address),
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.door_front_door,
                           color: Colors.white,
                         ),
-                        title: Text("Entry"),
+                        title: const Text("Entry"),
                         subtitle: Text(pub.entry),
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.attach_money,
                           color: Colors.white,
                         ),
-                        title: Text("Prices"),
+                        title: const Text("Prices"),
                         subtitle: Text(pub.prices),
                       ),
                     ],
                   ),
-                  Divider(
+                  const Divider(
                     color: Colors.white,
                   ),
                 ],
@@ -78,10 +78,10 @@ class Body extends StatelessWidget {
                         builder: (context) => ReviewScreen(
                               pub: pub,
                             ),
-                        settings: RouteSettings(name: 'reviews')),
+                        settings: const RouteSettings(name: 'reviews')),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'See and write reviews',
                   style: TextStyle(
                       color: Colors.black,
@@ -89,15 +89,15 @@ class Body extends StatelessWidget {
                       fontSize: 15),
                 )),
             ImageGallery(images: pub.images),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(20, 50),
+                minimumSize: const Size(20, 50),
                 //shape: StadiumBorder(),
-                primary: Color(0xFF519580),
+                primary: const Color(0xFF519580),
               ),
               child: FittedBox(
-                child: Row(children: [
+                child: Row(children: const [
                   Text(
                     'Check-in ',
                     style: TextStyle(fontSize: 20, color: Colors.white),
@@ -115,7 +115,7 @@ class Body extends StatelessWidget {
                         builder: (context) => CheckInScreen(pub: pub,)));
               },
             ),
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
           ],
         ),
       ),

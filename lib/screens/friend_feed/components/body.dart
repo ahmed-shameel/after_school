@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
 
 class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   _BodyState createState() => _BodyState();
 }

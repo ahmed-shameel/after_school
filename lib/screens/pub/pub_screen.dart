@@ -19,7 +19,7 @@ class PubScreen extends StatelessWidget {
         backgroundColor: appBarColor,
         elevation: 0,
         leading: GestureDetector(
-          child: Icon(
+          child: const Icon(
             Icons.keyboard_backspace_sharp,
             color: iconColor,
           ),
@@ -29,7 +29,7 @@ class PubScreen extends StatelessWidget {
         ),
         title: Text(
           pub.pubName,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: Body(
