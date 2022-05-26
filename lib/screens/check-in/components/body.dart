@@ -54,6 +54,7 @@ class _BodyState extends State<Body> {
                 barrierDismissible: true,
                 context: context,
                 builder: (context) => AlertDialog(
+                      // TODO: what happens if the person is not close to the bar?
                       title: Text(
                           'You are now checked in at ' + widget.pub.pubName),
                       actions: [

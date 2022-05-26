@@ -233,10 +233,13 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
 
   Text printCheckIn(CheckIn checkIn) {
     if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
+      ///this part not working
       return Text(
           widget.user.firstName + ' is at ' + checkIn.pub.pubName + ' - ');
     }
     return Text(widget.user.firstName +
+
+        ///this part working
         ' was at ' +
         checkIn.pub.pubName +
         ' - ' +
@@ -251,12 +254,14 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
 
   Icon printIcon(CheckIn checkIn) {
     if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
+      ///this part not working
       return Icon(
         CupertinoIcons.at_circle_fill,
         color: Colors.green,
       );
     }
     return Icon(
+      ///this part working
       CupertinoIcons.map_pin,
       color: Colors.red,
     );
