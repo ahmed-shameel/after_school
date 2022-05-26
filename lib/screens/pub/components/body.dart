@@ -32,7 +32,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Opening hours"),
-                        subtitle: Text(pub.openingHours),
+                        subtitle: Text('pub.openingHours'),
                       ),
                       ListTile(
                         leading: const Icon(
@@ -40,7 +40,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Address"),
-                        subtitle: Text(pub.address),
+                        subtitle: Text('pub.address'),
                       ),
                       ListTile(
                         leading: const Icon(
@@ -48,7 +48,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Entry"),
-                        subtitle: Text(pub.entry),
+                        subtitle: Text('pub.coordinates'),
                       ),
                       ListTile(
                         leading: const Icon(
@@ -56,7 +56,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Prices"),
-                        subtitle: Text(pub.prices),
+                        subtitle: Text('pub.address'),
                       ),
                     ],
                   ),
@@ -88,7 +88,7 @@ class Body extends StatelessWidget {
                       decoration: TextDecoration.underline,
                       fontSize: 15),
                 )),
-            ImageGallery(images: pub.images),
+  //          ImageGallery(images: pub.images),
             const SizedBox(height: 10,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

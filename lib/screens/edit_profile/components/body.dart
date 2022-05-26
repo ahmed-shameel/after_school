@@ -24,8 +24,8 @@ class BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     //example data
-    Pub bojanCrew = Pub(pubName: 'Bojan Crew');
-    Pub fooBar = Pub(pubName: 'Foo Bar');
+    Pub bojanCrew = Pub(name: 'Bojan Crew', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder');
+    Pub fooBar = Pub(name: 'Foo Bar', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder');
     Review review1 = Review(
         user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
     Review review2 =
@@ -37,8 +37,8 @@ class BodyState extends State<Body> {
 
     widget.user.reviews.add(review1);
     widget.user.reviews.add(review2);
-    bojanCrew.reviews.add(review1);
-    fooBar.reviews.add(review2);
+//    bojanCrew.reviews.add(review1);
+//    fooBar.reviews.add(review2);
     widget.user.checkins.add(checkIn);
     widget.user.checkins.add(checkIn2);
     widget.user.checkins.add(checkIn3);

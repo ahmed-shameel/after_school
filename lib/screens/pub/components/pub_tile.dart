@@ -15,7 +15,7 @@ class PubTile extends StatelessWidget {
             MaterialPageRoute(builder: (context) => PubScreen(pub: pub)));
       },
       tileColor: Colors.white,
-      title: Text(pub.pubName),
+      title: Text(pub.name),
       subtitle: Text(pub.openingHours),
       isThreeLine: true,
     );

@@ -62,9 +62,9 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
         lastName: 'lastName2',
         email: 'email2',
         password: 'password2');
-    Pub pub = Pub(pubName: 'Bojan Crew');
-    Pub pub2 = Pub(pubName: 'Foo Bar');
-    Pub pub3 = Pub(pubName: 'SöderS Pub');
+    Pub pub = Pub(name: 'Bojan Crew', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address');
+    Pub pub2 = Pub(name: 'Foo Bar', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address');
+    Pub pub3 = Pub(name: 'SöderS Pub', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address');
     Review review =
         Review(user: user, rate: 5, comment: 'awesome pub', pub: pub);
     Review review3 =
@@ -200,7 +200,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                                   const EdgeInsets.symmetric(horizontal: 3),
                               child: Center(
                                 child: Text(
-                                  reviewOfUser.pub.pubName,
+                                  reviewOfUser.pub.name,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 10),
                                 ),
@@ -235,13 +235,13 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
     if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
       ///this part not working
       return Text(
-          widget.user.firstName + ' is at ' + checkIn.pub.pubName + ' - ');
+          widget.user.firstName + ' is at ' + checkIn.pub.name + ' - ');
     }
     return Text(widget.user.firstName +
 
         ///this part working
         ' was at ' +
-        checkIn.pub.pubName +
+        checkIn.pub.name +
         ' - ' +
         checkIn.dateTime.day.toString() +
         '/' +

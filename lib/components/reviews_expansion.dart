@@ -56,7 +56,7 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                                     const EdgeInsets.symmetric(horizontal: 3),
                                 child: Center(
                                   child: Text(
-                                    reviewOfUser.pub.pubName,
+                                    reviewOfUser.pub.name,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(fontSize: 10),
                                   ),

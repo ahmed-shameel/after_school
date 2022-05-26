@@ -75,7 +75,7 @@ class _BodyState extends State<Body> {
     },
   ];
 
-  List<Review> buildReview() {
+  List<Review>? buildReview() {
     //example data
     User john = User(
         username: 'johndoe',
@@ -106,9 +106,9 @@ class _BodyState extends State<Body> {
         password: 'pass',
         email: 'mail');
 
-    Pub bojanCrew = Pub(pubName: 'Bojan Crew');
-    Pub fooBar = Pub(pubName: 'Foo Bar');
-    Pub sodersPub = Pub(pubName: 'SöderS Pub');
+    Pub bojanCrew = Pub(name: 'Bojan Crew', openingHours: '', coordinates: '', address: '', description: '');
+    Pub fooBar = Pub(name: 'Foo Bar', coordinates: '', address: '', openingHours: '', description: '');
+    Pub sodersPub = Pub(name: 'SöderS Pub', description: '', address: '', coordinates: '', openingHours: '');
 
     Review review1 =
         Review(user: john, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
@@ -142,15 +142,15 @@ class _BodyState extends State<Body> {
     john.checkins.add(checkIn2);
     john.checkins.add(checkIn3);
 
-    bojanCrew.reviews.add(review1);
-    bojanCrew.reviews.add(review4);
-    bojanCrew.reviews.add(review6);
+   bojanCrew.reviews?.add(review1);
+   bojanCrew.reviews?.add(review4);
+   bojanCrew.reviews?.add(review6);
 
-    fooBar.reviews.add(review2);
-    fooBar.reviews.add(review5);
+   fooBar.reviews?.add(review2);
+   fooBar.reviews?.add(review5);
 
-    sodersPub.reviews.add(review3);
-    sodersPub.reviews.add(review7);
+   sodersPub.reviews?.add(review3);
+   sodersPub.reviews?.add(review7);
 
     john.friends.add(karen);
     karen.friends.add(john);
@@ -161,16 +161,16 @@ class _BodyState extends State<Body> {
     jasmine.friends.add(john);
     john.friends.add(jasmine);
 
-    if (widget.pub.pubName.toLowerCase() == bojanCrew.pubName.toLowerCase()) {
-      widget.pub.reviews.addAll(bojanCrew.reviews);
-    } else if (widget.pub.pubName.toLowerCase() ==
-        fooBar.pubName.toLowerCase()) {
-      widget.pub.reviews.addAll(fooBar.reviews);
+    if (widget.pub.name.toLowerCase() == bojanCrew.name.toLowerCase()) {
+//      widget.pub.reviews?.addAll(bojanCrew.reviews);
+    } else if (widget.pub.name.toLowerCase() ==
+        fooBar.name.toLowerCase()) {
+//      widget.pub.reviews?.addAll(fooBar.reviews);
     } else {
-      widget.pub.reviews.addAll(sodersPub.reviews);
+//      widget.pub.reviews?.addAll(sodersPub.reviews);
     }
 
-    return widget.pub.reviews;
+//    return widget.pub.reviews;
   }
 
   Widget reviewField(List<Review> reviews) {
@@ -278,7 +278,7 @@ class _BodyState extends State<Body> {
             )
           ]),
           //reviewField(widget.pub.reviews),
-          reviewField(buildReview()),
+    //      reviewField(buildReview()),
           //reviewField(filedata),
         ]),
       ),

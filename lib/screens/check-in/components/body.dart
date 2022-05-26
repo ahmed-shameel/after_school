@@ -18,7 +18,7 @@ class _BodyState extends State<Body> {
         child: SingleChildScrollView(
             child: Column(
       children: [
-        Text('Check in to ' + widget.pub.pubName,
+        Text('Check in to ' + widget.pub.name,
             style: TextStyle(fontSize: 20)),
         SizedBox(
           height: 40,
@@ -56,7 +56,7 @@ class _BodyState extends State<Body> {
                 builder: (context) => AlertDialog(
                       // TODO: what happens if the person is not close to the bar?
                       title: Text(
-                          'You are now checked in at ' + widget.pub.pubName),
+                          'You are now checked in at ' + widget.pub.name),
                       actions: [
                         TextButton(
                           child: Text("Ok"),
