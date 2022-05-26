@@ -12,7 +12,7 @@ class newPub{
   double? rating;
   String? address;
   String? university;
-//  List<Review>? reviews = <Review>[];
+  List reviews;
 
   newPub({
     required this.name,
@@ -23,7 +23,7 @@ class newPub{
     this.rating,
     this.address,
     this.university,
-//    this.reviews,
+    required this.reviews,
   });
  // void setHours(String hours) {
 //    openingHours = hours;
@@ -41,7 +41,7 @@ class newPub{
       rating: json['rating'],
       address: json['adress'],
       university: json['university'],
- //     reviews: json['reviews'],
+      reviews: json['reviews'],
 
 
 
