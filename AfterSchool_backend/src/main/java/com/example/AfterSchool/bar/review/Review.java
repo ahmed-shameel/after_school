@@ -1,27 +1,26 @@
 package com.example.AfterSchool.bar.review;
 
-import com.example.AfterSchool.bar.Bar;
-import com.example.AfterSchool.user.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Review {
     @Id
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Bar bar;
-
+    private String user;
+    private String bar;
     private double rate;
     private String comment;
 
-    public Review(User user, double rate, String comment) {
+    public Review(String user, double rate, String comment, String bar) {
         this.user = user;
+        this.bar = bar;
         if(rate > 5.00 || rate < 0.00){
             throw new IllegalStateException("Rate most be from 1 - 5");
         } else {
@@ -32,26 +31,6 @@ public class Review {
 
     public Review() {
 
-    }
-
-    public Long getId(){
-        return id;
-    }
-
-    public double getRate() {
-        return rate;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public void setRate(double rate) {

@@ -12,7 +12,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping(path = "makereview")
-    public Review makeReview(@RequestBody String comment, String username, String bar){
-        return reviewService.makeReview(bar, comment, username);
+    public Review makeReview(@RequestBody Review review){
+        return reviewService.makeReview(review);
     }
 }

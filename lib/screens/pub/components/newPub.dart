@@ -43,10 +43,6 @@ class newPub{
       university: json['university'],
       reviews: json['reviews'],
 
-
-
-
-
     );
   }
 

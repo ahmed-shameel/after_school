@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
         password: 'pass',
         lastName: 'lst',
         email: 'mail',
-        firstName: 'first');
+        firstName: 'first', friends: null, reviews: null);
 
     return Scaffold(
       backgroundColor: primaryColor,

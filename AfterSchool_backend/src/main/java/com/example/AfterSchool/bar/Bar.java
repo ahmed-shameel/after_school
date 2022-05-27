@@ -1,16 +1,18 @@
 package com.example.AfterSchool.bar;
 
 import com.example.AfterSchool.bar.review.Review;
-import com.example.AfterSchool.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 public class Bar {
     @Id
     @Column(name = "name", nullable = false)
@@ -19,6 +21,7 @@ public class Bar {
     private boolean open;
     private String openingTime;
     private String description;
+    private String requirements;
     private String coordinates;
     private double rating;
     private String adress;
@@ -26,14 +29,13 @@ public class Bar {
 
     @OneToMany
     @JoinColumn()
-    private List<Review> reviews;
+    private List<Review> reviews = new ArrayList<>();
+
+    public Bar() {
+    }
 
     public Bar(String name) {
         this.name = name;
-    }
-
-    public Bar() {
-
     }
 
     public void addReview(Review review){

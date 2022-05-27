@@ -48,23 +48,23 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
         username: 'username',
         firstName: 'firstName',
         lastName: 'lastName',
-        email: 'email',
-        password: 'password');
+        email: 'email',friends: null, reviews: null,
+        password: 'password',);
     User friend1 = User(
         username: 'username1',
         firstName: 'firstName1',
         lastName: 'lastName1',
-        email: 'email1',
+        email: 'email1',friends: null, reviews: null,
         password: 'password1');
     User friend2 = User(
         username: 'username2',
         firstName: 'firstName2',
         lastName: 'lastName2',
-        email: 'email2',
+        email: 'email2',friends: null, reviews: null,
         password: 'password2');
-    Pub pub = Pub(name: 'Bojan Crew', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address');
-    Pub pub2 = Pub(name: 'Foo Bar', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address');
-    Pub pub3 = Pub(name: 'SöderS Pub', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address');
+    Pub pub = Pub(name: 'Bojan Crew', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address', requirements: '');
+    Pub pub2 = Pub(name: 'Foo Bar', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address', requirements: '');
+    Pub pub3 = Pub(name: 'SöderS Pub', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address', requirements: '');
     Review review =
         Review(user: user, rate: 5, comment: 'awesome pub', pub: pub);
     Review review3 =
@@ -77,15 +77,14 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
     CheckIn checkIn3 =
         CheckIn(dateTime: DateTime(2022, 9, 1, 2, 35), pub: pub3);
 
-    user.friends.add(friend1);
-    user.friends.add(friend2);
-    user.reviews.add(review);
-    user.reviews.add(review2);
-    user.reviews.add(review3);
+    user.friends?.add(friend1);
+    user.friends?.add(friend2);
+    user.reviews?.add(review);
+    user.reviews?.add(review2);
 
-    user.checkins.add(checkIn);
-    user.checkins.add(checkIn2);
-    user.checkins.add(checkIn3);
+    user.checkins?.add(checkIn);
+    user.checkins?.add(checkIn2);
+    user.checkins?.add(checkIn3);
 
     return Container(
       color: Colors.transparent,

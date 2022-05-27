@@ -11,10 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   location: ^4.3.0
   flutter_rating_bar: ^4.0.0
   table_calendar: ^3.0.0
+
   google_maps_flutter: ^2.0.6
+  dio: ^4.0.6
+  flutter_polyline_points: ^1.0.0
+
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   persistent_bottom_nav_bar: any
@@ -28,7 +33,6 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
-
   uses-material-design: true
 
   assets:

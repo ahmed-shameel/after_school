@@ -18,10 +18,4 @@ public class BarController {
         return barService.getAllBars();
     }
 
-    @GetMapping(path = "/allcoordinates")
-    public @ResponseBody
-    Iterable<String> getCoordinates(){
-
-        return barService.getAllCoordinates();
-    }
 }

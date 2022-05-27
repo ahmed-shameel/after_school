@@ -17,7 +17,7 @@ class ReviewScreen extends StatelessWidget {
         title: Text(pub.name,
         style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
         leading: GestureDetector(
-          child: Icon(
+          child: const Icon(
             Icons.keyboard_backspace_sharp,
             color: iconColor,
           ),

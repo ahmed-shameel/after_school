@@ -1,4 +1,6 @@
-package com.example.AfterSchool.bar;
+package com.example.AfterSchool.bar.event;
+
+import com.example.AfterSchool.bar.Bar;
 
 import javax.persistence.*;
 import java.util.Date;

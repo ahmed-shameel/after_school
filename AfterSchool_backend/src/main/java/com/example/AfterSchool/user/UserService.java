@@ -14,8 +14,8 @@ public class UserService {
         if(userRepository.findByEmail(request.getEmail()).isPresent())
             throw new IllegalStateException("There is already a user with this email");
 
-        if(userRepository.findByUsername(request.getUsername()).isPresent())
-            throw new IllegalStateException("username is taken");
+        if(userRepository.findUserByUsername(request.getUsername()).isPresent())
+            throw new IllegalStateException("user is taken");
 
         User user = new User(request.getFirstName(), request.getLastName(),
                 request.getUsername(), request.getEmail(), request.getPassword());
@@ -25,9 +25,9 @@ public class UserService {
     }
 
     public User getUserByUsername(String username){
-        Optional<User> foundUser = userRepository.findByUsername(username);
-        if(foundUser.isPresent()){
-            return foundUser.get();
+       Optional<User> user = userRepository.findUserByUsername(username);
+        if(user.isPresent()){
+            return user.get();
         } else {
             throw new IllegalStateException("user not found");
         }
@@ -50,13 +50,4 @@ public class UserService {
             throw new IllegalStateException("wrong email or password");
     }
 
-    public String addFriend(String username){
-        Optional<User> user = userRepository.findByUsername(username);
-       if(user.isEmpty())
-           throw new IllegalStateException("User not found");
-       User foundUser = user.get();
-       //TODO: add friend to current user
-
-        return "You are friends now!";
-    }
 }

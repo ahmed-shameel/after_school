@@ -15,7 +15,7 @@ class EditProfileScreen extends StatelessWidget {
         lastName: 'lstnme',
         firstName: 'frst',
         email: 'mail',
-        password: 'pass');
+        password: 'pass', friends: null, reviews: null);
 
     return Scaffold(
       backgroundColor: primaryColor,

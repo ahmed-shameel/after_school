@@ -7,6 +7,7 @@ class Pub {
   String openingHours;
   bool? open;
   String description;
+  String requirements;
   String coordinates;
   double? rating;
   String address;
@@ -32,6 +33,7 @@ class Pub {
     this.open,
     required this.description,
     required this.coordinates,
+    required this.requirements,
     this.rating,
     required this.address,
     this.university,
@@ -59,6 +61,7 @@ class Pub {
         open: json['open'],
         description: json['description'],
         coordinates: json['coordinates'],
+        requirements: json['requirements'],
         rating: json['rating'],
         address: json['adress'],
         university: json['university'],

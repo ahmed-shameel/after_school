@@ -16,24 +16,14 @@ public class ReviewService {
     private final BarRepository barRepository;
     private final UserRepository userRepository;
 
-    public Review makeReview(String bar, String text, String user){
-//
-//        if(userRepository.findByUsername(user).isEmpty()){
-//            throw new IllegalStateException("no user found");
-//        }
-//
-//        if(barRepository.findById(bar).isEmpty()){
-//            throw new IllegalStateException("No bar found");
-//        }
-
-        User foundUser = userRepository.findByUsername(user).get();
-        Bar foundBar = barRepository.getById(bar);
-
-        Review review = new Review(foundUser, 3, text);
-
+    public Review makeReview(Review review){
         reviewRepository.save(review);
-        foundBar.addReview(review);
-        foundUser.addReview(review);
+
+        Bar bar = barRepository.findByName(review.getBar());
+        User user = userRepository.findUserByUsername(review.getUser()).get();
+
+        bar.addReview(review);
+        user.addReview(review);
         return review;
     }
 }

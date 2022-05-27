@@ -1,6 +1,7 @@
 package com.example.AfterSchool.user;
 
 import com.example.AfterSchool.bar.review.Review;
+import com.example.AfterSchool.user.friend.FriendRequest;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class User {
             generator = "user_sequence"
     )
     private Long id;
+    @Column(unique = true)
     private String username;
     private String firstName;
     private String lastName;
@@ -31,6 +33,8 @@ public class User {
     private String password;
     private String profile;
 
+    @OneToMany
+    private List<FriendRequest> friendRequests;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> friends;
     @OneToMany
@@ -44,6 +48,7 @@ public class User {
         this.email = email;
         this.password = password;
         friends = new ArrayList<>();
+        friendRequests = new ArrayList<>();
     }
 
     public User() {
@@ -59,12 +64,21 @@ public class User {
         reviews.add(review);
     }
 
+    public void addFriendRequest(FriendRequest request){
+        friendRequests.add(request);
+    }
 
+    public String acceptRequest(FriendRequest request){
+        request.acceptRequest();
+        addFriend(request.getFrom());
+        request.getFrom().addFriend(this);
+        return "You are now friends";
+    }
 
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "user='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

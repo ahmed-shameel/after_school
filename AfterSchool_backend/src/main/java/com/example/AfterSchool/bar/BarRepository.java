@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface BarRepository extends JpaRepository<Bar, String> {
 
+    Bar findByName(String name);
 }
