@@ -97,11 +97,11 @@ class DataRetriever extends State<Body> {
                 return Column(
                     children: [
                       Container(
-                          padding: EdgeInsets.fromLTRB(30, 8, 30, 8),
+                          padding: const EdgeInsets.fromLTRB(30, 8, 30, 8),
                           child: ListTile(
                             onTap: () {
-                                         Navigator.push(context,
-                                         MaterialPageRoute(builder: (index) => PubScreen(pub: pub,)));
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (index) => PubScreen(pub: pub,)));
 
                             },
                             tileColor: Colors.white,

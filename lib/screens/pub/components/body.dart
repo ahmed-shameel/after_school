@@ -47,7 +47,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Entry"),
-                        subtitle: Text(pub.coordinates),
+                        subtitle: Text(pub.requirements),
                       ),
                       ListTile(
                         leading: const Icon(

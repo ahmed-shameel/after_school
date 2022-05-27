@@ -24,8 +24,8 @@ class BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     //example data
-    Pub bojanCrew = Pub(name: 'Bojan Crew', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder');
-    Pub fooBar = Pub(name: 'Foo Bar', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder');
+    Pub bojanCrew = Pub(name: 'Bojan Crew', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder', requirements: '');
+    Pub fooBar = Pub(name: 'Foo Bar', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder', requirements: '');
     Review review1 = Review(
         user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
     Review review2 =

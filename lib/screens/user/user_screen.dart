@@ -6,7 +6,7 @@ import '../user/components/user.dart';
 class UserScreen extends StatelessWidget {
   User user;
 
-  UserScreen({required this.user});
+  UserScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class UserScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: GestureDetector(
-          child: Icon(
+          child: const Icon(
             Icons.keyboard_backspace_sharp,
             color: iconColor,
           ),
