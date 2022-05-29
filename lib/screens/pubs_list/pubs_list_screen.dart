@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:after_school/constants.dart';
 import 'package:flutter/material.dart';
-import '../pub/components/newPub.dart';
+import '../pub/components/pub.dart';
 import '../pub/components/pub.dart';
 import '../pubs_list/components/body.dart';
 import "package:http/http.dart" as http;
@@ -12,18 +12,17 @@ class PubsScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return PubsScreenState();
-
   }
 }
+
 class PubsScreenState extends State<PubsScreen> {
-  late Future<List<newPub>> futureNewPub;
+  late Future<List<Pub>> futureNewPub;
 
   @override
   void initState() {
     super.initState();
 //    futureNewPub = fetchPubs();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,6 @@ class PubsScreenState extends State<PubsScreen> {
       ),
       body: Body(),
     );
-
   }
 
 //       body: FutureBuilder<List<newPub>>(
@@ -102,7 +100,4 @@ class PubsScreenState extends State<PubsScreen> {
 //       // then throw an exception.
 //       throw Exception('Failed to load pub');
 //     }
-  }
-
-
-
+}

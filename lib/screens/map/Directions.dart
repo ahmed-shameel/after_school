@@ -15,9 +15,9 @@ class Directions {
   });
 
   factory Directions.fromMap(Map<String, dynamic> map) {
-    if((map["routes"] as List).isEmpty) throw Exception("no routes found");
+    if ((map["routes"] as List).isEmpty) throw Exception("no routes found");
 
-    final data = Map<String,dynamic>.from(map["routes"][0]);
+    final data = Map<String, dynamic>.from(map["routes"][0]);
 
     final northeast = data["bounds"]["northeast"];
     final southwest = data["bounds"]["southwest"];
@@ -29,7 +29,7 @@ class Directions {
     //Distance and Duration
     String distance = "";
     String duration = "";
-    if((data["legs"] as List).isNotEmpty){
+    if ((data["legs"] as List).isNotEmpty) {
       final leg = data["legs"][0];
       distance = leg["distance"]["text"];
       distance = leg["duration"]["text"];
@@ -37,10 +37,10 @@ class Directions {
 
     return Directions(
       bounds: bounds,
-      polylinePoints: PolylinePoints().decodePolyline(data["overview_polyline"]["points"]),
+      polylinePoints:
+          PolylinePoints().decodePolyline(data["overview_polyline"]["points"]),
       totalDistance: distance,
       totalDuration: duration,
     );
   }
-
 }

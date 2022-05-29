@@ -1,75 +1,49 @@
-import 'package:after_school/screens/event/components/event.dart';
+import "package:http/http.dart" as http;
+
 import '../../review/components/review.dart';
 
 class Pub {
-
   String name;
   String openingHours;
   bool? open;
   String description;
-  String requirements;
-  String coordinates;
+  String? coordinates;
   double? rating;
+  String requirements;
   String address;
-  String? university;
-
-  //   final String pubName;
-  // String openingHours;
-  // bool? open;
-  // double? rating;
-  // String address;
-  // String requirements;
-  // String description;
-  // String prices;
-  // String entry;
-  // List<String> images = <String>[];
-  // List<Event> events = <Event>[];
-   List<dynamic>? reviews;
+  String university;
+  List<Review>? reviews = <Review>[];
 
   Pub({
-
     required this.name,
-    required this.openingHours,
+    this.openingHours = 'Opening hours unknown.',
     this.open,
-    required this.description,
-    required this.coordinates,
-    required this.requirements,
+    this.description = 'No description.',
+    this.coordinates,
     this.rating,
-    required this.address,
-    this.university,
+    this.address = 'No address given.',
+    required this.university,
     this.reviews,
-
-    // required this.pubName,
-    // this.openingHours = 'Opening hours unknown.',
-    // this.address = 'No address given.',
-    // this.requirements = 'No requirements specified.',
-    // this.description = 'No description.',
-    // this.prices = 'No price information given.',
-    // this.entry = 'No entry information given.',
+    required this.requirements,
   });
-
-//  void setHours(String hours) {
-//   openingHours = hours;
+  // void setHours(String hours) {
+//    openingHours = hours;
 //  }
-//}
+
   factory Pub.fromJson(Map<String, dynamic> json) {
-
     return Pub(
-
-        name: json['name'],
-        openingHours: json['openingTime'],
-        open: json['open'],
-        description: json['description'],
-        coordinates: json['coordinates'],
-        requirements: json['requirements'],
-        rating: json['rating'],
-        address: json['adress'],
-        university: json['university'],
-        reviews: json['reviews'],
+      name: json['name'],
+      openingHours: json['openingTime'],
+      open: json['open'],
+      description: json['description'],
+      coordinates: json['coordinates'],
+      rating: json['rating'],
+      address: json['adress'],
+      university: json['university'],
+      reviews: json['reviews'],
+      requirements: json['requirements'],
     );
-    }
+  }
 
-
-
-
+  String get pubName => name;
 }

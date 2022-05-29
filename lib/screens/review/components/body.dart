@@ -106,9 +106,30 @@ class _BodyState extends State<Body> {
         password: 'pass',
         email: 'mail');
 
-    Pub bojanCrew = Pub(name: 'Bojan Crew', openingHours: '', coordinates: '', address: '', description: '');
-    Pub fooBar = Pub(name: 'Foo Bar', coordinates: '', address: '', openingHours: '', description: '');
-    Pub sodersPub = Pub(name: 'SöderS Pub', description: '', address: '', coordinates: '', openingHours: '');
+    Pub bojanCrew = Pub(
+        name: 'Bojan Crew',
+        openingHours: '',
+        coordinates: '',
+        address: '',
+        description: '',
+        requirements: '',
+        university: '');
+    Pub fooBar = Pub(
+        name: 'Foo Bar',
+        coordinates: '',
+        address: '',
+        openingHours: '',
+        description: '',
+        requirements: '',
+        university: '');
+    Pub sodersPub = Pub(
+        name: 'SöderS Pub',
+        description: '',
+        address: '',
+        coordinates: '',
+        openingHours: '',
+        university: '',
+        requirements: '');
 
     Review review1 =
         Review(user: john, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
@@ -125,46 +146,46 @@ class _BodyState extends State<Body> {
     Review review7 =
         Review(user: amy, rate: 4, comment: 'People are nice', pub: sodersPub);
 
+    CheckIn checkIn =
+        CheckIn(timeCheckedIn: DateTime(2022, 1, 3, 15, 45), pub: bojanCrew);
+    CheckIn checkIn2 =
+        CheckIn(timeCheckedIn: DateTime(2022, 3, 2, 10, 00), pub: fooBar);
+    CheckIn checkIn3 = CheckIn(timeCheckedIn: DateTime.now(), pub: sodersPub);
 
-    CheckIn checkIn = CheckIn(dateTime: DateTime(2022, 1, 3, 15, 45), pub: bojanCrew);
-    CheckIn checkIn2 = CheckIn(dateTime: DateTime(2022, 3, 2, 10, 00), pub: fooBar);
-    CheckIn checkIn3 = CheckIn(dateTime: DateTime.now(), pub: sodersPub);
+    john.reviews!.add(review1);
+    john.reviews!.add(review2);
+    john.reviews!.add(review3);
+    karen.reviews!.add(review4);
+    karen.reviews!.add(review5);
+    amy.reviews!.add(review6);
+    amy.reviews!.add(review7);
 
-    john.reviews.add(review1);
-    john.reviews.add(review2);
-    john.reviews.add(review3);
-    karen.reviews.add(review4);
-    karen.reviews.add(review5);
-    amy.reviews.add(review6);
-    amy.reviews.add(review7);
+    john.checkins!.add(checkIn);
+    john.checkins!.add(checkIn2);
+    john.checkins!.add(checkIn3);
 
-    john.checkins.add(checkIn);
-    john.checkins.add(checkIn2);
-    john.checkins.add(checkIn3);
+    bojanCrew.reviews?.add(review1);
+    bojanCrew.reviews?.add(review4);
+    bojanCrew.reviews?.add(review6);
 
-   bojanCrew.reviews?.add(review1);
-   bojanCrew.reviews?.add(review4);
-   bojanCrew.reviews?.add(review6);
+    fooBar.reviews?.add(review2);
+    fooBar.reviews?.add(review5);
 
-   fooBar.reviews?.add(review2);
-   fooBar.reviews?.add(review5);
+    sodersPub.reviews?.add(review3);
+    sodersPub.reviews?.add(review7);
 
-   sodersPub.reviews?.add(review3);
-   sodersPub.reviews?.add(review7);
-
-    john.friends.add(karen);
-    karen.friends.add(john);
-    karen.friends.add(amy);
-    amy.friends.add(karen);
-    jasmine.friends.add(karen);
-    karen.friends.add(jasmine);
-    jasmine.friends.add(john);
-    john.friends.add(jasmine);
+    john.friends!.add(karen);
+    karen.friends!.add(john);
+    karen.friends!.add(amy);
+    amy.friends!.add(karen);
+    jasmine.friends!.add(karen);
+    karen.friends!.add(jasmine);
+    jasmine.friends!.add(john);
+    john.friends!.add(jasmine);
 
     if (widget.pub.name.toLowerCase() == bojanCrew.name.toLowerCase()) {
 //      widget.pub.reviews?.addAll(bojanCrew.reviews);
-    } else if (widget.pub.name.toLowerCase() ==
-        fooBar.name.toLowerCase()) {
+    } else if (widget.pub.name.toLowerCase() == fooBar.name.toLowerCase()) {
 //      widget.pub.reviews?.addAll(fooBar.reviews);
     } else {
 //      widget.pub.reviews?.addAll(sodersPub.reviews);
@@ -278,7 +299,7 @@ class _BodyState extends State<Body> {
             )
           ]),
           //reviewField(widget.pub.reviews),
-    //      reviewField(buildReview()),
+          //      reviewField(buildReview()),
           //reviewField(filedata),
         ]),
       ),

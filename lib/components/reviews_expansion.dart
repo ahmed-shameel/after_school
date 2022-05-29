@@ -43,7 +43,7 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                 ...ListTile.divideTiles(
                   color: Colors.grey,
                   tiles: [
-                    ...widget.user.reviews.map(
+                    ...widget.user.reviews!.map(
                       (Review reviewOfUser) => ListTile(
                           leading: Container(
                               decoration: BoxDecoration(
@@ -74,7 +74,8 @@ class _ReviewsExpansionPanelState extends State<ReviewsExpansionPanel> {
                             ),
                             onPressed: () {
                               setState(() {
-                                widget.user.reviews.removeWhere(
+                                ///Does this actually remove the review from the database?
+                                widget.user.reviews!.removeWhere(
                                     (Review currentReview) =>
                                         reviewOfUser == currentReview);
                               });

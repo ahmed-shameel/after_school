@@ -24,24 +24,41 @@ class BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     //example data
-    Pub bojanCrew = Pub(name: 'Bojan Crew', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder', requirements: '');
-    Pub fooBar = Pub(name: 'Foo Bar', openingHours: 'openingHours-Placeholder', coordinates: '123 cord. placeholder', description: 'description-placeholder', address: 'address-placeholder', requirements: '');
+    Pub bojanCrew = Pub(
+      name: 'Bojan Crew',
+      openingHours: 'openingHours-Placeholder',
+      coordinates: '123 cord. placeholder',
+      description: 'description-placeholder',
+      address: 'address-placeholder',
+      requirements: '',
+      university: '',
+    );
+    Pub fooBar = Pub(
+      name: 'Foo Bar',
+      openingHours: 'openingHours-Placeholder',
+      coordinates: '123 cord. placeholder',
+      description: 'description-placeholder',
+      address: 'address-placeholder',
+      requirements: '',
+      university: '',
+    );
     Review review1 = Review(
         user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);
     Review review2 =
         Review(user: widget.user, rate: 5, comment: 'Awesome', pub: fooBar);
 
-    CheckIn checkIn = CheckIn(dateTime: DateTime(2022, 1, 3, 15, 45), pub: bojanCrew);
-    CheckIn checkIn2 = CheckIn(dateTime: DateTime(2022, 3, 2, 10, 00), pub: fooBar);
-    CheckIn checkIn3 = CheckIn(dateTime: DateTime(2022, 5, 24, 12, 35), pub: bojanCrew);
+    CheckIn checkIn =
+        CheckIn(timeCheckedIn: DateTime(2022, 1, 3, 15, 45), pub: bojanCrew);
+    CheckIn checkIn2 =
+        CheckIn(timeCheckedIn: DateTime(2022, 3, 2, 10, 00), pub: fooBar);
+    CheckIn checkIn3 =
+        CheckIn(timeCheckedIn: DateTime(2022, 5, 24, 12, 35), pub: bojanCrew);
 
-    widget.user.reviews.add(review1);
-    widget.user.reviews.add(review2);
-//    bojanCrew.reviews.add(review1);
-//    fooBar.reviews.add(review2);
-    widget.user.checkins.add(checkIn);
-    widget.user.checkins.add(checkIn2);
-    widget.user.checkins.add(checkIn3);
+    widget.user.reviews?.add(review1);
+    widget.user.reviews?.add(review2);
+    widget.user.checkins?.add(checkIn);
+    widget.user.checkins?.add(checkIn2);
+    widget.user.checkins?.add(checkIn3);
 
     return Background(
       child: SingleChildScrollView(
@@ -163,8 +180,6 @@ class BodyState extends State<Body> {
       ),
     );
   }
-
-
 
   Widget bottomSheet() {
     return Container(

@@ -14,8 +14,11 @@ class ReviewScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: appBarColor,
         elevation: 0,
-        title: Text(pub.name,
-        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+        title: Text(
+          pub.name,
+          style:
+              const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         leading: GestureDetector(
           child: const Icon(
             Icons.keyboard_backspace_sharp,

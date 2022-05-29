@@ -87,8 +87,10 @@ class Body extends StatelessWidget {
                       decoration: TextDecoration.underline,
                       fontSize: 15),
                 )),
-  //          ImageGallery(images: pub.images),
-            const SizedBox(height: 10,),
+            //          ImageGallery(images: pub.images),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(20, 50),
@@ -111,10 +113,14 @@ class Body extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CheckInScreen(pub: pub,)));
+                        builder: (context) => CheckInScreen(
+                              pub: pub,
+                            )));
               },
             ),
-            const SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),

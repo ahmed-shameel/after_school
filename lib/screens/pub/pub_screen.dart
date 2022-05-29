@@ -29,7 +29,8 @@ class PubScreen extends StatelessWidget {
         ),
         title: Text(
           pub.name,
-          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style:
+              const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: Body(

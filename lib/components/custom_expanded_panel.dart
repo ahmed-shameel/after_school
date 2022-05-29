@@ -28,7 +28,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
   //when logged in, if the main user is friends with another user it should take them to friends page, otherwise to normal
   //user page.
   MaterialPageRoute setRoute(User person) {
-    if (widget.user.friends.contains(person)) {
+    if (widget.user.friends!.contains(person)) {
       return MaterialPageRoute(
           builder: (context) => FriendScreen(
                 user: person,
@@ -45,37 +45,68 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
   Widget build(BuildContext context) {
     //example data
     User user = User(
-        username: 'username',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',friends: null, reviews: null,
-        password: 'password',);
+      username: 'username',
+      firstName: 'firstName',
+      lastName: 'lastName',
+      email: 'email',
+      friends: null,
+      reviews: null,
+      password: 'password',
+    );
     User friend1 = User(
         username: 'username1',
         firstName: 'firstName1',
         lastName: 'lastName1',
-        email: 'email1',friends: null, reviews: null,
+        email: 'email1',
+        friends: null,
+        reviews: null,
         password: 'password1');
     User friend2 = User(
         username: 'username2',
         firstName: 'firstName2',
         lastName: 'lastName2',
-        email: 'email2',friends: null, reviews: null,
+        email: 'email2',
+        friends: null,
+        reviews: null,
         password: 'password2');
-    Pub pub = Pub(name: 'Bojan Crew', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address', requirements: '');
-    Pub pub2 = Pub(name: 'Foo Bar', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address', requirements: '');
-    Pub pub3 = Pub(name: 'SöderS Pub', openingHours: 'hours', coordinates: '123', description: 'desc', address: 'address', requirements: '');
+    Pub pub = Pub(
+      name: 'Bojan Crew',
+      openingHours: 'hours',
+      coordinates: '123',
+      description: 'desc',
+      address: 'address',
+      requirements: '',
+      university: '',
+    );
+    Pub pub2 = Pub(
+      name: 'Foo Bar',
+      openingHours: 'hours',
+      coordinates: '123',
+      description: 'desc',
+      address: 'address',
+      university: '',
+      requirements: '',
+    );
+    Pub pub3 = Pub(
+      name: 'SöderS Pub',
+      openingHours: 'hours',
+      coordinates: '123',
+      description: 'desc',
+      address: 'address',
+      requirements: '',
+      university: '',
+    );
     Review review =
         Review(user: user, rate: 5, comment: 'awesome pub', pub: pub);
     Review review3 =
         Review(user: user, rate: 1, comment: 'very bad', pub: pub3);
     Review review2 = Review(user: user, rate: 3, comment: 'okay', pub: pub2);
     CheckIn checkIn =
-        CheckIn(dateTime: DateTime(2022, 5, 20, 15, 45), pub: pub);
+        CheckIn(timeCheckedIn: DateTime(2022, 5, 20, 15, 45), pub: pub);
     CheckIn checkIn2 =
-        CheckIn(dateTime: DateTime(2022, 10, 2, 10, 00), pub: pub2);
+        CheckIn(timeCheckedIn: DateTime(2022, 10, 2, 10, 00), pub: pub2);
     CheckIn checkIn3 =
-        CheckIn(dateTime: DateTime(2022, 9, 1, 2, 35), pub: pub3);
+        CheckIn(timeCheckedIn: DateTime(2022, 9, 1, 2, 35), pub: pub3);
 
     user.friends?.add(friend1);
     user.friends?.add(friend2);
@@ -105,7 +136,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                 ...ListTile.divideTiles(
                   color: Colors.grey,
                   tiles: [
-                    ...widget.user.friends.map(
+                    ...?widget.user.friends?.map(
                       (User friendOfUser) => ListTile(
                           leading: Container(
                             height: 30.0,
@@ -151,7 +182,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                 ...ListTile.divideTiles(
                   color: Colors.grey,
                   tiles: [
-                    ...widget.user.checkins.map(
+                    ...?widget.user.checkins?.map(
                       (CheckIn checkin) => ListTile(
                         leading: Container(
                           height: 30.0,
@@ -186,7 +217,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
                 ...ListTile.divideTiles(
                   color: Colors.grey,
                   tiles: [
-                    ...widget.user.reviews.map(
+                    ...?widget.user.reviews?.map(
                       (Review reviewOfUser) => ListTile(
                         leading: Container(
                             decoration: BoxDecoration(
@@ -231,10 +262,9 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
   }
 
   Text printCheckIn(CheckIn checkIn) {
-    if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
+    if (checkIn.timeCheckedIn.isAtSameMomentAs(DateTime.now())) {
       ///this part not working
-      return Text(
-          widget.user.firstName + ' is at ' + checkIn.pub.name + ' - ');
+      return Text(widget.user.firstName + ' is at ' + checkIn.pub.name + ' - ');
     }
     return Text(widget.user.firstName +
 
@@ -242,17 +272,17 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
         ' was at ' +
         checkIn.pub.name +
         ' - ' +
-        checkIn.dateTime.day.toString() +
+        checkIn.timeCheckedIn.day.toString() +
         '/' +
-        checkIn.dateTime.month.toString() +
+        checkIn.timeCheckedIn.month.toString() +
         " " +
-        checkIn.dateTime.hour.toString() +
+        checkIn.timeCheckedIn.hour.toString() +
         ":" +
-        checkIn.dateTime.minute.toString());
+        checkIn.timeCheckedIn.minute.toString());
   }
 
   Icon printIcon(CheckIn checkIn) {
-    if (checkIn.dateTime.isAtSameMomentAs(DateTime.now())) {
+    if (checkIn.timeCheckedIn.isAtSameMomentAs(DateTime.now())) {
       ///this part not working
       return Icon(
         CupertinoIcons.at_circle_fill,

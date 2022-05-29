@@ -11,11 +11,14 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User newuser = User(
-        username: 'username',
-        lastName: 'lstnme',
-        firstName: 'frst',
-        email: 'mail',
-        password: 'pass', friends: null, reviews: null);
+      username: 'username',
+      lastName: 'lstnme',
+      firstName: 'frst',
+      email: 'mail',
+      password: 'pass',
+      reviews: [],
+      friends: [],
+    );
 
     return Scaffold(
       backgroundColor: primaryColor,

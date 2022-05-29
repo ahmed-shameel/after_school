@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import '../../check-in/components/check-in.dart';
 import '../../review/components/review.dart';
@@ -13,9 +12,9 @@ class User {
   String email;
   String password;
   final String aboutMe;
-  List<User> friends = <User>[];
-  List<Review> reviews = <Review>[];
-  List<CheckIn> checkins = <CheckIn>[];
+  List<User>? friends = [];
+  List<Review>? reviews = [];
+  List<CheckIn>? checkins = [];
 
   User({
     this.profilePhoto = const Image(
@@ -26,23 +25,23 @@ class User {
     required this.lastName,
     required this.email,
     required this.password,
-    this.aboutMe = 'No description', required friends, required reviews,
+    this.aboutMe = 'No description',
+    this.friends,
+    this.reviews,
   });
 
-  void addFriend(User user){
+  void addFriend(User user) {
     final httpUri = Uri.http('localhost:8080', '/addfriend', {'limit': '10'});
 
-    Future login() async{
+    Future login() async {
       var res = await http.post(httpUri,
-          headers: {"Content-Type":"application/json"},
-          body: json.encode({'email': user.email,'password': user.password}));
+          headers: {"Content-Type": "application/json"},
+          body: json.encode({'email': user.email, 'password': user.password}));
       print(res.body);
     }
   }
 
-
   factory User.fromJson(Map<String, dynamic> json) {
-
     return User(
       username: json['username'],
       firstName: json['firstName'],
@@ -59,7 +58,7 @@ class User {
 // import 'dart:convert';
 // import 'package:flutter/cupertino.dart';
 // import '../../check-in/components/check-in.dart';
-// import '../../pub/components/pub.dart';
+// import '../../pub/components/(unused)pub.dart';
 // import '../../review/components/review.dart';
 // import "package:http/http.dart" as http;
 //

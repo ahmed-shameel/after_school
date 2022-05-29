@@ -44,36 +44,35 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: FutureBuilder<List<Pub>>(
-          future: bars,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return (const Center(child: CircularProgressIndicator()));
-            } else {
-              markers = getMarkers(snapshot);
-              return SizedBox(
-                child: GoogleMap(
-                  myLocationButtonEnabled: false,
-                  zoomControlsEnabled: false,
-                  onMapCreated: (controller) =>
-                      _googleMapController = controller,
-                  // markers:
-                  initialCameraPosition: _initialCameraPosition,
-                  markers: Set.from(markers),
-                ),
-              );
-            }
-          },
+      body: FutureBuilder<List<Pub>>(
+        future: bars,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return (const Center(child: CircularProgressIndicator()));
+          } else {
+            markers = getMarkers(snapshot);
+            return SizedBox(
+              child: GoogleMap(
+                myLocationButtonEnabled: false,
+                zoomControlsEnabled: false,
+                onMapCreated: (controller) => _googleMapController = controller,
+                // markers:
+                initialCameraPosition: _initialCameraPosition,
+                markers: Set.from(markers),
+              ),
+            );
+          }
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Colors.black,
+        onPressed: () => _googleMapController.animateCamera(
+          CameraUpdate.newCameraPosition(_initialCameraPosition),
         ),
-        floatingActionButton: FloatingActionButton(
-            backgroundColor: Theme.of(context).primaryColor,
-            foregroundColor: Colors.black,
-            onPressed: () => _googleMapController.animateCamera(
-              CameraUpdate.newCameraPosition(_initialCameraPosition),
-            ),
-            child: const Icon(Icons.center_focus_strong),
-          ),
-        );
+        child: const Icon(Icons.center_focus_strong),
+      ),
+    );
   }
 
   List getMarkers(snapshot) {
@@ -93,7 +92,7 @@ class _MapScreenState extends State<MapScreen> {
               element.openingHours +
               "\n" +
               "Rating: ",
-          onTap: ()=> Navigator.push(context,
+          onTap: () => Navigator.push(context,
               MaterialPageRoute(builder: (index) => PubScreen(pub: element))),
         ),
         icon: BitmapDescriptor.defaultMarker,
