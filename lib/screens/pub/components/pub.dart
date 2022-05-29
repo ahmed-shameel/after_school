@@ -12,7 +12,7 @@ class Pub {
   String requirements;
   String address;
   String university;
-  List<Review>? reviews = <Review>[];
+  List<dynamic>? reviews = <Review>[];
 
   Pub({
     required this.name,

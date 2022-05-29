@@ -30,6 +30,7 @@ class User {
     this.reviews,
   });
 
+
   void addFriend(User user) {
     final httpUri = Uri.http('localhost:8080', '/addfriend', {'limit': '10'});
 
@@ -49,8 +50,6 @@ class User {
       email: json['email'],
       password: json['password'],
       aboutMe: json['profile'],
-      friends: json['friends'],
-      reviews: json['reviews'],
     );
   }
 }

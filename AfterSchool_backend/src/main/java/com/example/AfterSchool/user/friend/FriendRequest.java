@@ -4,10 +4,11 @@ import com.example.AfterSchool.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.Modifying;
 
 import javax.persistence.*;
 
-import static com.example.AfterSchool.user.friend.RequestType.SENT;
+import static com.example.AfterSchool.user.friend.RequestType.RECEIVED;
 
 @Entity
 @Getter
@@ -34,10 +35,13 @@ public class FriendRequest {
     public FriendRequest(User from, User to, RequestType requestType) {
         this.from = from;
         this.to = to;
-        this.requestType = requestType;
-        accepted = requestType == SENT;
+        if(requestType == RECEIVED){
+            accepted = false;
+        }
+
     }
 
+    @Modifying
     public void acceptRequest() {
         accepted = true;
 

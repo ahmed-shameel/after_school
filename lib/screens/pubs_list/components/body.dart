@@ -160,7 +160,7 @@ class DataRetriever extends State<Body> {
                                                           width: 40,
                                                           height: 40,
                                                         )
-                                                      : Icon(Icons
+                                                      : const Icon(Icons
                                                           .arrow_forward_ios),
                               trailing: const Icon(Icons.arrow_forward_ios),
                             ),

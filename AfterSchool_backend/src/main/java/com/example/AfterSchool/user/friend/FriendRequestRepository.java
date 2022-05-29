@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface FriendRequestRepository extends JpaRepository<FriendRequest, Long> {
 
-    List<FriendRequest> getByRequestType(RequestType requestType);
+    List<FriendRequest> getByFromAndRequestType(User from, RequestType typ);
+    List<FriendRequest> getByToAndRequestType(User from, RequestType typ);
     FriendRequest findFriendRequestsByFromAndToAndRequestType(User from, User to, RequestType type);
+
+
 }

@@ -1,11 +1,14 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:geolocator/geolocator.dart';
 
 import '../pub/components/pub.dart';
 import '../pub/pub_screen.dart';
 import 'Directions.dart';
+import 'directions_repository.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -25,9 +28,10 @@ class _MapScreenState extends State<MapScreen> {
   late Future<List<Pub>> bars;
 
   late GoogleMapController _googleMapController;
-  late Marker _origin;
-  late Marker _destination;
-  late Directions _info;
+  late LatLng _currentLocation;
+  late LatLng _destination;
+
+  // bool hasPermission = false;
 
   @override
   void dispose() {
@@ -44,35 +48,48 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<Pub>>(
-        future: bars,
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return (const Center(child: CircularProgressIndicator()));
-          } else {
-            markers = getMarkers(snapshot);
-            return SizedBox(
-              child: GoogleMap(
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: false,
-                onMapCreated: (controller) => _googleMapController = controller,
-                // markers:
-                initialCameraPosition: _initialCameraPosition,
-                markers: Set.from(markers),
-              ),
-            );
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.black,
-        onPressed: () => _googleMapController.animateCamera(
-          CameraUpdate.newCameraPosition(_initialCameraPosition),
+        body: FutureBuilder<List<Pub>>(
+          future: bars,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return (const Center(child: CircularProgressIndicator()));
+            } else {
+              markers = getMarkers(snapshot);
+              return SizedBox(
+                child: GoogleMap(
+                  myLocationButtonEnabled: false,
+                  zoomControlsEnabled: false,
+                  onMapCreated: (controller) =>
+                      _googleMapController = controller,
+                  // markers:
+                  initialCameraPosition: _initialCameraPosition,
+                  markers: Set.from(markers),
+                  // polylines: {
+                  //   if (_info != null)
+                  //     Polyline(
+                  //       polylineId: const PolylineId('overview_polyline'),
+                  //       color: Colors.red,
+                  //       width: 5,
+                  //       points: _info.polylinePoints
+                  //           .map((e) => LatLng(e.latitude, e.longitude))
+                  //           .toList(),
+                  //     ),
+                  // },
+                  myLocationEnabled: true,
+                ),
+              );
+            }
+          },
         ),
-        child: const Icon(Icons.center_focus_strong),
-      ),
-    );
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Theme.of(context).primaryColor,
+            foregroundColor: Colors.black,
+            onPressed: () => _googleMapController.animateCamera(
+              CameraUpdate.newCameraPosition(_initialCameraPosition),
+            ),
+            child: const Icon(Icons.center_focus_strong),
+          ),
+        );
   }
 
   List getMarkers(snapshot) {
@@ -92,7 +109,7 @@ class _MapScreenState extends State<MapScreen> {
               element.openingHours +
               "\n" +
               "Rating: ",
-          onTap: () => Navigator.push(context,
+          onTap: ()=> Navigator.push(context,
               MaterialPageRoute(builder: (index) => PubScreen(pub: element))),
         ),
         icon: BitmapDescriptor.defaultMarker,
@@ -115,22 +132,25 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  // void _currentLocation() async {
-  //   final GoogleMapController controller = await _controller.future;
-  //   LocationData currentLocation;
-  //   var location = new Location();
-  //   try {
-  //     currentLocation = await location.getLocation();
-  //   } on Exception {
-  //     currentLocation = null;
+  Future<Position> locateUser() async {
+    return Geolocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  }
+
+  getUserLocation() async {
+    Position pos = await locateUser();
+    setState(() {
+      _currentLocation = LatLng(pos.latitude, pos.longitude);
+    });
+  }
+
+
+  // void _getDirections(LatLng pos) async {
+  //     // Get directions
+  //     final directions = await DirectionsRepository()
+  //         .getDirections(origin: _currentLocation, destination: _destination);
+  //     setState(() => _info = directions);
   //   }
-  //
-  //   controller.animateCamera(CameraUpdate.newCameraPosition(
-  //     CameraPosition(
-  //       bearing: 0,
-  //       target: LatLng(currentLocation.latitude, currentLocation.longitude),
-  //       zoom: 17.0,
-  //     ),
-  //   ));
-  // }
+
 }
+

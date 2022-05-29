@@ -32,6 +32,7 @@ public class User {
     private String email;
     private String password;
     private String profile;
+    private String profilePicture;
 
     @OneToMany
     private List<FriendRequest> friendRequests;
