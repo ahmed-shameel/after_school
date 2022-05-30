@@ -56,7 +56,7 @@ class CustomNavBar extends StatelessWidget {
       EventsScreen(),
       MapScreen(),
       PubsScreen(),
-      ProfileScreen(),
+      ProfileScreen(user: null,),
       //UserScreen(),
       //ResetPasswordScreen(),
     ];

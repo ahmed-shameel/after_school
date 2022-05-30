@@ -49,7 +49,6 @@ class User {
       lastName: json['lastName'],
       email: json['email'],
       password: json['password'],
-      aboutMe: json['profile'],
     );
   }
 }

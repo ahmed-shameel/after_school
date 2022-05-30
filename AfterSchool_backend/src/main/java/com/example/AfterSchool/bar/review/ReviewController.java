@@ -11,7 +11,7 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @PostMapping(path = "makereview")
+    @PostMapping(path = "/makereview")
     public Review makeReview(@RequestBody Review review){
         return reviewService.makeReview(review);
     }

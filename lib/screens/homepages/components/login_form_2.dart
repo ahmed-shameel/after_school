@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:after_school/screens/forgot_password/forgot_password_screen.dart';
+import 'package:after_school/screens/profile/profile_screen.dart';
 import 'package:after_school/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
@@ -30,18 +31,25 @@ class LoginForm2State extends State<LoginForm2> {
   User user =
       User(username: "", firstName: "", lastName: "", email: "", password: "");
 
-  Future login() async {
+  Future<User> login() async {
     var res = await http.post(httpUri,
         headers: {"Content-Type": "application/json"},
         body: json.encode({'email': user.email, 'password': user.password}));
-    print(res.body);
+    if(res.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(res.body);
+      return User.fromJson(data);
+    } else {
+      throw Exception("Error");
+    }
+
+//    return
   }
 
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
       child: Form(
         key: formKey,
         child: Column(
@@ -190,7 +198,9 @@ class LoginForm2State extends State<LoginForm2> {
         text: 'Login',
         onClicked: () {
           //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
-          login();
+          User user = login() as User;
+          Navigator.push(context,
+              MaterialPageRoute(builder: (index) => ProfileScreen(user: user)));
         },
       );
 }

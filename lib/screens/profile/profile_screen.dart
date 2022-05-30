@@ -5,20 +5,12 @@ import '../profile/components/body.dart';
 import '../user/components/user.dart';
 
 class ProfileScreen extends StatelessWidget {
-  User? user;
+  User user;
 
-  ProfileScreen({this.user});
+  ProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    User newuser = User(
-        username: 'username',
-        password: 'pass',
-        lastName: 'lst',
-        email: 'mail',
-        firstName: 'first',
-        friends: [],
-        reviews: []);
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -43,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Body(user: newuser),
+      body: Body(user: user),
     );
   }
 }

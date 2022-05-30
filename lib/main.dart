@@ -1,4 +1,5 @@
 import 'package:after_school/screens/homepages/homepage_screen.dart';
+import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       darkTheme: ThemeData.dark(),
-      home: const HomePageScreen(),
+      home: HomePageScreen(),
     );
   }
 }

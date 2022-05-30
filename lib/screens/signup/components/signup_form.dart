@@ -28,7 +28,7 @@ class SignUpFormState extends State<SignUpForm> {
   bool isObscure = true;
 
   final httpUri =
-      Uri.http('localhost:8080', 'api/v1/registration', {'limit': '10'});
+      Uri.http('localhost:8080', '/signup', {'limit': '10'});
 
   Future save(User user) async {
     var res = await http.post(httpUri,
