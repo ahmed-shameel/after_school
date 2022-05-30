@@ -2,6 +2,7 @@ import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:after_school/screens/reset_password/components/reset_password_form.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background.dart';
+import '../../homepages/homepage_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -22,7 +23,7 @@ class Body extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePageScreen2()));
+                    MaterialPageRoute(builder: (context) => HomePageScreen()));
               },
               child: Padding(
                 padding: const EdgeInsets.only(top: 15.0),

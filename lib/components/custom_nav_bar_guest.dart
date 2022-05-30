@@ -1,4 +1,5 @@
 import 'package:after_school/screens/friend_feed/friend_feed_screen.dart';
+import 'package:after_school/screens/homepages/homepage_screen.dart';
 import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:after_school/screens/map/map_screen.dart';
 import 'package:after_school/screens/profile/profile_screen.dart';
@@ -12,9 +13,9 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import '../screens/user/components/user.dart';
 
-class CustomNavBar extends StatelessWidget {
+class CustomNavBarGuest extends StatelessWidget {
   final PersistentTabController _controller =
-      PersistentTabController(initialIndex: 2);
+  PersistentTabController(initialIndex: 2);
 //  User mainuser;
 
 //  CustomNavBar({
@@ -52,7 +53,7 @@ class CustomNavBar extends StatelessWidget {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style15, // Choose the nav bar style with this property.
+      NavBarStyle.style15, // Choose the nav bar style with this property.
     );
   }
 
@@ -63,7 +64,7 @@ class CustomNavBar extends StatelessWidget {
       EventsScreen(),
       MapScreen(),
       PubsScreen(),
-      ProfileScreen(),
+      HomePageScreen2(),
       //UserScreen(),
       //ResetPasswordScreen(),
     ];
@@ -100,7 +101,7 @@ class CustomNavBar extends StatelessWidget {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person_alt_circle),
-        title: ("Profile"),
+        title: ("Log in"),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),

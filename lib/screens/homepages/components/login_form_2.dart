@@ -1,13 +1,13 @@
 import 'dart:convert';
+import 'package:after_school/components/custom_nav_bar.dart';
 import 'package:after_school/screens/forgot_password/forgot_password_screen.dart';
-import 'package:after_school/screens/profile/profile_screen.dart';
 import 'package:after_school/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_divider.dart';
-import '../../../components/social_icon.dart';
 import 'package:http/http.dart' as http;
 import '../../../constants.dart';
+import '../../map/map_screen.dart';
 import '../../user/components/user.dart';
 
 class LoginForm2 extends StatefulWidget {
@@ -44,10 +44,22 @@ class LoginForm2State extends State<LoginForm2> {
 
 //    return
   }
+  late Future<User> futureUser;
+
+  @override
+  void initState() {
+    super.initState();
+    futureUser = login();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
+ //   return FutureBuilder<User>(
+ //       future: futureUser,
+ //       builder: (context, snapshot) {
+//          if (snapshot.hasData) {
+//                  User user = snapshot.data!;
+            // Build a Form widget using the _formKey created above.
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(50.0, 175.0, 50.0, 0.0),
       child: Form(
@@ -55,11 +67,13 @@ class LoginForm2State extends State<LoginForm2> {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(bottom: 10),
               child: Text(
-                'Confirm your email and log in!',
+                'You are not logged in. \nPlease log in or sign up to access your profile.',
+                textAlign: TextAlign.center,
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.white
+                 ),
               ),
             ),
 
@@ -139,7 +153,7 @@ class LoginForm2State extends State<LoginForm2> {
                       );
                     },
                     child: const Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         'Forgot your password?',
                         style: TextStyle(
@@ -148,59 +162,103 @@ class LoginForm2State extends State<LoginForm2> {
                         ),
                       ),
                     )),
+                // CustomDivider(
+                //   text: 'OR',
+                //   textColor: Colors.white,
+                //   dividerColor: Colors.white,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: <Widget>[
+                //     SocialIcon(
+                //       iconSrc: "assets/icons/google_colored.svg",
+                //       press: () {
+                //         //TODO:GOOGLE API
+                //       },
+                //     ),
+                //     SocialIcon(
+                //       iconSrc: "assets/icons/facebook_colored.svg",
+                //       press: () {
+                //         //TODO: FACEBOOK API
+                //       },
+                //     ),
+                //   ],
+                // ),
                 CustomDivider(
-                  text: 'OR',
+                  text: 'Don\'t have an account? ',
                   textColor: Colors.white,
                   dividerColor: Colors.white,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SocialIcon(
-                      iconSrc: "assets/icons/google_colored.svg",
-                      press: () {
-                        //TODO:GOOGLE API
-                      },
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size.fromHeight(50),
+                      shape: StadiumBorder(),
+                      primary: primaryColor,
                     ),
-                    SocialIcon(
-                      iconSrc: "assets/icons/facebook_colored.svg",
-                      press: () {
-                        //TODO: FACEBOOK API
-                      },
-                    ),
-                  ],
+
+                    onPressed: () {
+                  MaterialPageRoute(
+                  builder: (context) => SignupScreen());},
+                 child: FittedBox(
+                   child: Text(
+                  'Sign Up ',
+                  style: TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                ))
+
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text('Don\'t have an account? '),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupScreen()),
-                        );
-                      },
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      )),
+                // children: [
+                //       onPressed: () {
+                //         Navigator.push(
+                //
+                //         );
+                //       },
+                 //     child: c
+                  // const Text(
+                  //   'or ',
+                  //   style: TextStyle(color: Colors.white),
+                  // ),
+                  // GestureDetector(
+                  //     onTap: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => MapScreen()),
+                  //       );
+                  //     },
+                  //     child: const Text(
+                  //       'Continue as a guest',
+                  //       style: TextStyle(
+                  //           fontWeight: FontWeight.bold, color: Colors.white),
+                  //     )),
+
                 ]),
               ],
             ),
-          ],
-        ),
-      ),
-    );
-  }
+    ));
 
-  Widget loginButton() => CustomButton(
-        text: 'Login',
-        onClicked: () {
-          //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
-          User user = login() as User;
-          Navigator.push(context,
-              MaterialPageRoute(builder: (index) => ProfileScreen(user: user)));
-        },
-      );
+          }
+        //   else if (snapshot.hasError) {
+        //   return Text('${snapshot.error}');
+        //   }
+        //   return const CircularProgressIndicator();
+        // },
+
+//    );
+
+
+      Widget loginButton() =>
+          CustomButton(
+            text: 'Login',
+            onClicked: () {
+              //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
+              User user = login() as User;
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (index) => CustomNavBar()));
+            },
+          );
+
+
+
 }

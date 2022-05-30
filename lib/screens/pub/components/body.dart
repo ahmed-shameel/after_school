@@ -3,6 +3,7 @@ import 'package:after_school/screens/pub/components/pub.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
+import '../../../components/social_icon.dart';
 import '../../check-in/check-in_screen.dart';
 import '../../review/review_screen.dart';
 
@@ -16,6 +17,7 @@ class Body extends StatelessWidget {
     return Background(
       child: SingleChildScrollView(
         child: Column(
+
           children: [
             Card(
               color: Colors.transparent,
@@ -47,7 +49,7 @@ class Body extends StatelessWidget {
                           color: Colors.white,
                         ),
                         title: const Text("Entry"),
-                        subtitle: Text(pub.requirements),
+             //           subtitle: Text(pub.requirements),
                       ),
                       ListTile(
                         leading: const Icon(
@@ -64,6 +66,24 @@ class Body extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SocialIcon(
+                  iconSrc: "assets/icons/facebook_colored.svg",
+                  press: () {
+
+
+                  },
+                ),
+                SocialIcon(
+                  iconSrc: "assets/icons/facebook_colored.svg",
+                  press: () {
+                    //TODO: LinkInstagramPage, if insta null go facebook
+                  },
+                ),
+              ],
             ),
             CustomRatingBar(
               text: 'Rating: ',
@@ -91,33 +111,33 @@ class Body extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(20, 50),
-                //shape: StadiumBorder(),
-                primary: const Color(0xFF519580),
-              ),
-              child: FittedBox(
-                child: Row(children: const [
-                  Text(
-                    'Check-in ',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  Icon(
-                    CupertinoIcons.check_mark_circled,
-                    color: Colors.white,
-                  ),
-                ]),
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CheckInScreen(
-                              pub: pub,
-                            )));
-              },
-            ),
+            // ElevatedButton(
+            //   style: ElevatedButton.styleFrom(
+            //     minimumSize: const Size(20, 50),
+            //     //shape: StadiumBorder(),
+            //     primary: const Color(0xFF519580),
+            //   ),
+            //   child: FittedBox(
+            //     child: Row(children: const [
+            //       Text(
+            //         'Check-in ',
+            //         style: TextStyle(fontSize: 20, color: Colors.white),
+            //       ),
+            //       Icon(
+            //         CupertinoIcons.check_mark_circled,
+            //         color: Colors.white,
+            //       ),
+            //     ]),
+            //   ),
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) => CheckInScreen(
+            //                   pub: pub,
+            //                 )));
+            //  },
+           // ),
             const SizedBox(
               height: 50,
             ),

@@ -5,6 +5,7 @@ import '../../../components/back_to_login.dart';
 import '../../../components/custom_button.dart';
 import "package:http/http.dart" as http;
 import '../../../constants.dart';
+import '../../homepages/homepage_screen.dart';
 import '../../user/components/user.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -188,7 +189,7 @@ class SignUpFormState extends State<SignUpForm> {
               password: passwordController.text);
           save(user);
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => HomePageScreen2()));
+              MaterialPageRoute(builder: (context) => HomePageScreen()));
         },
       );
 }

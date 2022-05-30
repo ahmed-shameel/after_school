@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_divider.dart';
 import '../../../components/custom_nav_bar.dart';
+import '../../../components/custom_nav_bar_guest.dart';
 import '../../../components/social_icon.dart';
 import 'package:http/http.dart' as http;
 import '../../../constants.dart';
+import '../../map/map_screen.dart';
 import '../../user/components/user.dart';
 
 class LoginForm extends StatefulWidget {
@@ -26,7 +28,7 @@ class LoginFormState extends State<LoginForm> {
   final FocusNode myFocusNode = FocusNode();
   bool isObscure = true;
 
-  final httpUri = Uri.http('localhost:8080', 'api/v1/login', {'limit': '10'});
+  final httpUri = Uri.http('localhost:8080', '/login', {'limit': '10'});
 
   User user =
       User(username: "", firstName: "", lastName: "", email: "", password: "");
@@ -189,18 +191,18 @@ class LoginFormState extends State<LoginForm> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        //TODO: GO TO MAP PAGE AS A GUEST
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CustomNavBar()),
+                              builder: (context) => CustomNavBarGuest()),
                         );
                       },
                       child: const Text(
-                        'Continue as a guest. ',
+                        'Continue as a guest',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),
                       )),
+
                 ]),
               ],
             ),
@@ -214,7 +216,10 @@ class LoginFormState extends State<LoginForm> {
         text: 'Login',
         onClicked: () {
           //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
-          login();
+          //         User user = login() as User;
+               Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (index) => CustomNavBar()));
         },
       );
 }

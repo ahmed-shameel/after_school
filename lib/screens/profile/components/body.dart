@@ -4,6 +4,7 @@ import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:after_school/screens/user/components/user.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
+import '../../homepages/homepage_screen.dart';
 
 class Body extends StatefulWidget {
   User user;
@@ -83,7 +84,7 @@ class BodyState extends State<Body> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomePageScreen2()));
+                              builder: (context) => HomePageScreen()));
                     },
                   ),
                 ],

@@ -110,7 +110,7 @@ class _CalendarState extends State<Calendar> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Container(
-            height: size.height,
+            height: 130,
             child: ListView(
               children: [
                 //TODO: LIST EVENTS
