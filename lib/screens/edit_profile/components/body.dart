@@ -31,7 +31,7 @@ class BodyState extends State<Body> {
       description: 'description-placeholder',
       address: 'address-placeholder',
       requirements: '',
-      university: '', facebookLink: '',
+      university: '', facebookLink: '', instagramLink: '',
     );
     Pub fooBar = Pub(
       name: 'Foo Bar',
@@ -40,7 +40,7 @@ class BodyState extends State<Body> {
       description: 'description-placeholder',
       address: 'address-placeholder',
       requirements: '',
-      university: '', facebookLink: '',
+      university: '', facebookLink: '', instagramLink: '',
     );
     Review review1 = Review(
         user: widget.user, rate: 1, comment: 'Drinks not good', pub: bojanCrew);

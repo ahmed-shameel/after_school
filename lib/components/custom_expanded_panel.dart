@@ -76,7 +76,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
       description: 'desc',
       address: 'address',
       requirements: '',
-      university: '', facebookLink: '',
+      university: '', facebookLink: '', instagramLink: '',
     );
     Pub pub2 = Pub(
       name: 'Foo Bar',
@@ -85,7 +85,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
       description: 'desc',
       address: 'address',
       university: '',
-      requirements: '', facebookLink: '',
+      requirements: '', facebookLink: '', instagramLink: '',
     );
     Pub pub3 = Pub(
       name: 'SöderS Pub',
@@ -94,7 +94,7 @@ class _CustomExpandedPanelState extends State<CustomExpandedPanel> {
       description: 'desc',
       address: 'address',
       requirements: '',
-      university: '', facebookLink: '',
+      university: '', facebookLink: '', instagramLink: '',
     );
     Review review =
         Review(user: user, rate: 5, comment: 'awesome pub', pub: pub);

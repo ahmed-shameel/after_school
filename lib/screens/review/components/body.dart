@@ -113,7 +113,7 @@ class _BodyState extends State<Body> {
         address: '',
         description: '',
         requirements: '',
-        university: '');
+        university: '', facebookLink: '', instagramLink: '');
     Pub fooBar = Pub(
         name: 'Foo Bar',
         coordinates: '',
@@ -121,7 +121,7 @@ class _BodyState extends State<Body> {
         openingHours: '',
         description: '',
         requirements: '',
-        university: '');
+        university: '', facebookLink: '', instagramLink: '');
     Pub sodersPub = Pub(
         name: 'SöderS Pub',
         description: '',
@@ -129,7 +129,7 @@ class _BodyState extends State<Body> {
         coordinates: '',
         openingHours: '',
         university: '',
-        requirements: '');
+        requirements: '', facebookLink: '', instagramLink: '');
 
     Review review1 =
         Review(user: john, rate: 1, comment: 'Drinks not good', pub: bojanCrew);

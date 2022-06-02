@@ -10,6 +10,8 @@ class Pub {
   String? coordinates;
   double? rating;
   String requirements;
+  String facebookLink;
+  String instagramLink;
   String address;
   String university;
   List<dynamic>? reviews = <Review>[];
@@ -25,6 +27,8 @@ class Pub {
     required this.university,
     this.reviews,
     required this.requirements,
+    required this.facebookLink,
+    required this.instagramLink
   });
   // void setHours(String hours) {
 //    openingHours = hours;
@@ -42,6 +46,8 @@ class Pub {
       university: json['university'],
       reviews: json['reviews'],
       requirements: json['requirements'],
+      facebookLink: 'facebookLink',
+      instagramLink: 'instagramLink'
     );
   }
 

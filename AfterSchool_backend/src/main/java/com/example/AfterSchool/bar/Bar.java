@@ -23,7 +23,6 @@ public class Bar {
     private String description;
     private String facebookLink;
     private String instagramLink;
-    private String prices;
     private String requirements;
     private String coordinates;
     private double rating;

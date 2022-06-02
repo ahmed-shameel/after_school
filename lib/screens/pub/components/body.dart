@@ -70,16 +70,16 @@ class Body extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // SocialIcon(
+                //   iconSrc: "assets/icons/facebook_colored.svg",
+                //   press: () {
+                //
+                //   },
+                // ),
                 SocialIcon(
                   iconSrc: "assets/icons/facebook_colored.svg",
                   press: () {
-
-
-                  },
-                ),
-                SocialIcon(
-                  iconSrc: "assets/icons/facebook_colored.svg",
-                  press: () {
+                    pub.facebookLink;
                     //TODO: LinkInstagramPage, if insta null go facebook
                   },
                 ),
@@ -111,33 +111,33 @@ class Body extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            // ElevatedButton(
-            //   style: ElevatedButton.styleFrom(
-            //     minimumSize: const Size(20, 50),
-            //     //shape: StadiumBorder(),
-            //     primary: const Color(0xFF519580),
-            //   ),
-            //   child: FittedBox(
-            //     child: Row(children: const [
-            //       Text(
-            //         'Check-in ',
-            //         style: TextStyle(fontSize: 20, color: Colors.white),
-            //       ),
-            //       Icon(
-            //         CupertinoIcons.check_mark_circled,
-            //         color: Colors.white,
-            //       ),
-            //     ]),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (context) => CheckInScreen(
-            //                   pub: pub,
-            //                 )));
-            //  },
-           // ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(20, 50),
+                //shape: StadiumBorder(),
+                primary: const Color(0xFF519580),
+              ),
+              child: FittedBox(
+                child: Row(children: const [
+                  Text(
+                    'Check-in ',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  Icon(
+                    CupertinoIcons.check_mark_circled,
+                    color: Colors.white,
+                  ),
+                ]),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CheckInScreen(
+                              pub: pub,
+                            )));
+             },
+           ),
             const SizedBox(
               height: 50,
             ),

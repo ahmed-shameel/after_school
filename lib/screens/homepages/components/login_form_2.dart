@@ -252,7 +252,6 @@ class LoginForm2State extends State<LoginForm2> {
             text: 'Login',
             onClicked: () {
               //TODO:LOGIN, FETCH USER CREDENTIALS ETC.
-              User user = login() as User;
               Navigator.push(context,
                   MaterialPageRoute(
                       builder: (index) => CustomNavBar()));
