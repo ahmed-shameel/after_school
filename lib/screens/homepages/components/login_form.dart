@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_divider.dart';
 import '../../../components/custom_nav_bar.dart';
-import '../../../components/custom_nav_bar_guest.dart';
 import '../../../components/social_icon.dart';
 import 'package:http/http.dart' as http;
 import '../../../constants.dart';
-import '../../map/map_screen.dart';
 import '../../user/components/user.dart';
 
 class LoginForm extends StatefulWidget {
@@ -30,15 +28,16 @@ class LoginFormState extends State<LoginForm> {
 
   final httpUri = Uri.http('localhost:8080', '/login', {'limit': '10'});
 
-  User user =
-      User(username: "", firstName: "", lastName: "", email: "", password: "");
-
-  Future login() async {
+  Future<User> login() async {
     var res = await http.post(httpUri,
         headers: {"Content-Type": "application/json"},
-        body: json.encode({'email': user.email, 'password': user.password}));
-    //TODO if logged in successfully navigate to map otherwise show error
-    print(res.body);
+        body: json.encode({'email': emailController.text, 'password': passwordController.text}));
+    if (res.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(res.body);
+      return User.fromJson(data);
+    } else {
+      throw Exception("Error");
+    }
   }
 
   @override
@@ -74,10 +73,7 @@ class LoginFormState extends State<LoginForm> {
                   fillColor: fieldFillColor,
                   filled: true,
                 ),
-                controller: TextEditingController(text: user.email),
-                onChanged: (val) {
-                  user.email = val;
-                },
+                controller: TextEditingController(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Email is Empty';
@@ -88,10 +84,7 @@ class LoginFormState extends State<LoginForm> {
               height: 8,
             ),
             TextFormField(
-              controller: TextEditingController(text: user.password),
-              onChanged: (val) {
-                user.password = val;
-              },
+              controller: TextEditingController(),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'password is Empty';
@@ -194,7 +187,7 @@ class LoginFormState extends State<LoginForm> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CustomNavBarGuest()),
+                              builder: (context) => CustomNavBar()),
                         );
                       },
                       child: const Text(

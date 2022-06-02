@@ -1,6 +1,5 @@
 import 'package:after_school/components/custom_expanded_panel.dart';
 import 'package:after_school/components/profile_picture.dart';
-import 'package:after_school/screens/homepages/homepage_screen_2.dart';
 import 'package:after_school/screens/user/components/user.dart';
 import 'package:flutter/material.dart';
 import '../../../components/background_without_logo.dart';
