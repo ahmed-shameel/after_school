@@ -24,7 +24,7 @@ class BodyState extends State<Body> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(50.0),
+              padding: const EdgeInsets.all(50.0),
               child: Column(
                 children: [
                   ProfilePic(
