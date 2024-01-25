@@ -17,7 +17,7 @@ dependencies:
   table_calendar: ^3.0.0
 
   google_maps_flutter: ^2.0.6
-  dio: ^4.0.6
+  dio: ^5.0.0
   flutter_polyline_points: ^1.0.0
   geolocator: ^8.2.1
 
